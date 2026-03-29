@@ -16,6 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
 body{background:var(--bg);color:var(--white);font-family:'Urbanist',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
@@ -239,37 +240,37 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobile()">✕</button>
-  <a onclick="go('accueil');closeMobile()">Accueil</a>
-  <a onclick="go('services');closeMobile()">Services</a>
-  <a onclick="go('apropos');closeMobile()">À propos</a>
-  <a onclick="go('contact');closeMobile()">Contact</a>
+  <a href="#accueil" onclick="closeMobile()">Accueil</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#apropos" onclick="closeMobile()">À propos</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
 <nav class="nav" id="mainNav">
-  <a class="nav-logo" onclick="go('accueil')">
+  <a class="nav-logo" href="#accueil">
     <div class="nav-logo-sym">K</div>
     <div class="nav-logo-text">KOVA</div>
   </a>
   <ul class="nav-links">
-    <li><a onclick="go('accueil')" id="nl-accueil" class="active">Accueil</a></li>
-    <li><a onclick="go('services')" id="nl-services">Services</a></li>
-    <li><a onclick="go('apropos')" id="nl-apropos">À propos</a></li>
-    <li><a onclick="go('contact')" id="nl-contact">Contact</a></li>
+    <li><a href="#accueil" id="nl-accueil">Accueil</a></li>
+    <li><a href="#services" id="nl-services">Services</a></li>
+    <li><a href="#apropos" id="nl-apropos">À propos</a></li>
+    <li><a href="#contact" id="nl-contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" onclick="go('contact')">Audit gratuit →</a>
+  <a class="nav-cta" href="#contact">Audit gratuit →</a>
   <div class="hamburger" onclick="openMobile()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- ======== ACCUEIL ======== -->
-<div class="page active" id="page-accueil">
+<section id="accueil" class="page-section">
   <section class="hero">
     <div class="hero-glow"></div><div class="hero-glow2"></div>
     <div class="hero-badge a1"><div class="hero-badge-dot"></div>Agence IA — <strong>Opérationnel en 3 jours</strong></div>
     <h1 class="hero-title a2">Votre business mérite<br><span class="grad-text">mieux que la routine.</span></h1>
     <p class="hero-sub a3">KOVA automatise ce qui vous coûte du temps et crée les outils digitaux qui travaillent pour vous — même quand vous dormez.</p>
     <div class="hero-btns a4">
-      <a class="btn-primary" onclick="go('contact')">Audit gratuit — 30 min ⚡</a>
-      <a class="btn-ghost" onclick="go('services')">Découvrir nos services →</a>
+      <a class="btn-primary" href="#contact">Audit gratuit — 30 min ⚡</a>
+      <a class="btn-ghost" href="#services">Découvrir nos services →</a>
     </div>
     <div class="hero-stats a4">
       <div class="hero-stat"><div class="hs-num">3j</div><div class="hs-label">Délai moyen<br>de livraison</div></div>
@@ -331,17 +332,17 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
       <div class="cta-sub">Audit gratuit · Sans engagement · Résultats en 3 jours</div>
     </div>
     <div class="cta-btns">
-      <a class="btn-primary" onclick="go('contact')">Obtenir mon devis gratuit →</a>
-      <a class="btn-ghost" onclick="go('services')">Voir nos services</a>
+      <a class="btn-primary" href="#contact">Obtenir mon devis gratuit →</a>
+      <a class="btn-ghost" href="#services">Voir nos services</a>
     </div>
   </div>
 
   <div style="height:80px;"></div>
-  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a onclick="go('services')">Services</a><a onclick="go('apropos')">À propos</a><a onclick="go('contact')">Contact</a></div></footer>
+  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
 </div>
 
 <!-- ======== SERVICES ======== -->
-<div class="page" id="page-services">
+<section id="services" class="page-section">
   <div class="svc-hero">
     <div class="sec-label">Nos offres</div>
     <h1 class="sec-title" style="max-width:700px;">Des solutions concrètes.<br>Des résultats mesurables.</h1>
@@ -375,7 +376,7 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
             <div class="devis-item">Formation prise en main incluse</div>
           </div>
           <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" onclick="go('contact')" style="justify-content:center;">Obtenir mon devis gratuit →</a>
+          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
         </div>
       </div>
     </div>
@@ -406,7 +407,7 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
             <div class="devis-item">Sans engagement — résiliable à tout moment</div>
           </div>
           <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" onclick="go('contact')" style="justify-content:center;">Obtenir mon devis gratuit →</a>
+          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
         </div>
       </div>
     </div>
@@ -437,7 +438,7 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
             <div class="devis-item">Support 30 jours post-livraison</div>
           </div>
           <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" onclick="go('contact')" style="justify-content:center;">Obtenir mon devis gratuit →</a>
+          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
         </div>
       </div>
     </div>
@@ -468,18 +469,18 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
             <div class="devis-item">Garantie résultat 30 jours</div>
           </div>
           <div class="devis-guarantee"><span>⭐</span><span>Notre offre la plus complète — devis personnalisé en 24h</span></div>
-          <a class="btn-primary" onclick="go('contact')" style="justify-content:center;background:var(--grad);">Je veux le Pack Complet →</a>
+          <a class="btn-primary" href="#contact" style="justify-content:center;background:var(--grad);">Je veux le Pack Complet →</a>
         </div>
       </div>
     </div>
   </div>
 
   <div style="height:80px;"></div>
-  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('apropos')">À propos</a><a onclick="go('contact')">Contact</a></div></footer>
+  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
 </div>
 
 <!-- ======== À PROPOS ======== -->
-<div class="page" id="page-apropos">
+<section id="apropos" class="page-section">
   <div class="about-hero">
     <div>
       <div class="sec-label">Notre vision</div>
@@ -529,11 +530,11 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
     </div>
   </div>
 
-  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('services')">Services</a><a onclick="go('contact')">Contact</a></div></footer>
+  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#contact">Contact</a></div></footer>
 </div>
 
 <!-- ======== CONTACT ======== -->
-<div class="page" id="page-contact">
+<section id="contact" class="page-section">
   <div class="contact-wrap">
     <div>
       <div class="sec-label">Parlons-nous</div>
@@ -578,18 +579,29 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
       </div>
     </div>
   </div>
-  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('services')">Services</a><a onclick="go('apropos')">À propos</a></div></footer>
+  <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#apropos">À propos</a></div></footer>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function go(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  const nl=document.getElementById('nl-'+id);
-  if(nl)nl.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+// Navigation par scroll natif
+function highlightNav() {
+  const sections = ['accueil','services','apropos','contact'];
+  const scrollY = window.scrollY + 100;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    const nl = document.getElementById('nl-' + id);
+    if(el && nl) {
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      if(scrollY >= top && scrollY < bottom) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        nl.classList.add('active');
+      }
+    }
+  });
 }
+window.addEventListener('scroll', highlightNav);
+highlightNav();
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>20));
 function openMobile(){document.getElementById('mobileMenu').classList.add('open');}
 function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');}
