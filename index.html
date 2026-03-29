@@ -478,20 +478,21 @@ function toggleFaq(el){
 
 // ── FORMULAIRE FORMSPREE ──
 async function submitForm(){
-  var fp = document.getElementById('fp').value.trim();
-  var fn = document.getElementById('fn').value.trim();
-  var fe = document.getElementById('fe').value.trim();
-  var fa = document.getElementById('fa').value;
-  var fpr = document.getElementById('fpr').value.trim();
-  if(!fp || !fn || !fe || !fa){
-    alert('Merci de remplir les champs obligatoires (*)');
-    return;
-  }
-  var btn = document.getElementById('form-btn');
-  btn.textContent = 'Envoi en cours...';
-  btn.disabled = true;
-  try {
-    await fetch('https://formspree.io/f/xdapewaz', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ prenom: fp, nom: fn, email: fe, activite: fa, probleme: fpr, _subject
+  var fp=document.getElementById('fp').value.trim();
+  var fn=document.getElementById('fn').value.trim();
+  var fe=document.getElementById('fe').value.trim();
+  var fa=document.getElementById('fa').value;
+  var fpr=document.getElementById('fpr').value.trim();
+  if(!fp||!fn||!fe||!fa){alert('Merci de remplir les champs obligatoires (*)');return;}
+  var btn=document.querySelector('[onclick="submitForm()"]');
+  if(btn){btn.textContent='Envoi en cours...';btn.disabled=true;}
+  try{
+    await fetch('https://formspree.io/f/xdapewaz',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({prenom:fp,nom:fn,email:fe,activite:fa,probleme:fpr,_subject:'Audit KOVA - '+fp+' '+fn})
+    });
+  }catch(e){}
+  document.getElementById('cForm').style.display='none';
+  document.getElementById('fSuccess').style.display='block';
+}
