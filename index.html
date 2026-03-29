@@ -5,546 +5,400 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KOVA — Agence IA</title>
 <meta name="description" content="KOVA transforme les indépendants et PME grâce à l'IA. Sites web, chatbots, automatisations — opérationnel en 3 jours.">
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#08080D; --deep:#0F0F1A; --surface:#141420;
-  --card:#1A1A28; --border:#252538;
-  --electric:#4F6EF7; --cyan:#00D4FF;
-  --lime:#B4FF4F; --white:#F0F0FF; --muted:#6060A0;
-  --grad:linear-gradient(135deg,#4F6EF7,#00D4FF);
-}
+:root{--bg:#08080D;--deep:#0F0F1A;--surface:#141420;--card:#1A1A28;--border:#252538;--electric:#4F6EF7;--cyan:#00D4FF;--lime:#B4FF4F;--white:#F0F0FF;--muted:#6060A0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
 body{background:var(--bg);color:var(--white);font-family:'Urbanist',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
-
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
-
-.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(79,110,247,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
-
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(8,8,13,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);z-index:100;transition:all 0.3s;}
-.nav.scrolled{background:rgba(8,8,13,0.97);}
-.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;}
-.nav-logo-sym{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:#fff;}
-.nav-logo-text{font-family:'Clash Display',sans-serif;font-weight:700;font-size:20px;letter-spacing:4px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
-.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--white);}
-.nav-cta{background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:14px;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
-.nav-cta:hover{background:#3d5ce0;transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s;}
-
-.mobile-menu{display:none;position:fixed;inset:0;background:var(--deep);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;color:var(--white);text-decoration:none;cursor:pointer;transition:color 0.2s;}
-.mobile-menu a:hover{color:var(--electric);}
-.mobile-close{position:absolute;top:24px;right:24px;background:var(--card);border:none;color:var(--white);width:40px;height:40px;border-radius:10px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-
-/* PAGES */
-.page{display:none;padding-top:68px;min-height:100vh;position:relative;z-index:1;}
-.page.active{display:block;}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@keyframes glow{0%,100%{opacity:0.4;}50%{opacity:0.9;}}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(79,110,247,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+@keyframes glow{0%,100%{opacity:.5;}50%{opacity:1;}}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.a1{animation:fadeUp 0.7s ease both;}
-.a2{animation:fadeUp 0.7s 0.15s ease both;}
-.a3{animation:fadeUp 0.7s 0.3s ease both;}
-.a4{animation:fadeUp 0.7s 0.45s ease both;}
 
-/* HERO */
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(8,8,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:1000;}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-sym{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);display:flex;align-items:center;justify-content:center;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-txt{font-family:'Clash Display',sans-serif;font-weight:700;font-size:20px;letter-spacing:4px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-cta{background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:14px;padding:10px 22px;border-radius:8px;text-decoration:none;transition:all 0.2s;}
+.nav-cta:hover{background:#3d5ce0;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.burger span{width:22px;height:2px;background:var(--white);border-radius:2px;display:block;}
+
+/* ── MOBILE OVERLAY ── */
+#mob{position:fixed;inset:0;background:var(--deep);z-index:2000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
+#mob a{font-family:'Clash Display',sans-serif;font-size:34px;font-weight:700;color:var(--white);text-decoration:none;}
+#mob a:hover{color:var(--electric);}
+.mob-close{position:absolute;top:24px;right:24px;background:var(--card);border:1px solid var(--border);color:var(--white);width:44px;height:44px;border-radius:10px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+/* ── PAGES ── */
+.page{padding-top:68px;min-height:100vh;position:relative;z-index:1;}
+.page+.page{border-top:2px solid var(--border);}
+
+/* ── HERO ── */
 .hero{min-height:calc(100vh - 68px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;position:relative;overflow:hidden;}
-.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,0.11) 0%,transparent 65%);animation:glow 5s infinite;pointer-events:none;}
-.hero-glow2{position:absolute;bottom:-200px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 65%);pointer-events:none;}
-
-.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:6px 16px 6px 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:32px;}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:glow 2s infinite;}
-.hero-badge strong{color:var(--lime);font-weight:600;}
-
-.hero-title{font-family:'Clash Display',sans-serif;font-size:clamp(46px,8vw,90px);font-weight:700;line-height:1.0;letter-spacing:-3px;margin-bottom:24px;max-width:920px;}
-.grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-.hero-sub{font-size:clamp(16px,2.5vw,20px);color:var(--muted);font-weight:300;max-width:520px;margin:0 auto 48px;line-height:1.7;}
-
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,0.09) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:6px 16px 6px 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:32px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:glow 2s infinite;}
+h1.hero-title{font-family:'Clash Display',sans-serif;font-size:clamp(44px,8vw,88px);font-weight:700;line-height:1.0;letter-spacing:-3px;margin-bottom:24px;max-width:900px;}
+.g{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:18px;color:var(--muted);font-weight:300;max-width:500px;margin:0 auto 48px;line-height:1.7;}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
-.btn-primary{background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px 32px;border-radius:10px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.25s;text-decoration:none;}
-.btn-primary:hover{background:#3d5ce0;transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,110,247,0.3);}
-.btn-ghost{background:transparent;color:var(--white);font-family:'Urbanist',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:10px;border:1px solid var(--border);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.25s;text-decoration:none;}
-.btn-ghost:hover{border-color:var(--electric);transform:translateY(-2px);}
+.btn-p{background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px 32px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-p:hover{background:#3d5ce0;transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,110,247,0.3);}
+.btn-g{background:transparent;color:var(--white);font-family:'Urbanist',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:10px;border:1px solid var(--border);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-g:hover{border-color:var(--electric);transform:translateY(-2px);}
+.stats{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
+.stat{padding:20px 32px;text-align:center;border-right:1px solid var(--border);flex:1;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Clash Display',sans-serif;font-size:30px;font-weight:700;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;}
 
-.hero-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
-.hero-stat{padding:20px 36px;text-align:center;border-right:1px solid var(--border);flex:1;}
-.hero-stat:last-child{border-right:none;}
-.hs-num{font-family:'Clash Display',sans-serif;font-size:32px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.hs-label{font-size:12px;color:var(--muted);margin-top:4px;}
-
-/* TICKER */
+/* ── TICKER ── */
 .ticker-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--deep);}
-.ticker{display:flex;gap:0;white-space:nowrap;animation:ticker 28s linear infinite;}
-.ticker-item{display:inline-flex;align-items:center;gap:12px;padding:0 32px;font-size:13px;font-weight:500;color:var(--muted);flex-shrink:0;}
-.ti-dot{color:var(--electric);font-size:16px;}
+.ticker{display:flex;white-space:nowrap;animation:ticker 28s linear infinite;}
+.ti{display:inline-flex;align-items:center;gap:12px;padding:0 30px;font-size:13px;font-weight:500;color:var(--muted);flex-shrink:0;}
+.ti em{color:var(--electric);font-style:normal;}
 
-/* SECTIONS */
-.section{padding:100px 80px;max-width:1200px;margin:0 auto;}
-.sec-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--electric);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.sec-label::before{content:'';width:20px;height:1px;background:var(--electric);}
-.sec-title{font-family:'Clash Display',sans-serif;font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
-.sec-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:500px;margin-bottom:56px;line-height:1.7;}
+/* ── SECTIONS ── */
+.sec{padding:100px 80px;max-width:1200px;margin:0 auto;}
+.sec-lbl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--electric);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-lbl::before{content:'';width:20px;height:1px;background:var(--electric);}
+h2.sec-ttl{font-family:'Clash Display',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
+.sec-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:500px;margin-bottom:52px;line-height:1.7;}
 
-/* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.svc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:all 0.3s;position:relative;overflow:hidden;}
-.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,110,247,0.06),transparent);opacity:0;transition:opacity 0.3s;}
-.svc-card:hover{transform:translateY(-4px);border-color:rgba(79,110,247,0.3);}
-.svc-card:hover::before{opacity:1;}
-.svc-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
-.i-blue{background:rgba(79,110,247,0.15);} .i-cyan{background:rgba(0,212,255,0.12);} .i-lime{background:rgba(180,255,79,0.12);} .i-purple{background:rgba(167,139,250,0.12);} .i-red{background:rgba(255,107,107,0.12);} .i-yellow{background:rgba(255,209,102,0.12);}
-.svc-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:18px;margin-bottom:10px;}
-.svc-desc{font-size:14px;color:rgba(240,240,255,0.6);line-height:1.7;margin-bottom:16px;}
-.svc-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.svc-tag{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,0.05);color:var(--muted);}
+/* ── SERVICES GRID ── */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.srv-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:all 0.3s;}
+.srv-card:hover{transform:translateY(-4px);border-color:rgba(79,110,247,0.3);}
+.srv-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
+.ib{background:rgba(79,110,247,0.15);}.ic{background:rgba(0,212,255,0.12);}.il{background:rgba(180,255,79,0.12);}.ip{background:rgba(167,139,250,0.12);}.ir{background:rgba(255,107,107,0.12);}.iy{background:rgba(255,209,102,0.12);}
+.srv-ttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:18px;margin-bottom:10px;}
+.srv-dsc{font-size:14px;color:rgba(240,240,255,0.6);line-height:1.7;margin-bottom:16px;}
+.srv-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.stag{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,0.05);color:var(--muted);}
 
-/* PROCESS */
-.process-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
-.process-wrap::before{content:'';position:absolute;top:28px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:1px;background:linear-gradient(90deg,var(--electric),var(--cyan));opacity:0.3;}
-.proc-step{text-align:center;padding:0 20px;}
-.proc-num{width:56px;height:56px;border-radius:50%;background:var(--card);border:2px solid var(--electric);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:var(--electric);position:relative;z-index:1;transition:all 0.3s;}
-.proc-step:hover .proc-num{background:var(--electric);color:#fff;}
-.proc-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:16px;margin-bottom:8px;}
-.proc-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+/* ── PROCESS ── */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.proc-grid::before{content:'';position:absolute;top:27px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:1px;background:linear-gradient(90deg,#4F6EF7,#00D4FF);opacity:0.25;}
+.proc{text-align:center;padding:0 16px;}
+.proc-n{width:56px;height:56px;border-radius:50%;background:var(--card);border:2px solid var(--electric);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:var(--electric);position:relative;z-index:1;transition:all 0.3s;}
+.proc:hover .proc-n{background:var(--electric);color:#fff;}
+.proc-ttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:16px;margin-bottom:8px;}
+.proc-dsc{font-size:13px;color:var(--muted);line-height:1.6;}
 .proc-time{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--electric);background:rgba(79,110,247,0.1);padding:3px 10px;border-radius:99px;}
 
-/* TESTIMONIALS */
+/* ── TESTI ── */
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .testi-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:all 0.3s;}
 .testi-card:hover{border-color:rgba(79,110,247,0.3);transform:translateY(-3px);}
 .testi-stars{color:#FFD166;font-size:14px;margin-bottom:14px;letter-spacing:2px;}
-.testi-text{font-size:14px;color:rgba(240,240,255,0.75);line-height:1.8;margin-bottom:20px;font-style:italic;}
-.testi-author{display:flex;align-items:center;gap:12px;}
-.testi-av{width:40px;height:40px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.testi-txt{font-size:14px;color:rgba(240,240,255,0.75);line-height:1.8;margin-bottom:20px;font-style:italic;}
+.testi-auth{display:flex;align-items:center;gap:12px;}
+.testi-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4F6EF7,#00D4FF);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .testi-name{font-weight:600;font-size:14px;}
 .testi-role{font-size:12px;color:var(--muted);}
 
-/* CTA BAND */
+/* ── CTA BAND ── */
 .cta-band{margin:0 80px;border-radius:24px;background:linear-gradient(135deg,var(--deep),#0A0A25);border:1px solid rgba(79,110,247,0.2);padding:72px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;position:relative;overflow:hidden;}
-.cta-band::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,0.15),transparent 70%);}
-.cta-title{font-family:'Clash Display',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:700;letter-spacing:-1px;margin-bottom:12px;line-height:1.1;}
-.cta-sub{font-size:16px;color:var(--muted);font-weight:300;}
-.cta-btns{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.cta-band::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,0.12),transparent 70%);}
+.cta-ttl{font-family:'Clash Display',sans-serif;font-size:clamp(24px,4vw,42px);font-weight:700;letter-spacing:-1px;margin-bottom:12px;line-height:1.1;}
+.cta-sub-txt{font-size:16px;color:var(--muted);font-weight:300;}
+.cta-btns-col{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
 
-/* SERVICES PAGE */
+/* ── SERVICES PAGE ── */
 .svc-hero{padding:100px 80px 60px;max-width:1200px;margin:0 auto;}
+.svc-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);}
+.svc-row:last-child{border-bottom:1px solid var(--border);}
+.svc-l,.svc-r{padding:60px 80px;}
+.svc-l{border-right:1px solid var(--border);}
+.svc-row-num{font-family:'Clash Display',sans-serif;font-size:64px;font-weight:700;opacity:0.07;line-height:1;margin-bottom:-20px;}
+.svc-row-ico{font-size:36px;margin-bottom:20px;}
+.svc-row-ttl{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;}
+.svc-row-dsc{font-size:15px;color:rgba(240,240,255,0.65);line-height:1.8;margin-bottom:24px;}
+.svc-row-feats{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.svc-row-feats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,0.7);}
+.svc-row-feats li::before{content:'→';color:var(--electric);font-weight:700;flex-shrink:0;margin-top:1px;}
+.devis-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;}
+.devis-ttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;line-height:1.3;}
+.devis-ttl .em{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.devis-sub{font-size:14px;color:var(--muted);line-height:1.7;}
+.devis-feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,0.75);}
+.devis-feat::before{content:'✓';color:var(--lime);font-weight:700;flex-shrink:0;}
+.devis-guar{display:flex;align-items:center;gap:10px;background:rgba(180,255,79,0.06);border:1px solid rgba(180,255,79,0.2);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(240,240,255,0.65);}
 
-.svc-detail-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);align-items:stretch;}
-.svc-detail-row:last-child{border-bottom:1px solid var(--border);}
-.sdl,.sdr{padding:60px 80px;}
-.sdl{border-right:1px solid var(--border);}
-.sd-num{font-family:'Clash Display',sans-serif;font-size:64px;font-weight:700;opacity:0.07;line-height:1;margin-bottom:-20px;}
-.sd-ico{font-size:36px;margin-bottom:20px;}
-.sd-title{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:14px;}
-.sd-desc{font-size:15px;color:rgba(240,240,255,0.65);line-height:1.8;margin-bottom:24px;}
-.sd-features{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.sd-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,0.7);}
-.sd-features li::before{content:'→';color:var(--electric);font-weight:700;flex-shrink:0;margin-top:1px;}
-
-/* DEVIS BOX — remplace la price box */
-.devis-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px;}
-.devis-box-top{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;line-height:1.3;}
-.devis-box-top .em{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.devis-box-sub{font-size:14px;color:var(--muted);line-height:1.7;}
-.devis-box-items{display:flex;flex-direction:column;gap:10px;}
-.devis-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,0.75);}
-.devis-item::before{content:'✓';color:var(--lime);font-weight:700;flex-shrink:0;}
-.devis-guarantee{display:flex;align-items:center;gap:10px;background:rgba(180,255,79,0.06);border:1px solid rgba(180,255,79,0.2);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(240,240,255,0.65);}
-
-/* ABOUT */
+/* ── ABOUT ── */
 .about-hero{padding:100px 80px 60px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .manifesto{font-family:'Clash Display',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:700;line-height:1.3;letter-spacing:-0.5px;}
-.manifesto .em{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px;}
-.val-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all 0.2s;}
-.val-card:hover{border-color:var(--electric);}
-.val-icon{font-size:24px;margin-bottom:10px;}
-.val-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px;}
-.val-desc{font-size:13px;color:var(--muted);line-height:1.6;}
-.about-right{display:flex;flex-direction:column;gap:16px;}
-.astat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:20px;}
-.astat-num{font-family:'Clash Display',sans-serif;font-size:44px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;flex-shrink:0;min-width:80px;}
-.astat-label{font-size:14px;color:rgba(240,240,255,0.7);line-height:1.5;}
+.manifesto .em{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.vals-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px;}
+.val{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:border-color 0.2s;}
+.val:hover{border-color:var(--electric);}
+.val-ico{font-size:24px;margin-bottom:10px;}
+.val-ttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px;}
+.val-dsc{font-size:13px;color:var(--muted);line-height:1.6;}
+.about-stats{display:flex;flex-direction:column;gap:16px;}
+.astat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:20px;}
+.astat-n{font-family:'Clash Display',sans-serif;font-size:44px;font-weight:700;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;flex-shrink:0;min-width:80px;}
+.astat-l{font-size:14px;color:rgba(240,240,255,0.7);line-height:1.5;}
 
-/* FAQ */
+/* ── FAQ ── */
 .faq-list{display:flex;flex-direction:column;gap:8px;}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.2s;}
 .faq-item.open{border-color:rgba(79,110,247,0.4);}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:600;font-size:15px;transition:color 0.2s;gap:16px;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:600;font-size:15px;gap:16px;transition:color 0.2s;}
 .faq-item.open .faq-q{color:var(--electric);}
-.faq-arrow{font-size:18px;color:var(--muted);flex-shrink:0;transition:transform 0.3s;}
-.faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--electric);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
-.faq-item.open .faq-a{max-height:300px;padding-bottom:20px;}
-.faq-a-inner{padding:0 24px;font-size:14px;color:rgba(240,240,255,0.65);line-height:1.8;}
+.faq-arr{font-size:20px;color:var(--muted);flex-shrink:0;transition:transform 0.3s;}
+.faq-item.open .faq-arr{transform:rotate(45deg);color:var(--electric);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-in{padding:0 24px 20px;font-size:14px;color:rgba(240,240,255,0.65);line-height:1.8;}
 
-/* CONTACT */
+/* ── CONTACT ── */
 .contact-wrap{max-width:1100px;margin:0 auto;padding:80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.contact-title{font-family:'Clash Display',sans-serif;font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
+.contact-ttl{font-family:'Clash Display',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
 .contact-sub{font-size:17px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:40px;}
 .ci-list{display:flex;flex-direction:column;gap:14px;}
-.ci-item{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(240,240,255,0.7);}
-.ci-icon{width:40px;height:40px;border-radius:10px;background:rgba(79,110,247,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.contact-form{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px;}
-.form-title{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px;}
-.form-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
-.form-group{margin-bottom:18px;}
-.form-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px;}
-.form-input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--white);font-family:'Urbanist',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
-.form-input:focus{border-color:var(--electric);}
-.form-input::placeholder{color:var(--muted);}
-textarea.form-input{resize:vertical;min-height:100px;}
-select.form-input{cursor:pointer;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.form-submit{width:100%;background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px;border-radius:10px;border:none;cursor:pointer;transition:all 0.2s;margin-top:8px;}
-.form-submit:hover{background:#3d5ce0;transform:translateY(-1px);}
-.form-success{display:none;text-align:center;padding:48px;background:var(--card);border:1px solid rgba(180,255,79,0.3);border-radius:24px;}
-.form-success-icon{font-size:52px;margin-bottom:14px;}
-.form-success-title{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;color:var(--lime);margin-bottom:8px;}
-.form-success-sub{font-size:14px;color:var(--muted);}
+.ci{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(240,240,255,0.7);}
+.ci-ico{width:40px;height:40px;border-radius:10px;background:rgba(79,110,247,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.form-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px;}
+.form-ttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px;}
+.form-sub-txt{font-size:13px;color:var(--muted);margin-bottom:28px;}
+.fg{margin-bottom:18px;}
+.fl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px;}
+.fi{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--white);font-family:'Urbanist',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+.fi:focus{border-color:var(--electric);}
+.fi::placeholder{color:var(--muted);}
+textarea.fi{resize:vertical;min-height:100px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fsub{width:100%;background:var(--electric);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px;border-radius:10px;border:none;cursor:pointer;transition:all 0.2s;margin-top:8px;}
+.fsub:hover{background:#3d5ce0;transform:translateY(-1px);}
+.fsub:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.fsuccess{display:none;text-align:center;padding:48px;background:var(--card);border:1px solid rgba(180,255,79,0.3);border-radius:24px;}
+.fsuccess-icon{font-size:52px;margin-bottom:14px;}
+.fsuccess-ttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;color:var(--lime);margin-bottom:8px;}
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
-.footer-logo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;letter-spacing:4px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.footer-logo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;letter-spacing:4px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .footer-copy{font-size:12px;color:var(--muted);}
 .footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--white);}
 
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .nav{padding:0 24px;} .nav-links,.nav-cta{display:none;} .hamburger{display:flex;}
-  .section{padding:60px 24px;} .services-grid,.testi-grid{grid-template-columns:1fr;}
-  .process-wrap{grid-template-columns:1fr 1fr;gap:24px;} .process-wrap::before{display:none;}
-  .cta-band{margin:0 24px;padding:40px 32px;grid-template-columns:1fr;}
-  .svc-detail-row{grid-template-columns:1fr;} .sdl,.sdr{padding:40px 24px;} .sdl{border-right:none;border-bottom:1px solid var(--border);}
-  .about-hero{grid-template-columns:1fr;padding:60px 24px;gap:40px;} .values-grid{grid-template-columns:1fr;}
-  .contact-wrap{grid-template-columns:1fr;padding:40px 24px;gap:40px;}
-  .hero{padding:60px 24px 40px;} .hero-stats{flex-wrap:wrap;} .hero-stat{min-width:140px;}
+  nav{padding:0 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .burger{display:flex;}
+  .hero{padding:60px 20px 48px;}
+  .stats{flex-wrap:wrap;}
+  .stat{min-width:130px;}
+  .sec{padding:60px 24px;}
+  .srv-grid,.testi-grid{grid-template-columns:1fr;}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .proc-grid::before{display:none;}
+  .cta-band{margin:0 20px;padding:40px 28px;grid-template-columns:1fr;}
   .svc-hero{padding:60px 24px 40px;}
-  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;} .footer-links{flex-wrap:wrap;justify-content:center;}
+  .svc-row{grid-template-columns:1fr;}
+  .svc-l{border-right:none;border-bottom:1px solid var(--border);}
+  .svc-l,.svc-r{padding:40px 24px;}
+  .about-hero{grid-template-columns:1fr;padding:60px 24px;gap:40px;}
+  .vals-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;padding:40px 24px;gap:40px;}
+  .fr{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
 }
-::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
 </style>
 </head>
 <body>
 <div class="grid-bg"></div>
 
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMobile()">✕</button>
-  <a href="#accueil" onclick="closeMobile()">Accueil</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#apropos" onclick="closeMobile()">À propos</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+<!-- MOBILE MENU -->
+<div id="mob">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="#accueil" onclick="closeMob()">Accueil</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#apropos" onclick="closeMob()">À propos</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
 </div>
 
-<nav class="nav" id="mainNav">
-  <a class="nav-logo" href="#accueil">
-    <div class="nav-logo-sym">K</div>
-    <div class="nav-logo-text">KOVA</div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#accueil" id="nl-accueil">Accueil</a></li>
-    <li><a href="#services" id="nl-services">Services</a></li>
-    <li><a href="#apropos" id="nl-apropos">À propos</a></li>
-    <li><a href="#contact" id="nl-contact">Contact</a></li>
-  </ul>
+<!-- NAV -->
+<nav id="topnav">
+  <a class="logo" href="#accueil"><div class="logo-sym">K</div><div class="logo-txt">KOVA</div></a>
+  <div class="nav-links">
+    <a href="#accueil" id="nl-accueil" class="active">Accueil</a>
+    <a href="#services" id="nl-services">Services</a>
+    <a href="#apropos" id="nl-apropos">À propos</a>
+    <a href="#contact" id="nl-contact">Contact</a>
+  </div>
   <a class="nav-cta" href="#contact">Audit gratuit →</a>
-  <div class="hamburger" onclick="openMobile()"><span></span><span></span><span></span></div>
+  <button class="burger" id="burger-btn"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ======== ACCUEIL ======== -->
-<section id="accueil" class="page-section">
+<!-- ══════════ ACCUEIL ══════════ -->
+<div class="page" id="accueil">
   <section class="hero">
-    <div class="hero-glow"></div><div class="hero-glow2"></div>
-    <div class="hero-badge a1"><div class="hero-badge-dot"></div>Agence IA — <strong>Opérationnel en 3 jours</strong></div>
-    <h1 class="hero-title a2">Votre business mérite<br><span class="grad-text">mieux que la routine.</span></h1>
-    <p class="hero-sub a3">KOVA automatise ce qui vous coûte du temps et crée les outils digitaux qui travaillent pour vous — même quand vous dormez.</p>
-    <div class="hero-btns a4">
-      <a class="btn-primary" href="#contact">Audit gratuit — 30 min ⚡</a>
-      <a class="btn-ghost" href="#services">Découvrir nos services →</a>
+    <div class="hero-glow"></div>
+    <div class="badge"><div class="badge-dot"></div>Agence IA — <strong>Opérationnel en 3 jours</strong></div>
+    <h1 class="hero-title">Votre business mérite<br><span class="g">mieux que la routine.</span></h1>
+    <p class="hero-sub">KOVA automatise ce qui vous coûte du temps et crée les outils digitaux qui travaillent pour vous — même quand vous dormez.</p>
+    <div class="hero-btns">
+      <a class="btn-p" href="#contact">Audit gratuit — 30 min ⚡</a>
+      <a class="btn-g" href="#services">Découvrir nos services →</a>
     </div>
-    <div class="hero-stats a4">
-      <div class="hero-stat"><div class="hs-num">3j</div><div class="hs-label">Délai moyen<br>de livraison</div></div>
-      <div class="hero-stat"><div class="hs-num">+34%</div><div class="hs-label">De clients signés<br>dès le 1er mois</div></div>
-      <div class="hero-stat"><div class="hs-num">8h</div><div class="hs-label">Récupérées<br>par semaine</div></div>
-      <div class="hero-stat"><div class="hs-num">30j</div><div class="hs-label">Garantie<br>résultat</div></div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">3j</div><div class="stat-l">Délai moyen<br>de livraison</div></div>
+      <div class="stat"><div class="stat-n">+34%</div><div class="stat-l">De clients signés<br>dès le 1er mois</div></div>
+      <div class="stat"><div class="stat-n">8h</div><div class="stat-l">Récupérées<br>par semaine</div></div>
+      <div class="stat"><div class="stat-n">30j</div><div class="stat-l">Garantie<br>résultat</div></div>
     </div>
   </section>
 
   <div class="ticker-wrap">
     <div class="ticker">
-      <span class="ticker-item"><span class="ti-dot">⚡</span>Site web IA</span><span class="ticker-item"><span class="ti-dot">⚡</span>Chatbot sur mesure</span><span class="ticker-item"><span class="ti-dot">⚡</span>Automatisation</span><span class="ticker-item"><span class="ti-dot">⚡</span>Prise de RDV</span><span class="ticker-item"><span class="ti-dot">⚡</span>Génération de devis</span><span class="ticker-item"><span class="ti-dot">⚡</span>Relances automatiques</span><span class="ticker-item"><span class="ti-dot">⚡</span>CRM intelligent</span><span class="ticker-item"><span class="ti-dot">⚡</span>Contenu IA</span>
-      <span class="ticker-item"><span class="ti-dot">⚡</span>Site web IA</span><span class="ticker-item"><span class="ti-dot">⚡</span>Chatbot sur mesure</span><span class="ticker-item"><span class="ti-dot">⚡</span>Automatisation</span><span class="ticker-item"><span class="ti-dot">⚡</span>Prise de RDV</span><span class="ticker-item"><span class="ti-dot">⚡</span>Génération de devis</span><span class="ticker-item"><span class="ti-dot">⚡</span>Relances automatiques</span><span class="ticker-item"><span class="ti-dot">⚡</span>CRM intelligent</span><span class="ticker-item"><span class="ti-dot">⚡</span>Contenu IA</span>
+      <span class="ti"><em>⚡</em>Site web IA</span><span class="ti"><em>⚡</em>Chatbot sur mesure</span><span class="ti"><em>⚡</em>Automatisation</span><span class="ti"><em>⚡</em>Prise de RDV</span><span class="ti"><em>⚡</em>Génération de devis</span><span class="ti"><em>⚡</em>Relances automatiques</span><span class="ti"><em>⚡</em>CRM intelligent</span><span class="ti"><em>⚡</em>Contenu IA</span>
+      <span class="ti"><em>⚡</em>Site web IA</span><span class="ti"><em>⚡</em>Chatbot sur mesure</span><span class="ti"><em>⚡</em>Automatisation</span><span class="ti"><em>⚡</em>Prise de RDV</span><span class="ti"><em>⚡</em>Génération de devis</span><span class="ti"><em>⚡</em>Relances automatiques</span><span class="ti"><em>⚡</em>CRM intelligent</span><span class="ti"><em>⚡</em>Contenu IA</span>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-label">Nos services</div>
-    <h2 class="sec-title">Tout ce qu'il faut<br>pour dominer votre marché.</h2>
+  <div class="sec">
+    <div class="sec-lbl">Nos services</div>
+    <h2 class="sec-ttl">Tout ce qu'il faut<br>pour dominer votre marché.</h2>
     <p class="sec-sub">Des solutions clés en main, livrées rapidement, qui génèrent des résultats dès le premier mois.</p>
-    <div class="services-grid">
-      <div class="svc-card"><div class="svc-icon i-blue">🌐</div><div class="svc-title">Site web intelligent</div><div class="svc-desc">Un site moderne, rapide et optimisé SEO qui convertit vos visiteurs en clients — avec IA intégrée dès le départ.</div><div class="svc-tags"><span class="svc-tag">Design premium</span><span class="svc-tag">Mobile first</span><span class="svc-tag">SEO</span></div></div>
-      <div class="svc-card"><div class="svc-icon i-cyan">🤖</div><div class="svc-title">Chatbot IA</div><div class="svc-desc">Un assistant virtuel formé sur vos données qui répond à vos clients 24h/24, qualifie vos leads et prend des RDV.</div><div class="svc-tags"><span class="svc-tag">24h/24</span><span class="svc-tag">Personnalisé</span><span class="svc-tag">Multi-canal</span></div></div>
-      <div class="svc-card"><div class="svc-icon i-lime">⚙️</div><div class="svc-title">Automatisation</div><div class="svc-desc">Connectez vos outils, automatisez les tâches répétitives et récupérez des heures chaque semaine sans effort.</div><div class="svc-tags"><span class="svc-tag">Make / n8n</span><span class="svc-tag">No-code</span><span class="svc-tag">Sur mesure</span></div></div>
-      <div class="svc-card"><div class="svc-icon i-purple">📋</div><div class="svc-title">Générateur de devis</div><div class="svc-desc">Créez un devis professionnel en 2 minutes grâce à l'IA. Envoi automatique, suivi et relance intégrés.</div><div class="svc-tags"><span class="svc-tag">PDF auto</span><span class="svc-tag">Relances</span><span class="svc-tag">Suivi</span></div></div>
-      <div class="svc-card"><div class="svc-icon i-red">📅</div><div class="svc-title">Prise de RDV</div><div class="svc-desc">Vos clients réservent directement dans votre agenda. Rappels automatiques, zéro no-show, zéro appel inutile.</div><div class="svc-tags"><span class="svc-tag">Agenda sync</span><span class="svc-tag">SMS rappels</span><span class="svc-tag">Confirmations</span></div></div>
-      <div class="svc-card"><div class="svc-icon i-yellow">📱</div><div class="svc-title">Contenu IA</div><div class="svc-desc">Posts réseaux sociaux, newsletters, descriptions — générés automatiquement chaque semaine à votre image.</div><div class="svc-tags"><span class="svc-tag">LinkedIn</span><span class="svc-tag">Instagram</span><span class="svc-tag">Newsletter</span></div></div>
+    <div class="srv-grid">
+      <div class="srv-card"><div class="srv-ico ib">🌐</div><div class="srv-ttl">Site web intelligent</div><div class="srv-dsc">Un site moderne, rapide et optimisé SEO qui convertit vos visiteurs en clients — avec IA intégrée dès le départ.</div><div class="srv-tags"><span class="stag">Design premium</span><span class="stag">Mobile first</span><span class="stag">SEO</span></div></div>
+      <div class="srv-card"><div class="srv-ico ic">🤖</div><div class="srv-ttl">Chatbot IA</div><div class="srv-dsc">Un assistant virtuel formé sur vos données qui répond à vos clients 24h/24, qualifie vos leads et prend des RDV.</div><div class="srv-tags"><span class="stag">24h/24</span><span class="stag">Personnalisé</span><span class="stag">Multi-canal</span></div></div>
+      <div class="srv-card"><div class="srv-ico il">⚙️</div><div class="srv-ttl">Automatisation</div><div class="srv-dsc">Connectez vos outils, automatisez les tâches répétitives et récupérez des heures chaque semaine sans effort.</div><div class="srv-tags"><span class="stag">Make / n8n</span><span class="stag">No-code</span><span class="stag">Sur mesure</span></div></div>
+      <div class="srv-card"><div class="srv-ico ip">📋</div><div class="srv-ttl">Générateur de devis</div><div class="srv-dsc">Créez un devis professionnel en 2 minutes grâce à l'IA. Envoi automatique, suivi et relance intégrés.</div><div class="srv-tags"><span class="stag">PDF auto</span><span class="stag">Relances</span><span class="stag">Suivi</span></div></div>
+      <div class="srv-card"><div class="srv-ico ir">📅</div><div class="srv-ttl">Prise de RDV</div><div class="srv-dsc">Vos clients réservent directement dans votre agenda. Rappels automatiques, zéro no-show, zéro appel inutile.</div><div class="srv-tags"><span class="stag">Agenda sync</span><span class="stag">SMS rappels</span><span class="stag">Confirmations</span></div></div>
+      <div class="srv-card"><div class="srv-ico iy">📱</div><div class="srv-ttl">Contenu IA</div><div class="srv-dsc">Posts réseaux sociaux, newsletters, descriptions — générés automatiquement chaque semaine à votre image.</div><div class="srv-tags"><span class="stag">LinkedIn</span><span class="stag">Instagram</span><span class="stag">Newsletter</span></div></div>
     </div>
   </div>
 
   <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="section">
-      <div class="sec-label">Notre process</div>
-      <h2 class="sec-title">Opérationnel en 3 jours.</h2>
+    <div class="sec">
+      <div class="sec-lbl">Notre process</div>
+      <h2 class="sec-ttl">Opérationnel en 3 jours.</h2>
       <p class="sec-sub">Vous n'avez rien à faire. On s'occupe de tout, vous validez.</p>
-      <div class="process-wrap">
-        <div class="proc-step"><div class="proc-num">1</div><div class="proc-title">Audit gratuit</div><div class="proc-desc">On analyse votre activité, vos besoins. On vous montre une démo personnalisée.</div><span class="proc-time">Jour 1 — 30 min</span></div>
-        <div class="proc-step"><div class="proc-num">2</div><div class="proc-title">On construit</div><div class="proc-desc">Notre IA génère votre site, automatisations et chatbot pendant que vous travaillez.</div><span class="proc-time">Jour 2 — vous ne faites rien</span></div>
-        <div class="proc-step"><div class="proc-num">3</div><div class="proc-title">Vous validez</div><div class="proc-desc">15 minutes pour regarder et tester. On ajuste selon vos retours.</div><span class="proc-time">Jour 3 — 15 min</span></div>
-        <div class="proc-step"><div class="proc-num">4</div><div class="proc-title">Live 🚀</div><div class="proc-desc">Votre système IA est en ligne et commence à travailler pour vous dès ce soir.</div><span class="proc-time">Jour 3 — go live</span></div>
+      <div class="proc-grid">
+        <div class="proc"><div class="proc-n">1</div><div class="proc-ttl">Audit gratuit</div><div class="proc-dsc">On analyse votre activité, vos besoins. On vous montre une démo personnalisée.</div><span class="proc-time">Jour 1 — 30 min</span></div>
+        <div class="proc"><div class="proc-n">2</div><div class="proc-ttl">On construit</div><div class="proc-dsc">Notre IA génère votre site, automatisations et chatbot pendant que vous travaillez.</div><span class="proc-time">Jour 2 — vous ne faites rien</span></div>
+        <div class="proc"><div class="proc-n">3</div><div class="proc-ttl">Vous validez</div><div class="proc-dsc">15 minutes pour regarder et tester. On ajuste selon vos retours.</div><span class="proc-time">Jour 3 — 15 min</span></div>
+        <div class="proc"><div class="proc-n">4</div><div class="proc-ttl">Live 🚀</div><div class="proc-dsc">Votre système IA est en ligne et commence à travailler pour vous dès ce soir.</div><span class="proc-time">Jour 3 — go live</span></div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="sec-label">Témoignages</div>
-    <h2 class="sec-title">Ce que disent<br>nos clients.</h2>
+  <div class="sec">
+    <div class="sec-lbl">Témoignages</div>
+    <h2 class="sec-ttl">Ce que disent nos clients.</h2>
     <p class="sec-sub">Des résultats concrets, mesurables, dès le premier mois.</p>
     <div class="testi-grid">
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"En 3 semaines j'avais récupéré 10 heures par semaine. Le chatbot a géré 40 demandes pendant que j'étais sur le terrain. Résultat : 3 chantiers signés supplémentaires dès le premier mois."</div><div class="testi-author"><div class="testi-av">🔧</div><div><div class="testi-name">Patrick D.</div><div class="testi-role">Plombier indépendant · Lyon</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"Mon agenda se remplit tout seul. Les prospects arrivent, le chatbot les qualifie et me réserve des créneaux. Je me concentre sur mes clients, plus sur l'admin."</div><div class="testi-author"><div class="testi-av">🎯</div><div><div class="testi-name">Sarah M.</div><div class="testi-role">Coach business · Paris</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-text">"J'étais sceptique. Maintenant mon site génère 5 à 8 leads qualifiés par semaine sans que je touche quoi que ce soit. L'investissement s'est amorti en 3 semaines."</div><div class="testi-author"><div class="testi-av">🏡</div><div><div class="testi-name">Marc L.</div><div class="testi-role">Agent immobilier · Bordeaux</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-txt">"En 3 semaines j'avais récupéré 10 heures par semaine. Le chatbot a géré 40 demandes pendant que j'étais sur le terrain. 3 chantiers signés supplémentaires dès le premier mois."</div><div class="testi-auth"><div class="testi-av">🔧</div><div><div class="testi-name">Patrick D.</div><div class="testi-role">Plombier indépendant · Lyon</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-txt">"Mon agenda se remplit tout seul. Les prospects arrivent, le chatbot les qualifie et me réserve des créneaux. Je me concentre sur mes clients, plus sur l'admin."</div><div class="testi-auth"><div class="testi-av">🎯</div><div><div class="testi-name">Sarah M.</div><div class="testi-role">Coach business · Paris</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-txt">"J'étais sceptique. Maintenant mon site génère 5 à 8 leads qualifiés par semaine sans que je touche quoi que ce soit. L'investissement s'est amorti en 3 semaines."</div><div class="testi-auth"><div class="testi-av">🏡</div><div><div class="testi-name">Marc L.</div><div class="testi-role">Agent immobilier · Bordeaux</div></div></div></div>
     </div>
   </div>
 
   <div class="cta-band">
-    <div>
-      <div class="cta-title">Prêt à passer à<br><span class="grad-text">la vitesse supérieure ?</span></div>
-      <div class="cta-sub">Audit gratuit · Sans engagement · Résultats en 3 jours</div>
-    </div>
-    <div class="cta-btns">
-      <a class="btn-primary" href="#contact">Obtenir mon devis gratuit →</a>
-      <a class="btn-ghost" href="#services">Voir nos services</a>
-    </div>
+    <div><div class="cta-ttl">Prêt à passer à<br><span class="g">la vitesse supérieure ?</span></div><div class="cta-sub-txt">Audit gratuit · Sans engagement · Résultats en 3 jours</div></div>
+    <div class="cta-btns-col"><a class="btn-p" href="#contact">Obtenir mon devis gratuit →</a><a class="btn-g" href="#services">Voir nos services</a></div>
   </div>
-
   <div style="height:80px;"></div>
   <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
 </div>
 
-<!-- ======== SERVICES ======== -->
-<section id="services" class="page-section">
+<!-- ══════════ SERVICES ══════════ -->
+<div class="page" id="services">
   <div class="svc-hero">
-    <div class="sec-label">Nos offres</div>
-    <h1 class="sec-title" style="max-width:700px;">Des solutions concrètes.<br>Des résultats mesurables.</h1>
+    <div class="sec-lbl">Nos offres</div>
+    <h1 style="font-family:'Clash Display',sans-serif;font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;max-width:700px;">Des solutions concrètes.<br>Des résultats mesurables.</h1>
     <p class="sec-sub" style="max-width:560px;">Chaque prestation est livrée en moins d'une semaine. Devis personnalisé, gratuit, en 24h.</p>
   </div>
-
   <div>
-    <div class="svc-detail-row">
-      <div class="sdl">
-        <div class="sd-num">01</div><div class="sd-ico">🌐</div>
-        <div class="sd-title">Site web intelligent</div>
-        <div class="sd-desc">Votre vitrine digitale, construite pour convertir. Design premium, chargement ultra-rapide, optimisé pour que Google vous trouve. Avec IA intégrée pour capter vos prospects automatiquement.</div>
-        <ul class="sd-features">
-          <li>Design sur mesure aux couleurs de votre marque</li>
-          <li>Responsive — parfait sur mobile, tablette, desktop</li>
-          <li>Optimisation SEO pour être trouvé sur Google</li>
-          <li>Formulaire intelligent avec réponse automatique</li>
-          <li>Hébergement et nom de domaine inclus 1 an</li>
-          <li>Mises à jour de contenu incluses 3 mois</li>
-        </ul>
-      </div>
-      <div class="sdr">
-        <div class="devis-box">
-          <div class="devis-box-top">Un site qui <span class="em">travaille pour vous</span> — pas juste une vitrine.</div>
-          <div class="devis-box-sub">Chaque site est conçu spécifiquement pour votre activité et votre cible. Le tarif dépend de vos besoins — obtenez votre devis gratuit en 24h.</div>
-          <div class="devis-box-items">
-            <div class="devis-item">5 pages personnalisées min.</div>
-            <div class="devis-item">Hébergement 1 an offert</div>
-            <div class="devis-item">Nom de domaine inclus</div>
-            <div class="devis-item">Analytics & suivi intégrés</div>
-            <div class="devis-item">Formation prise en main incluse</div>
-          </div>
-          <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
-        </div>
-      </div>
+    <div class="svc-row">
+      <div class="svc-l"><div class="svc-row-num">01</div><div class="svc-row-ico">🌐</div><div class="svc-row-ttl">Site web intelligent</div><div class="svc-row-dsc">Votre vitrine digitale, construite pour convertir. Design premium, chargement ultra-rapide, optimisé pour que Google vous trouve.</div><ul class="svc-row-feats"><li>Design sur mesure aux couleurs de votre marque</li><li>Responsive — parfait sur mobile, tablette, desktop</li><li>Optimisation SEO pour être trouvé sur Google</li><li>Formulaire intelligent avec réponse automatique</li><li>Hébergement et nom de domaine inclus 1 an</li><li>Mises à jour de contenu incluses 3 mois</li></ul></div>
+      <div class="svc-r"><div class="devis-box"><div class="devis-ttl">Un site qui <span class="em">travaille pour vous</span> — pas juste une vitrine.</div><div class="devis-sub">Chaque site est conçu spécifiquement pour votre activité. Obtenez votre devis gratuit en 24h.</div><div class="devis-feat">5 pages personnalisées min.</div><div class="devis-feat">Hébergement 1 an offert</div><div class="devis-feat">Nom de domaine inclus</div><div class="devis-feat">Analytics & suivi intégrés</div><div class="devis-feat">Formation prise en main incluse</div><div class="devis-guar"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div><a class="btn-p" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div>
     </div>
-
-    <div class="svc-detail-row">
-      <div class="sdl">
-        <div class="sd-num">02</div><div class="sd-ico">🤖</div>
-        <div class="sd-title">Chatbot IA sur mesure</div>
-        <div class="sd-desc">Un assistant virtuel formé sur vos données — vos tarifs, vos services, votre FAQ — qui répond instantanément à vos clients 24h/24, 7j/7. Il qualifie les leads et prend les RDV à votre place.</div>
-        <ul class="sd-features">
-          <li>Formé sur votre activité, tarifs, catalogue</li>
-          <li>Intégration site web, WhatsApp ou Instagram</li>
-          <li>Prise de RDV automatique dans votre agenda</li>
-          <li>Transfert vers vous si question complexe</li>
-          <li>Rapports hebdomadaires sur les conversations</li>
-          <li>Mise à jour des données trimestrielle incluse</li>
-        </ul>
-      </div>
-      <div class="sdr">
-        <div class="devis-box">
-          <div class="devis-box-top">Votre assistant <span class="em">disponible 24h/24</span> — sans charges.</div>
-          <div class="devis-box-sub">Le chatbot s'adapte à votre volume de clients et à vos canaux de communication. Tarif mensuel sans engagement selon vos besoins.</div>
-          <div class="devis-box-items">
-            <div class="devis-item">Setup offert sur devis</div>
-            <div class="devis-item">Conversations illimitées</div>
-            <div class="devis-item">Support réactif inclus</div>
-            <div class="devis-item">Rapport mensuel de performance</div>
-            <div class="devis-item">Sans engagement — résiliable à tout moment</div>
-          </div>
-          <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
-        </div>
-      </div>
+    <div class="svc-row">
+      <div class="svc-l"><div class="svc-row-num">02</div><div class="svc-row-ico">🤖</div><div class="svc-row-ttl">Chatbot IA sur mesure</div><div class="svc-row-dsc">Un assistant virtuel formé sur vos données qui répond instantanément à vos clients 24h/24, 7j/7. Il qualifie les leads et prend les RDV à votre place.</div><ul class="svc-row-feats"><li>Formé sur votre activité, tarifs, catalogue</li><li>Intégration site web, WhatsApp ou Instagram</li><li>Prise de RDV automatique dans votre agenda</li><li>Transfert vers vous si question complexe</li><li>Rapports hebdomadaires sur les conversations</li></ul></div>
+      <div class="svc-r"><div class="devis-box"><div class="devis-ttl">Votre assistant <span class="em">disponible 24h/24</span> — sans charges.</div><div class="devis-sub">Le chatbot s'adapte à votre volume de clients. Tarif mensuel sans engagement selon vos besoins.</div><div class="devis-feat">Setup offert sur devis</div><div class="devis-feat">Conversations illimitées</div><div class="devis-feat">Support réactif inclus</div><div class="devis-feat">Rapport mensuel de performance</div><div class="devis-feat">Sans engagement — résiliable à tout moment</div><div class="devis-guar"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div><a class="btn-p" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div>
     </div>
-
-    <div class="svc-detail-row">
-      <div class="sdl">
-        <div class="sd-num">03</div><div class="sd-ico">⚙️</div>
-        <div class="sd-title">Automatisations sur mesure</div>
-        <div class="sd-desc">Connectez vos outils et automatisez les tâches qui vous bouffent du temps. Devis automatiques, relances d'impayés, confirmations de RDV — tout tourne sans vous.</div>
-        <ul class="sd-features">
-          <li>Audit de vos process et identification des gains</li>
-          <li>Connexion de vos outils existants</li>
-          <li>Générateur de devis IA en 2 minutes</li>
-          <li>Séquences de relance automatiques</li>
-          <li>Notifications et alertes personnalisées</li>
-          <li>Formation 1h pour prise en main autonome</li>
-        </ul>
-      </div>
-      <div class="sdr">
-        <div class="devis-box">
-          <div class="devis-box-top"><span class="em">Récupérez des heures</span> chaque semaine dès le premier mois.</div>
-          <div class="devis-box-sub">Le nombre d'automatisations et leur complexité varient selon votre activité. On identifie ensemble les gains les plus rapides lors de l'audit gratuit.</div>
-          <div class="devis-box-items">
-            <div class="devis-item">Audit de process offert</div>
-            <div class="devis-item">Développement sur mesure</div>
-            <div class="devis-item">Tests & validation inclus</div>
-            <div class="devis-item">Formation prise en main</div>
-            <div class="devis-item">Support 30 jours post-livraison</div>
-          </div>
-          <div class="devis-guarantee"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div>
-          <a class="btn-primary" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a>
-        </div>
-      </div>
+    <div class="svc-row">
+      <div class="svc-l"><div class="svc-row-num">03</div><div class="svc-row-ico">⚙️</div><div class="svc-row-ttl">Automatisations sur mesure</div><div class="svc-row-dsc">Connectez vos outils et automatisez les tâches qui vous bouffent du temps. Devis automatiques, relances, confirmations de RDV — tout tourne sans vous.</div><ul class="svc-row-feats"><li>Audit de vos process et identification des gains</li><li>Générateur de devis IA en 2 minutes</li><li>Séquences de relance automatiques</li><li>Formation 1h pour prise en main autonome</li><li>Support 30 jours post-livraison</li></ul></div>
+      <div class="svc-r"><div class="devis-box"><div class="devis-ttl"><span class="em">Récupérez des heures</span> chaque semaine dès le premier mois.</div><div class="devis-sub">On identifie ensemble les gains les plus rapides lors de l'audit gratuit.</div><div class="devis-feat">Audit de process offert</div><div class="devis-feat">Développement sur mesure</div><div class="devis-feat">Tests & validation inclus</div><div class="devis-feat">Formation prise en main</div><div class="devis-guar"><span>🛡️</span><span>Garantie résultat 30 jours — satisfait ou remboursé</span></div><a class="btn-p" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div>
     </div>
-
-    <div class="svc-detail-row">
-      <div class="sdl">
-        <div class="sd-num">04</div><div class="sd-ico">🚀</div>
-        <div class="sd-title">Pack KOVA Complet</div>
-        <div class="sd-desc">Notre offre tout-en-un : site + chatbot + automatisations + maintenance mensuelle. Un interlocuteur unique, un suivi continu, des résultats garantis.</div>
-        <ul class="sd-features">
-          <li>Site web premium aux couleurs de votre marque</li>
-          <li>Chatbot IA formé sur votre activité</li>
-          <li>3 automatisations clés identifiées ensemble</li>
-          <li>Maintenance et mises à jour mensuelles</li>
-          <li>Rapport mensuel de performance complet</li>
-          <li>Accès prioritaire aux nouvelles fonctionnalités</li>
-        </ul>
-      </div>
-      <div class="sdr">
-        <div class="devis-box" style="border-color:rgba(79,110,247,0.3);background:rgba(79,110,247,0.04);">
-          <div class="devis-box-top">La solution <span class="em">clé en main</span> la plus choisie.</div>
-          <div class="devis-box-sub">Un tarif unique qui couvre tout — pas de surprise, pas de coût caché. Calculé selon votre activité lors de l'audit gratuit.</div>
-          <div class="devis-box-items">
-            <div class="devis-item">Tout inclus — site, IA, automatisations</div>
-            <div class="devis-item">Maintenance mensuelle sans supplément</div>
-            <div class="devis-item">Hébergement & domaine offerts</div>
-            <div class="devis-item">Support prioritaire 7j/7</div>
-            <div class="devis-item">Garantie résultat 30 jours</div>
-          </div>
-          <div class="devis-guarantee"><span>⭐</span><span>Notre offre la plus complète — devis personnalisé en 24h</span></div>
-          <a class="btn-primary" href="#contact" style="justify-content:center;background:var(--grad);">Je veux le Pack Complet →</a>
-        </div>
-      </div>
+    <div class="svc-row">
+      <div class="svc-l"><div class="svc-row-num">04</div><div class="svc-row-ico">🚀</div><div class="svc-row-ttl">Pack KOVA Complet</div><div class="svc-row-dsc">Notre offre tout-en-un : site + chatbot + automatisations + maintenance mensuelle. Un interlocuteur unique, un suivi continu, des résultats garantis.</div><ul class="svc-row-feats"><li>Site web premium aux couleurs de votre marque</li><li>Chatbot IA formé sur votre activité</li><li>3 automatisations clés identifiées ensemble</li><li>Maintenance et mises à jour mensuelles</li><li>Rapport mensuel de performance complet</li><li>Accès prioritaire aux nouvelles fonctionnalités</li></ul></div>
+      <div class="svc-r"><div class="devis-box" style="border-color:rgba(79,110,247,0.3);background:rgba(79,110,247,0.04);"><div class="devis-ttl">La solution <span class="em">clé en main</span> la plus choisie.</div><div class="devis-sub">Un tarif unique qui couvre tout — pas de surprise. Calculé selon votre activité lors de l'audit gratuit.</div><div class="devis-feat">Tout inclus — site, IA, automatisations</div><div class="devis-feat">Maintenance mensuelle sans supplément</div><div class="devis-feat">Hébergement & domaine offerts</div><div class="devis-feat">Support prioritaire 7j/7</div><div class="devis-feat">Garantie résultat 30 jours</div><div class="devis-guar"><span>⭐</span><span>Notre offre la plus complète — devis personnalisé en 24h</span></div><a class="btn-p" href="#contact" style="justify-content:center;">Je veux le Pack Complet →</a></div></div>
     </div>
   </div>
-
   <div style="height:80px;"></div>
   <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
 </div>
 
-<!-- ======== À PROPOS ======== -->
-<section id="apropos" class="page-section">
+<!-- ══════════ À PROPOS ══════════ -->
+<div class="page" id="apropos">
   <div class="about-hero">
     <div>
-      <div class="sec-label">Notre vision</div>
-      <div class="manifesto">L'IA ne devrait pas être <span class="em">réservée aux grandes entreprises.</span><br><br>Chez KOVA, on croit que chaque indépendant mérite les mêmes outils que les grands — <span class="em">à prix humain, livré vite.</span></div>
-      <div class="values-grid">
-        <div class="val-card"><div class="val-icon">⚡</div><div class="val-title">Rapidité d'exécution</div><div class="val-desc">Ce qui prend 3 semaines ailleurs, on le livre en 3 jours. Pas de réunions inutiles, juste du concret.</div></div>
-        <div class="val-card"><div class="val-icon">🎯</div><div class="val-title">ROI avant tout</div><div class="val-desc">Chaque prestation doit s'autofinancer. Si ce n'est pas le cas en 30 jours, on rembourse.</div></div>
-        <div class="val-card"><div class="val-icon">🤝</div><div class="val-title">Simplicité</div><div class="val-desc">Vous n'avez pas besoin de comprendre le code. Vous voyez juste les résultats.</div></div>
-        <div class="val-card"><div class="val-icon">🔒</div><div class="val-title">Fiabilité</div><div class="val-desc">On utilise Claude d'Anthropic — l'IA choisie par les entreprises qui ne peuvent pas se permettre d'erreurs.</div></div>
+      <div class="sec-lbl">Notre vision</div>
+      <div class="manifesto">L'IA ne devrait pas être <span class="em">réservée aux grandes entreprises.</span><br><br>Chez KOVA, chaque indépendant mérite les mêmes outils — <span class="em">à prix humain, livré vite.</span></div>
+      <div class="vals-grid">
+        <div class="val"><div class="val-ico">⚡</div><div class="val-ttl">Rapidité d'exécution</div><div class="val-dsc">Ce qui prend 3 semaines ailleurs, on le livre en 3 jours. Pas de réunions inutiles, juste du concret.</div></div>
+        <div class="val"><div class="val-ico">🎯</div><div class="val-ttl">ROI avant tout</div><div class="val-dsc">Chaque prestation doit s'autofinancer. Si ce n'est pas le cas en 30 jours, on rembourse.</div></div>
+        <div class="val"><div class="val-ico">🤝</div><div class="val-ttl">Simplicité</div><div class="val-dsc">Vous n'avez pas besoin de comprendre le code. Vous voyez juste les résultats.</div></div>
+        <div class="val"><div class="val-ico">🔒</div><div class="val-ttl">Fiabilité</div><div class="val-dsc">On utilise Claude d'Anthropic — l'IA choisie par les entreprises qui ne peuvent pas se permettre d'erreurs.</div></div>
       </div>
     </div>
-    <div class="about-right">
-      <div class="astat-card"><div class="astat-num">3j</div><div class="astat-label">Délai moyen de livraison d'un site complet avec chatbot intégré</div></div>
-      <div class="astat-card"><div class="astat-num">8h</div><div class="astat-label">Récupérées en moyenne par semaine par nos clients dès le 1er mois</div></div>
-      <div class="astat-card"><div class="astat-num">30j</div><div class="astat-label">Garantie résultat — si vous ne voyez pas d'amélioration, on rembourse</div></div>
-      <div class="astat-card"><div class="astat-num">100%</div><div class="astat-label">De nos clients recommandent KOVA à leur entourage professionnel</div></div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-n">3j</div><div class="astat-l">Délai moyen de livraison d'un site complet avec chatbot intégré</div></div>
+      <div class="astat"><div class="astat-n">8h</div><div class="astat-l">Récupérées en moyenne par semaine par nos clients dès le 1er mois</div></div>
+      <div class="astat"><div class="astat-n">30j</div><div class="astat-l">Garantie résultat — si vous ne voyez pas d'amélioration, on rembourse</div></div>
+      <div class="astat"><div class="astat-n">100%</div><div class="astat-l">De nos clients recommandent KOVA à leur entourage professionnel</div></div>
     </div>
   </div>
-
   <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="section">
-      <div class="sec-label">Notre différence</div>
-      <h2 class="sec-title">Pourquoi KOVA<br>plutôt qu'une agence classique ?</h2>
+    <div class="sec">
+      <div class="sec-lbl">Notre différence</div>
+      <h2 class="sec-ttl">Pourquoi KOVA<br>plutôt qu'une agence classique ?</h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
-        <div style="background:rgba(255,79,110,0.05);border:1px solid rgba(255,79,110,0.15);border-radius:16px;padding:28px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF4F6E;margin-bottom:16px;">❌ Agence classique</div>
-          <div style="font-size:14px;color:rgba(240,240,255,0.65);line-height:2.3;">⏳ 4 à 8 semaines de délai<br>💸 Budgets souvent opaques<br>🔁 Réunions interminables<br>🤷 Résultats incertains<br>🔒 Contrats annuels engageants<br>🤖 Pas d'IA — outils d'il y a 5 ans</div>
-        </div>
-        <div style="background:rgba(79,110,247,0.06);border:1px solid rgba(79,110,247,0.25);border-radius:16px;padding:28px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--electric);margin-bottom:16px;">✅ KOVA</div>
-          <div style="font-size:14px;color:rgba(240,240,255,0.8);line-height:2.3;">⚡ Livraison en 3 jours chrono<br>💚 Devis transparent en 24h<br>🎯 30 min d'audit puis on livre<br>📈 Garantie résultat 30 jours<br>🔓 Sans engagement, résiliable<br>🤖 IA dernière génération (Claude)</div>
-        </div>
+        <div style="background:rgba(255,79,110,0.05);border:1px solid rgba(255,79,110,0.15);border-radius:16px;padding:28px;"><div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF4F6E;margin-bottom:16px;">❌ Agence classique</div><div style="font-size:14px;color:rgba(240,240,255,0.65);line-height:2.3;">⏳ 4 à 8 semaines de délai<br>💸 Budgets souvent opaques<br>🔁 Réunions interminables<br>🤷 Résultats incertains<br>🔒 Contrats annuels engageants<br>🤖 Pas d'IA — outils d'il y a 5 ans</div></div>
+        <div style="background:rgba(79,110,247,0.06);border:1px solid rgba(79,110,247,0.25);border-radius:16px;padding:28px;"><div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--electric);margin-bottom:16px;">✅ KOVA</div><div style="font-size:14px;color:rgba(240,240,255,0.8);line-height:2.3;">⚡ Livraison en 3 jours chrono<br>💚 Devis transparent en 24h<br>🎯 30 min d'audit puis on livre<br>📈 Garantie résultat 30 jours<br>🔓 Sans engagement, résiliable<br>🤖 IA dernière génération (Claude)</div></div>
       </div>
     </div>
   </div>
-
-  <div class="section">
-    <div class="sec-label">FAQ</div>
-    <h2 class="sec-title">Les questions<br>qu'on entend souvent.</h2>
+  <div class="sec">
+    <div class="sec-lbl">FAQ</div>
+    <h2 class="sec-ttl">Les questions qu'on entend souvent.</h2>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Je ne suis pas du tout à l'aise avec le numérique — c'est pour moi quand même ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">C'est exactement pour vous. Vous n'avez aucune compétence technique à avoir. Si votre téléphone marche, notre solution marche. Le seul effort de votre côté : 30 minutes pour l'audit et 15 minutes pour valider le livrable.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Et si l'IA dit quelque chose de faux à mes clients ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Le chatbot est formé exclusivement sur vos informations — vos tarifs, vos services, vos horaires. Il ne peut pas inventer ce qu'il ne connaît pas. Si une question dépasse son champ, il vous la redirige directement.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Est-ce que je peux arrêter à tout moment ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Oui. Les abonnements mensuels sont sans engagement. Vous arrêtez quand vous voulez, sans frais de résiliation. Votre site et toutes vos données restent votre propriété.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Combien de temps faut-il pour voir des résultats ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">En général, nos clients voient les premiers résultats dès la première semaine — nouveaux leads entrants, réduction du temps passé sur l'administratif, premières prises de RDV automatiques. Un impact sur le chiffre d'affaires se constate souvent dans les 30 premiers jours, d'où notre garantie.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Est-ce que vous travaillez avec tous les secteurs ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">On travaille principalement avec les indépendants, consultants, coachs, artisans, agents immobiliers et professions paramédicales. Si vous avez des clients à gérer, des devis à faire ou un agenda à remplir, on peut vous aider. L'audit gratuit permet de vérifier.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Pourquoi ne pas afficher vos tarifs directement ?</span><span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Parce qu'un plombier à Paris n'a pas les mêmes besoins qu'un coach à Bordeaux. Afficher un prix fixe serait vous survendre ou vous sous-vendre. On préfère comprendre votre situation lors de l'audit gratuit pour vous proposer exactement ce dont vous avez besoin — ni plus, ni moins. Vous recevez un devis clair et détaillé sous 24h.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Je ne suis pas à l'aise avec le numérique — c'est pour moi quand même ?</span><span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-in">C'est exactement pour vous. Vous n'avez aucune compétence technique à avoir. Le seul effort de votre côté : 30 minutes pour l'audit et 15 minutes pour valider le livrable.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Et si l'IA dit quelque chose de faux à mes clients ?</span><span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-in">Le chatbot est formé exclusivement sur vos informations — vos tarifs, vos services, vos horaires. Il ne peut pas inventer ce qu'il ne connaît pas. Si une question dépasse son champ, il vous la redirige directement.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Est-ce que je peux arrêter à tout moment ?</span><span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-in">Oui. Les abonnements mensuels sont sans engagement. Vous arrêtez quand vous voulez, sans frais de résiliation. Votre site et toutes vos données restent votre propriété.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Combien de temps faut-il pour voir des résultats ?</span><span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-in">En général, nos clients voient les premiers résultats dès la première semaine — nouveaux leads entrants, réduction du temps admin, premières prises de RDV automatiques.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Pourquoi ne pas afficher vos tarifs directement ?</span><span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-in">Parce qu'un plombier à Paris n'a pas les mêmes besoins qu'un coach à Bordeaux. On préfère comprendre votre situation lors de l'audit gratuit pour vous proposer exactement ce dont vous avez besoin — ni plus, ni moins.</div></div></div>
     </div>
   </div>
-
   <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#contact">Contact</a></div></footer>
 </div>
 
-<!-- ======== CONTACT ======== -->
-<section id="contact" class="page-section">
+<!-- ══════════ CONTACT ══════════ -->
+<div class="page" id="contact">
   <div class="contact-wrap">
     <div>
-      <div class="sec-label">Parlons-nous</div>
-      <h1 class="contact-title">Réservez votre<br><span class="grad-text">audit gratuit.</span></h1>
-      <p class="contact-sub">30 minutes, sans engagement. On analyse votre situation et on vous envoie un devis clair sous 24h — avec des chiffres concrets sur ce qu'on peut faire pour vous.</p>
+      <div class="sec-lbl">Parlons-nous</div>
+      <h1 class="contact-ttl">Réservez votre<br><span class="g">audit gratuit.</span></h1>
+      <p class="contact-sub">30 minutes, sans engagement. On analyse votre situation et on vous envoie un devis clair sous 24h.</p>
       <div class="ci-list">
-        <div class="ci-item"><div class="ci-icon">📧</div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5635393822373522163d392037783f39">[email&#160;protected]</a></div>
-        <div class="ci-item"><div class="ci-icon">⚡</div>Réponse sous 2h en semaine</div>
-        <div class="ci-item"><div class="ci-icon">🗓️</div>Audit disponible 7j/7</div>
-        <div class="ci-item"><div class="ci-icon">🔒</div>Vos données restent confidentielles</div>
+        <div class="ci"><div class="ci-ico">📧</div>contact@kovaia.fr</div>
+        <div class="ci"><div class="ci-ico">⚡</div>Réponse sous 2h en semaine</div>
+        <div class="ci"><div class="ci-ico">🗓️</div>Audit disponible 7j/7</div>
+        <div class="ci"><div class="ci-ico">🔒</div>Vos données restent confidentielles</div>
       </div>
       <div style="margin-top:40px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--electric);margin-bottom:14px;">Ce que vous obtenez</div>
@@ -552,64 +406,100 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
       </div>
     </div>
     <div>
-      <div class="contact-form" id="cForm">
-        <div class="form-title">Réserver mon audit</div>
-        <div class="form-sub">On vous répond sous 2h — devis sous 24h</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Prénom *</label><input class="form-input" id="fp" placeholder="Sophie"></div>
-          <div class="form-group"><label class="form-label">Nom *</label><input class="form-input" id="fn" placeholder="Martin"></div>
+      <div class="form-box" id="cForm">
+        <div class="form-ttl">Réserver mon audit</div>
+        <div class="form-sub-txt">On vous répond sous 2h — devis sous 24h</div>
+        <div class="fr">
+          <div class="fg"><label class="fl">Prénom *</label><input class="fi" id="fp" placeholder="Sophie" type="text"></div>
+          <div class="fg"><label class="fl">Nom *</label><input class="fi" id="fn" placeholder="Martin" type="text"></div>
         </div>
-        <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" id="fe" placeholder="sophie@monactivite.fr"></div>
-        <div class="form-group"><label class="form-label">Votre activité *</label>
-          <select class="form-input" id="fa">
+        <div class="fg"><label class="fl">Email *</label><input class="fi" type="email" id="fe" placeholder="sophie@monactivite.fr"></div>
+        <div class="fg"><label class="fl">Votre activité *</label>
+          <select class="fi" id="fa">
             <option value="">Sélectionnez votre secteur</option>
-            <option>Coach / Consultant indépendant</option><option>Artisan / BTP</option>
-            <option>Agent immobilier</option><option>Professionnel de santé</option>
-            <option>Formateur indépendant</option><option>Commerce de proximité</option><option>Autre</option>
+            <option value="Coach / Consultant indépendant">Coach / Consultant indépendant</option>
+            <option value="Artisan / BTP">Artisan / BTP</option>
+            <option value="Agent immobilier">Agent immobilier</option>
+            <option value="Professionnel de santé">Professionnel de santé</option>
+            <option value="Formateur indépendant">Formateur indépendant</option>
+            <option value="Commerce de proximité">Commerce de proximité</option>
+            <option value="Autre">Autre</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Votre plus grand problème au quotidien</label><textarea class="form-input" id="fpr" placeholder="Ex : Je passe trop de temps à répondre aux messages, je rate des prospects..."></textarea></div>
-        <button class="form-submit" onclick="submitForm()">📅 Réserver mon audit gratuit →</button>
+        <div class="fg"><label class="fl">Votre plus grand problème au quotidien</label><textarea class="fi" id="fpr" placeholder="Ex : Je passe trop de temps à répondre aux messages..."></textarea></div>
+        <button class="fsub" id="form-btn" type="button" onclick="submitForm()">📅 Réserver mon audit gratuit →</button>
         <div style="display:flex;align-items:center;gap:10px;background:rgba(180,255,79,0.06);border:1px solid rgba(180,255,79,0.2);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(240,240,255,0.65);margin-top:14px;"><span>🛡️</span><span>Audit 100% gratuit · Sans engagement · Données confidentielles</span></div>
       </div>
-      <div class="form-success" id="fSuccess">
-        <div class="form-success-icon">🎉</div>
-        <div class="form-success-title">Demande envoyée !</div>
-        <div class="form-success-sub">On vous recontacte sous 2h pour fixer le créneau. À très vite !</div>
+      <div class="fsuccess" id="fSuccess">
+        <div class="fsuccess-icon">🎉</div>
+        <div class="fsuccess-ttl">Demande envoyée !</div>
+        <div style="font-size:14px;color:var(--muted);">On vous recontacte sous 2h pour fixer le créneau. À très vite !</div>
       </div>
     </div>
   </div>
   <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#apropos">À propos</a></div></footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Navigation par scroll natif
-function highlightNav() {
-  const sections = ['accueil','services','apropos','contact'];
-  const scrollY = window.scrollY + 100;
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    const nl = document.getElementById('nl-' + id);
-    if(el && nl) {
-      const top = el.offsetTop;
-      const bottom = top + el.offsetHeight;
-      if(scrollY >= top && scrollY < bottom) {
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+<script>
+// ── HAMBURGER ──
+document.getElementById('burger-btn').addEventListener('click', function(){
+  document.getElementById('mob').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('mob-close').addEventListener('click', closeMob);
+function closeMob(){
+  document.getElementById('mob').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// ── NAV HIGHLIGHT ON SCROLL ──
+window.addEventListener('scroll', function(){
+  var sy = window.scrollY + 80;
+  ['accueil','services','apropos','contact'].forEach(function(id){
+    var el = document.getElementById(id);
+    var nl = document.getElementById('nl-' + id);
+    if(el && nl){
+      if(sy >= el.offsetTop && sy < el.offsetTop + el.offsetHeight){
+        document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
         nl.classList.add('active');
       }
     }
   });
-}
-window.addEventListener('scroll', highlightNav);
-highlightNav();
-window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>20));
-function openMobile(){document.getElementById('mobileMenu').classList.add('open');}
-function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');}
+  document.getElementById('topnav').style.background = window.scrollY > 20 ? 'rgba(8,8,13,0.98)' : 'rgba(8,8,13,0.95)';
+});
+
+// ── FAQ ──
 function toggleFaq(el){
-  const item=el.parentElement;
-  const wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!wasOpen)item.classList.add('open');
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+  if(!wasOpen) item.classList.add('open');
 }
-function submitForm(){
-  if(!document.getElementById('fp').value.trim()||!document.getElementById('fn').value.trim()||!document.getElementById('fe').value.trim()||!document.getElementById('fa'
+
+// ── FORMULAIRE FORMSPREE ──
+async function submitForm(){
+  var fp = document.getElementById('fp').value.trim();
+  var fn = document.getElementById('fn').value.trim();
+  var fe = document.getElementById('fe').value.trim();
+  var fa = document.getElementById('fa').value;
+  var fpr = document.getElementById('fpr').value.trim();
+  if(!fp || !fn || !fe || !fa){
+    alert('Merci de remplir les champs obligatoires (*)');
+    return;
+  }
+  var btn = document.getElementById('form-btn');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+  try {
+    await fetch('https://formspree.io/f/xeoqgkrp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ prenom: fp, nom: fn, email: fe, activite: fa, probleme: fpr, _subject: 'Audit KOVA - ' + fp + ' ' + fn })
+    });
+  } catch(e) { console.log(e); }
+  document.getElementById('cForm').style.display = 'none';
+  document.getElementById('fSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>
