@@ -395,7 +395,7 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
       <h1 class="contact-ttl">Réservez votre<br><span class="g">audit gratuit.</span></h1>
       <p class="contact-sub">30 minutes, sans engagement. On analyse votre situation et on vous envoie un devis clair sous 24h.</p>
       <div class="ci-list">
-        <div class="ci"><div class="ci-ico">📧</div>contact@kovaia.fr</div>
+        <div class="ci"><div class="ci-ico">📧</div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f89b97968c999b8cb893978e999199d69e8a">[email&#160;protected]</a></div>
         <div class="ci"><div class="ci-ico">⚡</div>Réponse sous 2h en semaine</div>
         <div class="ci"><div class="ci-ico">🗓️</div>Audit disponible 7j/7</div>
         <div class="ci"><div class="ci-ico">🔒</div>Vos données restent confidentielles</div>
@@ -440,7 +440,7 @@ footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-i
   <footer><div class="footer-logo">KOVA</div><div class="footer-copy">© 2025 KOVA — kovaia.fr</div><div class="footer-links"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#apropos">À propos</a></div></footer>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── HAMBURGER ──
 document.getElementById('burger-btn').addEventListener('click', function(){
   document.getElementById('mob').style.display = 'flex';
@@ -491,15 +491,7 @@ async function submitForm(){
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
   try {
-    await fetch('https://formspree.io/f/xeoqgkrp', {
+    await fetch('https://formspree.io/f/xdapewaz', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ prenom: fp, nom: fn, email: fe, activite: fa, probleme: fpr, _subject: 'Audit KOVA - ' + fp + ' ' + fn })
-    });
-  } catch(e) { console.log(e); }
-  document.getElementById('cForm').style.display = 'none';
-  document.getElementById('fSuccess').style.display = 'block';
-}
-</script>
-</body>
-</html>
+      body: JSON.stringify({ prenom: fp, nom: fn, email: fe, activite: fa, probleme: fpr, _subject
