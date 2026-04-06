@@ -3,450 +3,1136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KOVA — Agence IA</title>
-<meta name="description" content="KOVA transforme les indépendants et PME grâce à l'IA. Sites web, chatbots, automatisations — opérationnel en 3 jours.">
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>KOVAIA — Votre succès, notre investissement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#08080D;--deep:#0F0F1A;--surface:#141420;--card:#1A1A28;--border:#252538;--el:#4F6EF7;--cy:#00D4FF;--li:#B4FF4F;--wh:#F0F0FF;--mu:#6060A0;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--wh);font-family:'Urbanist',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
-.gbg{position:fixed;inset:0;background-image:linear-gradient(rgba(79,110,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
-@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(8,8,13,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:1000;}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.logo-s{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);display:flex;align-items:center;justify-content:center;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:#fff;}
-.logo-t{font-family:'Clash Display',sans-serif;font-weight:700;font-size:20px;letter-spacing:4px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nl{display:flex;align-items:center;gap:36px;}
-.nl a{font-size:14px;font-weight:500;color:var(--mu);text-decoration:none;transition:color .2s;}
-.nl a:hover,.nl a.act{color:var(--wh);}
-.ncta{background:var(--el);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:14px;padding:10px 22px;border-radius:8px;text-decoration:none;transition:all .2s;}
-.ncta:hover{background:#3d5ce0;}
-.burg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-.burg span{width:22px;height:2px;background:var(--wh);border-radius:2px;display:block;}
-/* MOBILE */
-#mob{position:fixed;inset:0;background:var(--deep);z-index:2000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
-#mob a{font-family:'Clash Display',sans-serif;font-size:34px;font-weight:700;color:var(--wh);text-decoration:none;}
-#mob a:hover{color:var(--el);}
-.mclose{position:absolute;top:24px;right:24px;background:var(--card);border:1px solid var(--border);color:var(--wh);width:44px;height:44px;border-radius:10px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-/* PAGES */
-.page{padding-top:68px;min-height:100vh;position:relative;z-index:1;}
-.page+.page{border-top:2px solid var(--border);}
-/* HERO */
-.hero{min-height:calc(100vh - 68px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;position:relative;overflow:hidden;}
-.hglow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,.09) 0%,transparent 65%);pointer-events:none;}
-.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:6px 16px 6px 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--mu);margin-bottom:32px;}
-.bdot{width:6px;height:6px;border-radius:50%;background:var(--li);animation:glow 2s infinite;}
-h1{font-family:'Clash Display',sans-serif;font-size:clamp(44px,8vw,88px);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:24px;max-width:900px;}
-.g{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hsub{font-size:18px;color:var(--mu);font-weight:300;max-width:500px;margin:0 auto 48px;line-height:1.7;}
-.hbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
-.bp{background:var(--el);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px 32px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
-.bp:hover{background:#3d5ce0;transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,110,247,.3);}
-.bg{background:transparent;color:var(--wh);font-family:'Urbanist',sans-serif;font-weight:600;font-size:15px;padding:13px 28px;border-radius:10px;border:1px solid var(--border);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
-.bg:hover{border-color:var(--el);transform:translateY(-2px);}
-.hstats{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
-.hstat{padding:20px 32px;text-align:center;border-right:1px solid var(--border);flex:1;}
-.hstat:last-child{border-right:none;}
-.hsn{font-family:'Clash Display',sans-serif;font-size:30px;font-weight:700;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.hsl{font-size:12px;color:var(--mu);margin-top:4px;}
-/* TICKER */
-.tickwrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--deep);}
-.ticker{display:flex;white-space:nowrap;animation:tick 28s linear infinite;}
-.ti{display:inline-flex;align-items:center;gap:12px;padding:0 30px;font-size:13px;font-weight:500;color:var(--mu);flex-shrink:0;}
-.ti em{color:var(--el);font-style:normal;}
-/* SECTION */
-.sec{padding:100px 80px;max-width:1200px;margin:0 auto;}
-.slbl{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--el);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.slbl::before{content:'';width:20px;height:1px;background:var(--el);}
-h2{font-family:'Clash Display',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
-.ssub{font-size:17px;color:var(--mu);font-weight:300;max-width:500px;margin-bottom:52px;line-height:1.7;}
-/* SERVICES */
-.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.sc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:all .3s;}
-.sc:hover{transform:translateY(-4px);border-color:rgba(79,110,247,.3);}
-.sico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
-.ib{background:rgba(79,110,247,.15);}.ic{background:rgba(0,212,255,.12);}.il{background:rgba(180,255,79,.12);}.ip{background:rgba(167,139,250,.12);}.ir{background:rgba(255,107,107,.12);}.iy{background:rgba(255,209,102,.12);}
-.sttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:18px;margin-bottom:10px;}
-.sdsc{font-size:14px;color:rgba(240,240,255,.6);line-height:1.7;margin-bottom:16px;}
-.stags{display:flex;flex-wrap:wrap;gap:6px;}
-.stag{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.05);color:var(--mu);}
-/* PROCESS */
-.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
-.pgrid::before{content:'';position:absolute;top:27px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:1px;background:linear-gradient(90deg,#4F6EF7,#00D4FF);opacity:.25;}
-.proc{text-align:center;padding:0 16px;}
-.pnum{width:56px;height:56px;border-radius:50%;background:var(--card);border:2px solid var(--el);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;color:var(--el);position:relative;z-index:1;transition:all .3s;}
-.proc:hover .pnum{background:var(--el);color:#fff;}
-.pttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:16px;margin-bottom:8px;}
-.pdsc{font-size:13px;color:var(--mu);line-height:1.6;}
-.ptime{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--el);background:rgba(79,110,247,.1);padding:3px 10px;border-radius:99px;}
-/* TESTI */
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.tc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:all .3s;}
-.tc:hover{border-color:rgba(79,110,247,.3);transform:translateY(-3px);}
-.tstars{color:#FFD166;font-size:14px;margin-bottom:14px;letter-spacing:2px;}
-.ttxt{font-size:14px;color:rgba(240,240,255,.75);line-height:1.8;margin-bottom:20px;font-style:italic;}
-.tauth{display:flex;align-items:center;gap:12px;}
-.tav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4F6EF7,#00D4FF);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.tname{font-weight:600;font-size:14px;}
-.trole{font-size:12px;color:var(--mu);}
-/* CTA BAND */
-.ctaband{margin:0 80px;border-radius:24px;background:linear-gradient(135deg,var(--deep),#0A0A25);border:1px solid rgba(79,110,247,.2);padding:72px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;position:relative;overflow:hidden;}
-.ctaband::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,110,247,.12),transparent 70%);}
-.ctattl{font-family:'Clash Display',sans-serif;font-size:clamp(24px,4vw,42px);font-weight:700;letter-spacing:-1px;margin-bottom:12px;line-height:1.1;}
-.ctasub{font-size:16px;color:var(--mu);font-weight:300;}
-.ctabtns{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
-/* SVC PAGE */
-.svchero{padding:100px 80px 60px;max-width:1200px;margin:0 auto;}
-.svcrow{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);}
-.svcrow:last-child{border-bottom:1px solid var(--border);}
-.svcl,.svcr{padding:60px 80px;}
-.svcl{border-right:1px solid var(--border);}
-.rnum{font-family:'Clash Display',sans-serif;font-size:64px;font-weight:700;opacity:.07;line-height:1;margin-bottom:-20px;}
-.rico{font-size:36px;margin-bottom:20px;}
-.rttl{font-family:'Clash Display',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:14px;}
-.rdsc{font-size:15px;color:rgba(240,240,255,.65);line-height:1.8;margin-bottom:24px;}
-.rfeats{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.rfeats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,.7);}
-.rfeats li::before{content:'→';color:var(--el);font-weight:700;flex-shrink:0;margin-top:1px;}
-.dbox{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;}
-.dttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;line-height:1.3;}
-.dttl .em{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.dsub{font-size:14px;color:var(--mu);line-height:1.7;}
-.dfeat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(240,240,255,.75);}
-.dfeat::before{content:'✓';color:var(--li);font-weight:700;flex-shrink:0;}
-.dguar{display:flex;align-items:center;gap:10px;background:rgba(180,255,79,.06);border:1px solid rgba(180,255,79,.2);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(240,240,255,.65);}
-/* ABOUT */
-.ahero{padding:100px 80px 60px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.manif{font-family:'Clash Display',sans-serif;font-size:clamp(22px,3.5vw,36px);font-weight:700;line-height:1.3;letter-spacing:-.5px;}
-.manif .em{background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px;}
-.vcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:border-color .2s;}
-.vcard:hover{border-color:var(--el);}
-.vico{font-size:24px;margin-bottom:10px;}
-.vttl{font-family:'Clash Display',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px;}
-.vdsc{font-size:13px;color:var(--mu);line-height:1.6;}
-.astats{display:flex;flex-direction:column;gap:16px;}
-.astat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:20px;}
-.asn{font-family:'Clash Display',sans-serif;font-size:44px;font-weight:700;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;flex-shrink:0;min-width:80px;}
-.asl{font-size:14px;color:rgba(240,240,255,.7);line-height:1.5;}
-/* FAQ */
-.flist{display:flex;flex-direction:column;gap:8px;}
-.fi2{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s;}
-.fi2.open{border-color:rgba(79,110,247,.4);}
-.fq{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:600;font-size:15px;gap:16px;transition:color .2s;}
-.fi2.open .fq{color:var(--el);}
-.farr{font-size:20px;color:var(--mu);flex-shrink:0;transition:transform .3s;}
-.fi2.open .farr{transform:rotate(45deg);color:var(--el);}
-.fa2{max-height:0;overflow:hidden;transition:max-height .4s ease;}
-.fi2.open .fa2{max-height:300px;}
-.fain{padding:0 24px 20px;font-size:14px;color:rgba(240,240,255,.65);line-height:1.8;}
-/* CONTACT */
-.cwrap{max-width:1100px;margin:0 auto;padding:80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.cttl{font-family:'Clash Display',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;}
-.csub{font-size:17px;color:var(--mu);font-weight:300;line-height:1.7;margin-bottom:40px;}
-.cilist{display:flex;flex-direction:column;gap:14px;}
-.ci{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(240,240,255,.7);}
-.cico{width:40px;height:40px;border-radius:10px;background:rgba(79,110,247,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-/* FORM */
-.fbox{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px;}
-.fttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px;}
-.fstxt{font-size:13px;color:var(--mu);margin-bottom:28px;}
-.fgrp{margin-bottom:18px;}
-.flbl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);display:block;margin-bottom:7px;}
-.finp{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--wh);font-family:'Urbanist',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
-.finp:focus{border-color:var(--el);}
-.finp::placeholder{color:var(--mu);}
-textarea.finp{resize:vertical;min-height:100px;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.fsbtn{width:100%;background:var(--el);color:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:15px;padding:14px;border-radius:10px;border:none;cursor:pointer;transition:all .2s;margin-top:8px;}
-.fsbtn:hover{background:#3d5ce0;transform:translateY(-1px);}
-.fsbtn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-.fsuccess{display:none;text-align:center;padding:48px;background:var(--card);border:1px solid rgba(180,255,79,.3);border-radius:24px;}
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
-.flogo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;letter-spacing:4px;background:linear-gradient(135deg,#4F6EF7,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.fcopy{font-size:12px;color:var(--mu);}
-.flinks{display:flex;gap:24px;}
-.flinks a{font-size:12px;color:var(--mu);text-decoration:none;transition:color .2s;}
-.flinks a:hover{color:var(--wh);}
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:0 20px;}.nl,.ncta{display:none;}.burg{display:flex;}
-  .hero{padding:60px 20px 48px;}.hstats{flex-wrap:wrap;}.hstat{min-width:130px;}
-  .sec{padding:60px 24px;}.sgrid,.tgrid{grid-template-columns:1fr;}
-  .pgrid{grid-template-columns:1fr 1fr;gap:24px;}.pgrid::before{display:none;}
-  .ctaband{margin:0 20px;padding:40px 28px;grid-template-columns:1fr;}
-  .svchero{padding:60px 24px 40px;}.svcrow{grid-template-columns:1fr;}
-  .svcl{border-right:none;border-bottom:1px solid var(--border);}.svcl,.svcr{padding:40px 24px;}
-  .ahero{grid-template-columns:1fr;padding:60px 24px;gap:40px;}.vgrid{grid-template-columns:1fr;}
-  .cwrap{grid-template-columns:1fr;padding:40px 24px;gap:40px;}.frow{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}.flinks{flex-wrap:wrap;justify-content:center;}
-}
-::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  :root {
+    --bg: #F7F6F2;
+    --white: #FFFFFF;
+    --surface: #EFEDE7;
+    --sage: #5C7A5F;
+    --sage-mid: #7FA382;
+    --sage-light: #B8D1BB;
+    --sage-pale: #EBF2EC;
+    --dark: #181F18;
+    --mid: #3D4D3E;
+    --muted: #8E9B8F;
+    --border: #DDE5DE;
+    --shadow: 0 2px 20px rgba(60,80,62,0.07);
+    --shadow-lg: 0 8px 48px rgba(60,80,62,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 60px;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: inherit; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--dark); }
+
+  .nav-cta {
+    background: var(--sage) !important;
+    color: var(--white) !important;
+    padding: 10px 22px !important;
+    border-radius: 6px;
+    font-size: 0.83rem !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--mid) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 72px 60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-shape {
+    position: absolute;
+    top: -100px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sage-pale) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-bg-shape2 {
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--surface) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sage-pale);
+    color: var(--sage);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.1s;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 5.5vw, 74px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--dark);
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.25s;
+  }
+
+  .hero-title .accent { color: var(--sage); }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.55s;
+  }
+
+  .btn-primary {
+    background: var(--sage);
+    color: var(--white);
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--mid); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(60,80,62,0.2); }
+
+  .btn-ghost {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .btn-ghost:hover { gap: 10px; }
+
+  .hero-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .hero-card-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .hero-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-stat:last-of-type { border-bottom: none; }
+  .hero-stat-name { font-size: 0.88rem; color: var(--muted); }
+
+  .hero-stat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .hero-stat-val.green { color: var(--sage); }
+
+  .hero-card-footer {
+    margin-top: 28px;
+    padding: 18px;
+    background: var(--sage-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-card-footer-icon {
+    width: 36px; height: 36px;
+    background: var(--sage);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .hero-card-footer-text { font-size: 0.82rem; color: var(--mid); line-height: 1.45; }
+  .hero-card-footer-text strong { font-weight: 600; color: var(--dark); }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--sage);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .section-title .accent { color: var(--sage); }
+  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 520px; }
+
+  /* VALUE */
+  .value-section { background: var(--white); }
+
+  .value-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .comparison {
+    background: var(--bg);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .comparison-header { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); }
+
+  .comparison-col-label {
+    padding: 14px 28px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .comparison-col-label.sage {
+    color: var(--sage);
+    background: var(--sage-pale);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .comparison-body { display: grid; grid-template-columns: 1fr 1fr; }
+
+  .comp-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 28px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.87rem;
+    color: var(--muted);
+  }
+
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row.positive { color: var(--mid); background: rgba(235,242,236,0.5); }
+  .comp-icon { flex-shrink: 0; }
+
+  .value-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .value-card {
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 30px 26px;
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+  }
+
+  .value-card:hover {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+    border-color: var(--sage-light);
+  }
+
+  .value-card-icon {
+    width: 44px; height: 44px;
+    background: var(--sage-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+
+  .value-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .value-card-text { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
+
+  /* PROCESS */
+  .process-section { background: var(--bg); }
+
+  .process-list {
+    margin-top: 56px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .process-item {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    align-items: center;
+    gap: 28px;
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .process-item:last-child { border-bottom: none; }
+  .process-item:hover { background: var(--sage-pale); }
+
+  .process-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--sage-light);
+    line-height: 1;
+  }
+
+  .process-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+  }
+
+  .process-text { font-size: 0.87rem; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+  .process-tag {
+    background: var(--sage-pale);
+    color: var(--sage);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--white); }
+
+  .testi-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+  }
+
+  .google-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+  }
+
+  .google-logo { font-size: 1.05rem; font-weight: 800; }
+  .g-blue { color: #4285F4; }
+  .g-red { color: #EA4335; }
+  .g-yellow { color: #FBBC05; }
+  .g-green { color: #34A853; }
+
+  .google-score {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .google-stars { display: flex; gap: 2px; margin: 3px 0; }
+  .star { color: #FBBC05; font-size: 0.85rem; }
+  .google-count { font-size: 0.7rem; color: var(--muted); }
+
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .testi-card {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: all 0.25s ease;
+  }
+
+  .testi-card:hover {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-color: var(--sage-light);
+  }
+
+  .testi-stars { color: #FBBC05; font-size: 0.9rem; letter-spacing: 2px; }
+
+  .testi-text {
+    font-size: 0.92rem;
+    color: var(--mid);
+    line-height: 1.75;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .testi-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    border: 2px solid var(--sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sage);
+    flex-shrink: 0;
+  }
+
+  .testi-name { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+  .testi-meta { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+
+  /* PORTFOLIO */
+  .portfolio-section { background: var(--bg); }
+
+  .case-study {
+    margin-top: 56px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .case-header { display: grid; grid-template-columns: 280px 1fr; }
+
+  .case-meta {
+    background: var(--sage);
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .case-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+
+  .case-client-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .case-client-sub { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  .case-kpis { display: flex; flex-direction: column; gap: 20px; }
+
+  .kpi-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .kpi-label { font-size: 0.74rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
+
+  .case-summary {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .case-summary-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--dark);
+  }
+
+  .case-summary-title .accent { color: var(--sage); }
+  .case-summary-text { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+  .case-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+
+  .case-block {
+    padding: 34px;
+    border-right: 1px solid var(--border);
+  }
+
+  .case-block:last-child { border-right: none; }
+
+  .case-block-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .case-block-label::before {
+    content: '';
+    width: 14px; height: 2px;
+    background: var(--sage);
+    border-radius: 2px;
+  }
+
+  .case-block-text { font-size: 0.87rem; color: var(--muted); line-height: 1.8; }
+  .case-block ul { list-style: none; }
+
+  .case-block ul li {
+    font-size: 0.87rem;
+    color: var(--muted);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .case-block ul li::before { content: '→'; color: var(--sage); font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+
+  .case-quote {
+    padding: 36px 48px;
+    border-top: 1px solid var(--border);
+    background: var(--sage-pale);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .quote-mark {
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--sage);
+    opacity: 0.35;
+    line-height: 0.8;
+    flex-shrink: 0;
+  }
+
+  .case-quote-text { font-size: 1.02rem; font-style: italic; color: var(--mid); line-height: 1.7; }
+  .case-quote-sig { margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
+  .case-quote-sig strong { color: var(--dark); font-weight: 600; }
+
+  /* APPLICATION */
+  .apply-section { background: var(--white); }
+
+  .apply-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    margin-top: 56px;
+    align-items: start;
+  }
+
+  .apply-info-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .criteria-list { list-style: none; }
+
+  .criteria-list li {
+    display: flex;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    align-items: flex-start;
+  }
+
+  .criteria-check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    border: 1.5px solid var(--sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--sage);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .apply-form {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--mid);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--dark);
+    padding: 11px 14px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.87rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--sage); }
+
+  .form-group textarea { resize: vertical; min-height: 85px; }
+
+  .form-submit {
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--mid); transform: translateY(-1px); }
+
+  .form-note { font-size: 0.74rem; color: var(--muted); text-align: center; }
+
+  .form-success { display: none; padding: 32px; text-align: center; }
+  .form-success.visible { display: block; }
+
+  .form-success-icon {
+    width: 52px; height: 52px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 14px;
+  }
+
+  .form-success p { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .form-success span { font-size: 0.84rem; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 44px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--white); }
+  .footer-logo span { color: inherit; }
+  .footer-copy { font-size: 0.77rem; color: rgba(255,255,255,0.3); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    section { padding: 72px 20px; }
+    .hero { padding: 72px 20px 48px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-bg-shape, .hero-bg-shape2 { display: none; }
+    .value-top { grid-template-columns: 1fr; gap: 32px; }
+    .comparison-header, .comparison-body { grid-template-columns: 1fr; }
+    .value-cards { grid-template-columns: 1fr 1fr; }
+    .process-item { grid-template-columns: 56px 1fr; }
+    .process-tag { display: none; }
+    .testi-top { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .case-header { grid-template-columns: 1fr; }
+    .case-body { grid-template-columns: 1fr; }
+    .case-block { border-right: none; border-bottom: 1px solid var(--border); }
+    .apply-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
 </style>
 </head>
 <body>
-<div class="gbg"></div>
-<div id="mob">
-  <button class="mclose" id="mclose-btn">✕</button>
-  <a href="#accueil" class="mob-link">Accueil</a>
-  <a href="#services" class="mob-link">Services</a>
-  <a href="#apropos" class="mob-link">À propos</a>
-  <a href="#contact" class="mob-link">Contact</a>
-</div>
-<nav id="topnav">
-  <a class="logo" href="#accueil"><div class="logo-s">K</div><div class="logo-t">KOVA</div></a>
-  <div class="nl">
-    <a href="#accueil" id="nl-accueil" class="act">Accueil</a>
-    <a href="#services" id="nl-services">Services</a>
-    <a href="#apropos" id="nl-apropos">À propos</a>
-    <a href="#contact" id="nl-contact">Contact</a>
+
+<nav>
+  <a href="#" class="nav-logo">KOVA<span>IA</span></a>
+  <div class="nav-links">
+    <a href="#valeur">Notre approche</a>
+    <a href="#process">Process</a>
+    <a href="#portfolio">Cas client</a>
+    <a href="#candidater" class="nav-cta">Candidater →</a>
   </div>
-  <a class="ncta" href="#contact">Audit gratuit →</a>
-  <button class="burg" id="burg-btn"><span></span><span></span><span></span></button>
 </nav>
-<!-- ACCUEIL -->
-<div class="page" id="accueil">
-  <section class="hero">
-    <div class="hglow"></div>
-    <div class="badge"><div class="bdot"></div>Agence IA — <strong>Opérationnel en 3 jours</strong></div>
-    <h1>Votre business mérite<br><span class="g">mieux que la routine.</span></h1>
-    <p class="hsub">KOVA automatise ce qui vous coûte du temps et crée les outils digitaux qui travaillent pour vous — même quand vous dormez.</p>
-    <div class="hbtns">
-      <a class="bp" href="#contact">Audit gratuit — 30 min ⚡</a>
-      <a class="bg" href="#services">Découvrir nos services →</a>
-    </div>
-    <div class="hstats">
-      <div class="hstat"><div class="hsn">3j</div><div class="hsl">Délai moyen<br>de livraison</div></div>
-      <div class="hstat"><div class="hsn">+34%</div><div class="hsl">De clients signés<br>dès le 1er mois</div></div>
-      <div class="hstat"><div class="hsn">8h</div><div class="hsl">Récupérées<br>par semaine</div></div>
-      <div class="hstat"><div class="hsn">30j</div><div class="hsl">Garantie<br>résultat</div></div>
-    </div>
-  </section>
-  <div class="tickwrap"><div class="ticker"><span class="ti"><em>⚡</em>Site web IA</span><span class="ti"><em>⚡</em>Chatbot sur mesure</span><span class="ti"><em>⚡</em>Automatisation</span><span class="ti"><em>⚡</em>Prise de RDV</span><span class="ti"><em>⚡</em>Génération de devis</span><span class="ti"><em>⚡</em>Relances automatiques</span><span class="ti"><em>⚡</em>CRM intelligent</span><span class="ti"><em>⚡</em>Contenu IA</span><span class="ti"><em>⚡</em>Site web IA</span><span class="ti"><em>⚡</em>Chatbot sur mesure</span><span class="ti"><em>⚡</em>Automatisation</span><span class="ti"><em>⚡</em>Prise de RDV</span><span class="ti"><em>⚡</em>Génération de devis</span><span class="ti"><em>⚡</em>Relances automatiques</span><span class="ti"><em>⚡</em>CRM intelligent</span><span class="ti"><em>⚡</em>Contenu IA</span></div></div>
-  <div class="sec">
-    <div class="slbl">Nos services</div>
-    <h2>Tout ce qu'il faut<br>pour dominer votre marché.</h2>
-    <p class="ssub">Des solutions clés en main, livrées rapidement, qui génèrent des résultats dès le premier mois.</p>
-    <div class="sgrid">
-      <div class="sc"><div class="sico ib">🌐</div><div class="sttl">Site web intelligent</div><div class="sdsc">Un site moderne, rapide et optimisé SEO qui convertit vos visiteurs en clients — avec IA intégrée dès le départ.</div><div class="stags"><span class="stag">Design premium</span><span class="stag">Mobile first</span><span class="stag">SEO</span></div></div>
-      <div class="sc"><div class="sico ic">🤖</div><div class="sttl">Chatbot IA</div><div class="sdsc">Un assistant virtuel formé sur vos données qui répond à vos clients 24h/24, qualifie vos leads et prend des RDV.</div><div class="stags"><span class="stag">24h/24</span><span class="stag">Personnalisé</span><span class="stag">Multi-canal</span></div></div>
-      <div class="sc"><div class="sico il">⚙️</div><div class="sttl">Automatisation</div><div class="sdsc">Connectez vos outils, automatisez les tâches répétitives et récupérez des heures chaque semaine sans effort.</div><div class="stags"><span class="stag">Make / n8n</span><span class="stag">No-code</span><span class="stag">Sur mesure</span></div></div>
-      <div class="sc"><div class="sico ip">📋</div><div class="sttl">Générateur de devis</div><div class="sdsc">Créez un devis professionnel en 2 minutes grâce à l'IA. Envoi automatique, suivi et relance intégrés.</div><div class="stags"><span class="stag">PDF auto</span><span class="stag">Relances</span><span class="stag">Suivi</span></div></div>
-      <div class="sc"><div class="sico ir">📅</div><div class="sttl">Prise de RDV</div><div class="sdsc">Vos clients réservent directement dans votre agenda. Rappels automatiques, zéro no-show, zéro appel inutile.</div><div class="stags"><span class="stag">Agenda sync</span><span class="stag">SMS rappels</span><span class="stag">Confirmations</span></div></div>
-      <div class="sc"><div class="sico iy">📱</div><div class="sttl">Contenu IA</div><div class="sdsc">Posts réseaux sociaux, newsletters, descriptions — générés automatiquement chaque semaine à votre image.</div><div class="stags"><span class="stag">LinkedIn</span><span class="stag">Instagram</span><span class="stag">Newsletter</span></div></div>
-    </div>
-  </div>
-  <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="sec">
-      <div class="slbl">Notre process</div>
-      <h2>Opérationnel en 3 jours.</h2>
-      <p class="ssub">Vous n'avez rien à faire. On s'occupe de tout, vous validez.</p>
-      <div class="pgrid">
-        <div class="proc"><div class="pnum">1</div><div class="pttl">Audit gratuit</div><div class="pdsc">On analyse votre activité et vos besoins. On vous montre une démo personnalisée.</div><span class="ptime">Jour 1 — 30 min</span></div>
-        <div class="proc"><div class="pnum">2</div><div class="pttl">On construit</div><div class="pdsc">Notre IA génère votre site, automatisations et chatbot pendant que vous travaillez.</div><span class="ptime">Jour 2 — vous ne faites rien</span></div>
-        <div class="proc"><div class="pnum">3</div><div class="pttl">Vous validez</div><div class="pdsc">15 minutes pour regarder et tester. On ajuste selon vos retours.</div><span class="ptime">Jour 3 — 15 min</span></div>
-        <div class="proc"><div class="pnum">4</div><div class="pttl">Live 🚀</div><div class="pdsc">Votre système IA est en ligne et commence à travailler pour vous dès ce soir.</div><span class="ptime">Jour 3 — go live</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="sec">
-    <div class="slbl">Témoignages</div>
-    <h2>Ce que disent nos clients.</h2>
-    <p class="ssub">Des résultats concrets, mesurables, dès le premier mois.</p>
-    <div class="tgrid">
-      <div class="tc"><div class="tstars">★★★★★</div><div class="ttxt">"En 3 semaines j'avais récupéré 10 heures par semaine. Le chatbot a géré 40 demandes pendant que j'étais sur le terrain. 3 chantiers signés supplémentaires dès le premier mois."</div><div class="tauth"><div class="tav">🔧</div><div><div class="tname">Patrick D.</div><div class="trole">Plombier indépendant · Lyon</div></div></div></div>
-      <div class="tc"><div class="tstars">★★★★★</div><div class="ttxt">"Mon agenda se remplit tout seul. Les prospects arrivent, le chatbot les qualifie et me réserve des créneaux. Je me concentre sur mes clients, plus sur l'admin."</div><div class="tauth"><div class="tav">🎯</div><div><div class="tname">Sarah M.</div><div class="trole">Coach business · Paris</div></div></div></div>
-      <div class="tc"><div class="tstars">★★★★★</div><div class="ttxt">"J'étais sceptique. Maintenant mon site génère 5 à 8 leads qualifiés par semaine sans que je touche quoi que ce soit. L'investissement s'est amorti en 3 semaines."</div><div class="tauth"><div class="tav">🏡</div><div><div class="tname">Marc L.</div><div class="trole">Agent immobilier · Bordeaux</div></div></div></div>
-    </div>
-  </div>
-  <div class="ctaband">
-    <div><div class="ctattl">Prêt à passer à<br><span class="g">la vitesse supérieure ?</span></div><div class="ctasub">Audit gratuit · Sans engagement · Résultats en 3 jours</div></div>
-    <div class="ctabtns"><a class="bp" href="#contact">Obtenir mon devis gratuit →</a><a class="bg" href="#services">Voir nos services</a></div>
-  </div>
-  <div style="height:80px;"></div>
-  <footer><div class="flogo">KOVA</div><div class="fcopy">© 2025 KOVA — kovaia.fr</div><div class="flinks"><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
-</div>
-<!-- SERVICES -->
-<div class="page" id="services">
-  <div class="svchero">
-    <div class="slbl">Nos offres</div>
-    <h1 style="font-family:'Clash Display',sans-serif;font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px;max-width:700px;">Des solutions concrètes.<br>Des résultats mesurables.</h1>
-    <p class="ssub" style="max-width:560px;">Chaque prestation est livrée en moins d'une semaine. Devis personnalisé, gratuit, en 24h.</p>
-  </div>
-  <div>
-    <div class="svcrow"><div class="svcl"><div class="rnum">01</div><div class="rico">🌐</div><div class="rttl">Site web intelligent</div><div class="rdsc">Votre vitrine digitale, construite pour convertir. Design premium, chargement ultra-rapide, optimisé pour que Google vous trouve.</div><ul class="rfeats"><li>Design sur mesure aux couleurs de votre marque</li><li>Responsive — parfait sur mobile, tablette, desktop</li><li>Optimisation SEO pour être trouvé sur Google</li><li>Formulaire intelligent avec réponse automatique</li><li>Hébergement et nom de domaine inclus 1 an</li><li>Mises à jour de contenu incluses 3 mois</li></ul></div><div class="svcr"><div class="dbox"><div class="dttl">Un site qui <span class="em">travaille pour vous</span> — pas juste une vitrine.</div><div class="dsub">Chaque site est conçu spécifiquement pour votre activité. Obtenez votre devis gratuit en 24h.</div><div class="dfeat">5 pages personnalisées min.</div><div class="dfeat">Hébergement 1 an offert</div><div class="dfeat">Nom de domaine inclus</div><div class="dfeat">Analytics & suivi intégrés</div><div class="dfeat">Formation prise en main incluse</div><div class="dguar"><span>🛡️</span><span>Garantie résultat 30 jours</span></div><a class="bp" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div></div>
-    <div class="svcrow"><div class="svcl"><div class="rnum">02</div><div class="rico">🤖</div><div class="rttl">Chatbot IA sur mesure</div><div class="rdsc">Un assistant virtuel formé sur vos données qui répond instantanément à vos clients 24h/24, 7j/7.</div><ul class="rfeats"><li>Formé sur votre activité, tarifs, catalogue</li><li>Intégration site web, WhatsApp ou Instagram</li><li>Prise de RDV automatique dans votre agenda</li><li>Transfert vers vous si question complexe</li><li>Rapports hebdomadaires sur les conversations</li></ul></div><div class="svcr"><div class="dbox"><div class="dttl">Votre assistant <span class="em">disponible 24h/24</span> — sans charges.</div><div class="dsub">Le chatbot s'adapte à votre volume de clients. Tarif mensuel sans engagement.</div><div class="dfeat">Setup offert sur devis</div><div class="dfeat">Conversations illimitées</div><div class="dfeat">Support réactif inclus</div><div class="dfeat">Rapport mensuel de performance</div><div class="dfeat">Sans engagement — résiliable à tout moment</div><div class="dguar"><span>🛡️</span><span>Garantie résultat 30 jours</span></div><a class="bp" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div></div>
-    <div class="svcrow"><div class="svcl"><div class="rnum">03</div><div class="rico">⚙️</div><div class="rttl">Automatisations sur mesure</div><div class="rdsc">Connectez vos outils et automatisez les tâches qui vous bouffent du temps. Tout tourne sans vous.</div><ul class="rfeats"><li>Audit de vos process et identification des gains</li><li>Générateur de devis IA en 2 minutes</li><li>Séquences de relance automatiques</li><li>Formation 1h pour prise en main autonome</li><li>Support 30 jours post-livraison</li></ul></div><div class="svcr"><div class="dbox"><div class="dttl"><span class="em">Récupérez des heures</span> chaque semaine dès le premier mois.</div><div class="dsub">On identifie ensemble les gains les plus rapides lors de l'audit gratuit.</div><div class="dfeat">Audit de process offert</div><div class="dfeat">Développement sur mesure</div><div class="dfeat">Tests & validation inclus</div><div class="dfeat">Formation prise en main</div><div class="dguar"><span>🛡️</span><span>Garantie résultat 30 jours</span></div><a class="bp" href="#contact" style="justify-content:center;">Obtenir mon devis gratuit →</a></div></div></div>
-    <div class="svcrow"><div class="svcl"><div class="rnum">04</div><div class="rico">🚀</div><div class="rttl">Pack KOVA Complet</div><div class="rdsc">Notre offre tout-en-un : site + chatbot + automatisations + maintenance mensuelle.</div><ul class="rfeats"><li>Site web premium aux couleurs de votre marque</li><li>Chatbot IA formé sur votre activité</li><li>3 automatisations clés identifiées ensemble</li><li>Maintenance et mises à jour mensuelles</li><li>Rapport mensuel de performance complet</li><li>Accès prioritaire aux nouvelles fonctionnalités</li></ul></div><div class="svcr"><div class="dbox" style="border-color:rgba(79,110,247,.3);background:rgba(79,110,247,.04);"><div class="dttl">La solution <span class="em">clé en main</span> la plus choisie.</div><div class="dsub">Un tarif unique qui couvre tout. Calculé selon votre activité lors de l'audit gratuit.</div><div class="dfeat">Tout inclus — site, IA, automatisations</div><div class="dfeat">Maintenance mensuelle sans supplément</div><div class="dfeat">Hébergement & domaine offerts</div><div class="dfeat">Support prioritaire 7j/7</div><div class="dfeat">Garantie résultat 30 jours</div><div class="dguar"><span>⭐</span><span>Notre offre la plus complète</span></div><a class="bp" href="#contact" style="justify-content:center;">Je veux le Pack Complet →</a></div></div></div>
-  </div>
-  <div style="height:80px;"></div>
-  <footer><div class="flogo">KOVA</div><div class="fcopy">© 2025 KOVA — kovaia.fr</div><div class="flinks"><a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#contact">Contact</a></div></footer>
-</div>
-<!-- À PROPOS -->
-<div class="page" id="apropos">
-  <div class="ahero">
+
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-shape2"></div>
+  <div class="hero-inner">
     <div>
-      <div class="slbl">Notre vision</div>
-      <div class="manif">L'IA ne devrait pas être <span class="em">réservée aux grandes entreprises.</span><br><br>Chez KOVA, chaque indépendant mérite les mêmes outils — <span class="em">à prix humain, livré vite.</span></div>
-      <div class="vgrid">
-        <div class="vcard"><div class="vico">⚡</div><div class="vttl">Rapidité d'exécution</div><div class="vdsc">Ce qui prend 3 semaines ailleurs, on le livre en 3 jours. Pas de réunions inutiles, juste du concret.</div></div>
-        <div class="vcard"><div class="vico">🎯</div><div class="vttl">ROI avant tout</div><div class="vdsc">Chaque prestation doit s'autofinancer. Si ce n'est pas le cas en 30 jours, on rembourse.</div></div>
-        <div class="vcard"><div class="vico">🤝</div><div class="vttl">Simplicité</div><div class="vdsc">Vous n'avez pas besoin de comprendre le code. Vous voyez juste les résultats.</div></div>
-        <div class="vcard"><div class="vico">🔒</div><div class="vttl">Fiabilité</div><div class="vdsc">On utilise Claude d'Anthropic — l'IA choisie par les entreprises qui ne peuvent pas se permettre d'erreurs.</div></div>
+      <div class="hero-eyebrow">Partenaire de lancement digital</div>
+      <h1 class="hero-title">Votre succès.<br><span class="accent">Notre mise.</span></h1>
+      <p class="hero-subtitle">On construit votre produit digital de A à Z — offre, tunnel de vente, stratégie. Zéro facture. On est rémunérés uniquement quand vous gagnez.</p>
+      <div class="hero-ctas">
+        <a href="#candidater" class="btn-primary">Déposer ma candidature</a>
+        <a href="#process" class="btn-ghost">Voir comment ça marche →</a>
       </div>
     </div>
-    <div class="astats">
-      <div class="astat"><div class="asn">3j</div><div class="asl">Délai moyen de livraison d'un site complet avec chatbot intégré</div></div>
-      <div class="astat"><div class="asn">8h</div><div class="asl">Récupérées en moyenne par semaine par nos clients dès le 1er mois</div></div>
-      <div class="astat"><div class="asn">30j</div><div class="asl">Garantie résultat — si vous ne voyez pas d'amélioration, on rembourse</div></div>
-      <div class="astat"><div class="asn">100%</div><div class="asl">De nos clients recommandent KOVA à leur entourage professionnel</div></div>
-    </div>
-  </div>
-  <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="sec">
-      <div class="slbl">Notre différence</div>
-      <h2>Pourquoi KOVA plutôt qu'une agence classique ?</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
-        <div style="background:rgba(255,79,110,.05);border:1px solid rgba(255,79,110,.15);border-radius:16px;padding:28px;"><div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF4F6E;margin-bottom:16px;">❌ Agence classique</div><div style="font-size:14px;color:rgba(240,240,255,.65);line-height:2.3;">⏳ 4 à 8 semaines de délai<br>💸 Budgets souvent opaques<br>🔁 Réunions interminables<br>🤷 Résultats incertains<br>🔒 Contrats annuels engageants<br>🤖 Pas d'IA — outils d'il y a 5 ans</div></div>
-        <div style="background:rgba(79,110,247,.06);border:1px solid rgba(79,110,247,.25);border-radius:16px;padding:28px;"><div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--el);margin-bottom:16px;">✅ KOVA</div><div style="font-size:14px;color:rgba(240,240,255,.8);line-height:2.3;">⚡ Livraison en 3 jours chrono<br>💚 Devis transparent en 24h<br>🎯 30 min d'audit puis on livre<br>📈 Garantie résultat 30 jours<br>🔓 Sans engagement, résiliable<br>🤖 IA dernière génération (Claude)</div></div>
+    <div class="hero-card">
+      <div class="hero-card-label">Notre modèle en clair</div>
+      <div class="hero-stat"><span class="hero-stat-name">Avance de votre part</span><span class="hero-stat-val green">0 €</span></div>
+      <div class="hero-stat"><span class="hero-stat-name">Rémunération</span><span class="hero-stat-val">Rev share</span></div>
+      <div class="hero-stat"><span class="hero-stat-name">Livraison</span><span class="hero-stat-val">Clé en main</span></div>
+      <div class="hero-stat"><span class="hero-stat-name">Délai moyen</span><span class="hero-stat-val">4 – 6 sem.</span></div>
+      <div class="hero-card-footer">
+        <div class="hero-card-footer-icon">→</div>
+        <div class="hero-card-footer-text"><strong>On ne gagne rien si vous ne vendez pas.</strong> Notre intérêt est aligné avec le vôtre.</div>
       </div>
     </div>
   </div>
-  <div class="sec">
-    <div class="slbl">FAQ</div>
-    <h2>Les questions qu'on entend souvent.</h2>
-    <div class="flist">
-      <div class="fi2"><div class="fq" onclick="toggleFaq(this)"><span>Je ne suis pas à l'aise avec le numérique — c'est pour moi quand même ?</span><span class="farr">+</span></div><div class="fa2"><div class="fain">C'est exactement pour vous. Vous n'avez aucune compétence technique à avoir. Le seul effort de votre côté : 30 minutes pour l'audit et 15 minutes pour valider le livrable.</div></div></div>
-      <div class="fi2"><div class="fq" onclick="toggleFaq(this)"><span>Et si l'IA dit quelque chose de faux à mes clients ?</span><span class="farr">+</span></div><div class="fa2"><div class="fain">Le chatbot est formé exclusivement sur vos informations. Il ne peut pas inventer ce qu'il ne connaît pas. Si une question dépasse son champ, il vous la redirige directement.</div></div></div>
-      <div class="fi2"><div class="fq" onclick="toggleFaq(this)"><span>Est-ce que je peux arrêter à tout moment ?</span><span class="farr">+</span></div><div class="fa2"><div class="fain">Oui. Les abonnements mensuels sont sans engagement. Vous arrêtez quand vous voulez, sans frais de résiliation. Votre site et toutes vos données restent votre propriété.</div></div></div>
-      <div class="fi2"><div class="fq" onclick="toggleFaq(this)"><span>Combien de temps faut-il pour voir des résultats ?</span><span class="farr">+</span></div><div class="fa2"><div class="fain">En général, nos clients voient les premiers résultats dès la première semaine — nouveaux leads, réduction du temps admin, premières prises de RDV automatiques.</div></div></div>
-      <div class="fi2"><div class="fq" onclick="toggleFaq(this)"><span>Pourquoi ne pas afficher vos tarifs directement ?</span><span class="farr">+</span></div><div class="fa2"><div class="fain">Parce qu'un plombier à Paris n'a pas les mêmes besoins qu'un coach à Bordeaux. On préfère comprendre votre situation lors de l'audit gratuit pour vous proposer exactement ce dont vous avez besoin.</div></div></div>
-    </div>
-  </div>
-  <footer><div class="flogo">KOVA</div><div class="fcopy">© 2025 KOVA — kovaia.fr</div><div class="flinks"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#contact">Contact</a></div></footer>
-</div>
-<!-- CONTACT -->
-<div class="page" id="contact">
-  <div class="cwrap">
-    <div>
-      <div class="slbl">Parlons-nous</div>
-      <h1 class="cttl">Réservez votre<br><span class="g">audit gratuit.</span></h1>
-      <p class="csub">30 minutes, sans engagement. On analyse votre situation et on vous envoie un devis clair sous 24h.</p>
-      <div class="cilist">
-        <div class="ci"><div class="cico">📧</div>contact@kovaia.fr</div>
-        <div class="ci"><div class="cico">⚡</div>Réponse sous 2h en semaine</div>
-        <div class="ci"><div class="cico">🗓️</div>Audit disponible 7j/7</div>
-        <div class="ci"><div class="cico">🔒</div>Vos données restent confidentielles</div>
+</section>
+
+<section class="value-section" id="valeur">
+  <div class="section-inner">
+    <div class="value-top reveal">
+      <div>
+        <div class="section-label">Notre plus-value</div>
+        <h2 class="section-title">Pourquoi KOVAIA<br>est <span class="accent">différent</span></h2>
       </div>
-      <div style="margin-top:40px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--el);margin-bottom:14px;">Ce que vous obtenez</div>
-        <div style="font-size:14px;color:rgba(240,240,255,.7);line-height:2.3;">✅ Analyse de votre situation actuelle<br>✅ Identification des 3 gains immédiats<br>✅ Démo personnalisée de votre futur outil<br>✅ Devis transparent sans surprise<br>✅ <strong style="color:var(--wh);">Le tout gratuitement — valeur 300€</strong></div>
-      </div>
+      <p class="section-sub">La plupart des agences vous facturent pour travailler — résultat garanti ou non. Nous, on mise sur vous. Si vous ne gagnez pas, on ne gagne pas.</p>
     </div>
-    <div>
-      <div class="fbox" id="cForm">
-        <div class="fttl">Réserver mon audit</div>
-        <div class="fstxt">On vous répond sous 2h — devis sous 24h</div>
-        <div class="frow">
-          <div class="fgrp"><label class="flbl">Prénom *</label><input class="finp" id="f-prenom" type="text" placeholder="Sophie"></div>
-          <div class="fgrp"><label class="flbl">Nom *</label><input class="finp" id="f-nom" type="text" placeholder="Martin"></div>
+
+    <div class="comparison reveal">
+      <div class="comparison-header">
+        <div class="comparison-col-label">Agence classique</div>
+        <div class="comparison-col-label sage">✓ &nbsp;KOVAIA</div>
+      </div>
+      <div class="comparison-body">
+        <div>
+          <div class="comp-row"><span class="comp-icon">✕</span> Vous payez d'avance, sans garantie</div>
+          <div class="comp-row"><span class="comp-icon">✕</span> Prestataire payé même si ça échoue</div>
+          <div class="comp-row"><span class="comp-icon">✕</span> Livraisons fragmentées, vision perdue</div>
+          <div class="comp-row"><span class="comp-icon">✕</span> Zéro implication après livraison</div>
         </div>
-        <div class="fgrp"><label class="flbl">Email *</label><input class="finp" id="f-email" type="email" placeholder="sophie@monactivite.fr"></div>
-        <div class="fgrp"><label class="flbl">Votre activité *</label>
-          <select class="finp" id="f-activite">
-            <option value="">Sélectionnez votre secteur</option>
-            <option value="Coach / Consultant indépendant">Coach / Consultant indépendant</option>
-            <option value="Artisan / BTP">Artisan / BTP</option>
-            <option value="Agent immobilier">Agent immobilier</option>
-            <option value="Professionnel de santé">Professionnel de santé</option>
-            <option value="Formateur indépendant">Formateur indépendant</option>
-            <option value="Commerce de proximité">Commerce de proximité</option>
-            <option value="Autre">Autre</option>
-          </select>
+        <div>
+          <div class="comp-row positive"><span class="comp-icon">✓</span> Aucune avance — on partage le risque</div>
+          <div class="comp-row positive"><span class="comp-icon">✓</span> Motivés uniquement par votre performance</div>
+          <div class="comp-row positive"><span class="comp-icon">✓</span> Offre, tunnel, stratégie : pensé ensemble</div>
+          <div class="comp-row positive"><span class="comp-icon">✓</span> Partenaires sur la durée</div>
         </div>
-        <div class="fgrp"><label class="flbl">Votre plus grand problème au quotidien</label><textarea class="finp" id="f-probleme" placeholder="Ex : Je passe trop de temps à répondre aux messages..."></textarea></div>
-        <button class="fsbtn" id="submit-btn">📅 Réserver mon audit gratuit →</button>
-        <div style="display:flex;align-items:center;gap:10px;background:rgba(180,255,79,.06);border:1px solid rgba(180,255,79,.2);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(240,240,255,.65);margin-top:14px;"><span>🛡️</span><span>Audit 100% gratuit · Sans engagement · Données confidentielles</span></div>
       </div>
-      <div class="fsuccess" id="fSuccess">
-        <div style="font-size:52px;margin-bottom:14px;">🎉</div>
-        <div style="font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;color:var(--li);margin-bottom:8px;">Demande envoyée !</div>
-        <div style="font-size:14px;color:var(--mu);">On vous recontacte sous 2h pour fixer le créneau. À très vite !</div>
+    </div>
+
+    <div class="value-cards reveal">
+      <div class="value-card"><div class="value-card-icon">🎯</div><div class="value-card-title">Stratégie d'offre</div><p class="value-card-text">Positionnement, prix, promesse. On structure votre produit pour qu'il soit désirable et vendable.</p></div>
+      <div class="value-card"><div class="value-card-icon">📦</div><div class="value-card-title">Création du produit</div><p class="value-card-text">Formation, programme ou membership. On construit la structure et l'expérience apprenante.</p></div>
+      <div class="value-card"><div class="value-card-icon">⚡</div><div class="value-card-title">Tunnel de vente</div><p class="value-card-text">Page de vente, séquence email, checkout. Tout pensé pour convertir votre audience.</p></div>
+      <div class="value-card"><div class="value-card-icon">📈</div><div class="value-card-title">Lancement & suivi</div><p class="value-card-text">On orchestre le lancement et optimise en continu pour maximiser les revenus partagés.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="process">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Le processus</div>
+      <h2 class="section-title">De l'idée aux<br><span class="accent">premières ventes</span></h2>
+    </div>
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div><div class="process-title">Candidature & sélection</div><p class="process-text">Vous remplissez notre formulaire. On étudie votre audience, votre idée et votre crédibilité. On ne prend pas tout le monde — seulement les projets dans lesquels on croit vraiment.</p></div>
+        <span class="process-tag">48h de réponse</span>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div><div class="process-title">Workshop stratégique</div><p class="process-text">On définit ensemble votre offre, votre cible, votre prix et votre positionnement. C'est la fondation sur laquelle tout repose.</p></div>
+        <span class="process-tag">Session de travail</span>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div><div class="process-title">Production & tunnel</div><p class="process-text">On construit le produit, la page de vente, les emails, le checkout. Vous apportez votre expertise et votre image — on s'occupe du reste.</p></div>
+        <span class="process-tag">Clé en main</span>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div><div class="process-title">Lancement & partage des revenus</div><p class="process-text">On lance ensemble. Les revenus sont partagés selon l'accord établi en amont. Plus vous vendez, plus on gagne tous les deux.</p></div>
+        <span class="process-tag">Rev share</span>
       </div>
     </div>
   </div>
-  <footer><div class="flogo">KOVA</div><div class="fcopy">© 2025 KOVA — kovaia.fr</div><div class="flinks"><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#apropos">À propos</a></div></footer>
-</div>
+</section>
+
+<section class="testimonials-section" id="temoignages">
+  <div class="section-inner">
+    <div class="testi-top reveal">
+      <div>
+        <div class="section-label">Ils nous font confiance</div>
+        <h2 class="section-title">Ce qu'ils disent<br>de <span class="accent">l'expérience</span></h2>
+      </div>
+      <div class="google-badge">
+        <div class="google-logo"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+        <div>
+          <div class="google-score">4.9</div>
+          <div class="google-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="google-count">Avis Google vérifiés</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"KOVAIA a transformé mon expertise en un vrai produit vendable. En moins de 2 mois, j'ai fait mes premières ventes sans débourser un centime au départ."</p>
+        <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kevin M.</div><div class="testi-meta">Loueur de voiture • Formation lancée</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Ce qui m'a convaincu c'est le modèle : ils ne gagnent que si je gagne. Ça change tout dans la relation. Impliqués à 100% du début à la fin."</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sophia L.</div><div class="testi-meta">Coach business • 12k abonnés</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"J'avais l'idée depuis longtemps mais je ne savais pas comment la vendre. KOVAIA a tout mis en place — tunnel, emails, page de vente. Clé en main."</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Romain T.</div><div class="testi-meta">Investisseur immo • 8k abonnés TikTok</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="portfolio">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Cas client</div>
+      <h2 class="section-title">Un exemple <span class="accent">concret</span></h2>
+    </div>
+    <div class="case-study reveal">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-tag">Cas #01</span>
+          <div><div class="case-client-name">Kevin M.</div><div class="case-client-sub">Loueur de voiture — Île-de-France</div></div>
+          <div class="case-kpis">
+            <div><div class="kpi-value">8 200 €</div><div class="kpi-label">Revenus au 1er lancement</div></div>
+            <div><div class="kpi-value">6 sem.</div><div class="kpi-label">De l'idée au premier euro</div></div>
+            <div><div class="kpi-value">0 €</div><div class="kpi-label">Investissement initial</div></div>
+          </div>
+        </div>
+        <div class="case-summary">
+          <div class="case-summary-title">De loueur de voiture à <span class="accent">formateur reconnu</span> dans son secteur.</div>
+          <p class="case-summary-text">Kevin avait 7 ans d'expérience dans la location de véhicules et une communauté Instagram engagée. Il savait que son expertise avait de la valeur, mais n'avait ni le temps ni les compétences pour la transformer en produit digital. KOVAIA a pris en charge l'intégralité de la production et du lancement.</p>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-block"><div class="case-block-label">Le défi</div><p class="case-block-text">Une expertise solide, 9 400 abonnés engagés — mais aucune offre, aucun tunnel, aucune infra de vente. Kevin ne voulait pas investir sans garantie.</p></div>
+        <div class="case-block"><div class="case-block-label">Ce qu'on a construit</div><ul><li>Formation "Devenir loueur de voiture" (6 modules)</li><li>Page de vente optimisée conversion</li><li>Séquence email de lancement (7 emails)</li><li>Checkout + espace membre automatisé</li><li>Stratégie contenu pré-lancement</li></ul></div>
+        <div class="case-block"><div class="case-block-label">Le résultat</div><p class="case-block-text">41 ventes à 199€ en 72h lors du lancement. Tunnel toujours actif 4 mois plus tard. Kevin prépare sa V2 avec KOVAIA.</p></div>
+      </div>
+      <div class="case-quote">
+        <div class="quote-mark">"</div>
+        <div>
+          <p class="case-quote-text">Je n'aurais jamais eu le temps ni les compétences pour faire ça seul. KOVAIA a tout pris en charge — je leur ai fait confiance et ça a marché au-delà de mes attentes.</p>
+          <div class="case-quote-sig"><strong>Kevin M.</strong> — Loueur de voiture, fondateur de sa formation digitale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply-section" id="candidater">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Candidature</div>
+      <h2 class="section-title">Prêt à lancer<br><span class="accent">votre produit</span> ?</h2>
+    </div>
+    <div class="apply-grid">
+      <div class="reveal">
+        <div class="apply-info-title">Ce qu'on recherche</div>
+        <ul class="criteria-list">
+          <li><div class="criteria-check">✓</div><span>Une audience réelle, même petite — engagée et alignée avec votre sujet.</span></li>
+          <li><div class="criteria-check">✓</div><span>Une expertise ou parcours dont les autres veulent s'inspirer.</span></li>
+          <li><div class="criteria-check">✓</div><span>La capacité à apparaître devant votre audience — vidéo, stories, live.</span></li>
+          <li><div class="criteria-check">✓</div><span>L'envie de travailler en vrai partenariat, pas en client passif.</span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <p>Candidature reçue.</p>
+          <span>On revient vers vous dans les 48h.</span>
+        </div>
+        <form class="apply-form" id="applyForm" action="https://formspree.io/f/xdapewaz" method="POST">
+          <div class="form-title">Déposez votre candidature</div>
+          <div class="form-row">
+            <div class="form-group"><label>Prénom & Nom</label><input type="text" name="nom" required placeholder="Jean Dupont"></div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="jean@exemple.com"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Réseau principal</label><select name="reseau"><option value="">Choisir...</option><option>Instagram</option><option>YouTube</option><option>TikTok</option><option>LinkedIn</option><option>Podcast</option><option>Autre</option></select></div>
+            <div class="form-group"><label>Taille de communauté</label><select name="communaute"><option value="">Choisir...</option><option>Moins de 5 000</option><option>5 000 – 30 000</option><option>30 000 – 100 000</option><option>100 000+</option></select></div>
+          </div>
+          <div class="form-group"><label>Votre idée de produit</label><textarea name="idee" rows="3" placeholder="Décrivez en quelques lignes l'expertise que vous souhaitez transmettre..."></textarea></div>
+          <p class="form-note">Aucun engagement. Réponse sous 48h.</p>
+          <button type="submit" class="form-submit">Envoyer ma candidature →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KOVA<span>IA</span></div>
+  <div class="footer-copy">© 2025 KOVAIA — Tous droits réservés</div>
+</footer>
+
 <script>
-document.getElementById('burg-btn').addEventListener('click',function(){
-  document.getElementById('mob').style.display='flex';
-  document.body.style.overflow='hidden';
-});
-document.getElementById('mclose-btn').addEventListener('click',function(){
-  document.getElementById('mob').style.display='none';
-  document.body.style.overflow='';
-});
-document.querySelectorAll('.mob-link').forEach(function(a){
-  a.addEventListener('click',function(){
-    document.getElementById('mob').style.display='none';
-    document.body.style.overflow='';
-  });
-});
-window.addEventListener('scroll',function(){
-  var sy=window.scrollY+80;
-  ['accueil','services','apropos','contact'].forEach(function(id){
-    var el=document.getElementById(id);
-    var nl=document.getElementById('nl-'+id);
-    if(el&&nl){
-      if(sy>=el.offsetTop&&sy<el.offsetTop+el.offsetHeight){
-        document.querySelectorAll('.nl a').forEach(function(a){a.classList.remove('act');});
-        nl.classList.add('act');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
       }
-    }
-  });
-});
-function toggleFaq(el){
-  var item=el.parentElement;
-  var wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.fi2').forEach(function(i){i.classList.remove('open');});
-  if(!wasOpen)item.classList.add('open');
-}
-document.getElementById('submit-btn').addEventListener('click',function(){
-  var prenom=document.getElementById('f-prenom').value.trim();
-  var nom=document.getElementById('f-nom').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  var activite=document.getElementById('f-activite').value;
-  var probleme=document.getElementById('f-probleme').value.trim();
-  if(!prenom||!nom||!email||!activite){
-    alert('Merci de remplir les champs obligatoires (*)');
-    return;
-  }
-  var btn=document.getElementById('submit-btn');
-  btn.textContent='Envoi en cours...';
-  btn.disabled=true;
-  fetch('https://formspree.io/f/xdapewaz',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      prenom:prenom,
-      nom:nom,
-      email:email,
-      activite:activite,
-      probleme:probleme,
-      _subject:'Audit KOVA - '+prenom+' '+nom
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const form = document.getElementById('applyForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
     })
-  }).then(function(){
-    document.getElementById('cForm').style.display='none';
-    document.getElementById('fSuccess').style.display='block';
-  }).catch(function(){
-    document.getElementById('cForm').style.display='none';
-    document.getElementById('fSuccess').style.display='block';
+    .then(r => { if (r.ok) { form.style.display = 'none'; success.classList.add('visible'); } })
+    .catch(() => alert('Erreur. Réessayez.'));
   });
-});
 </script>
 </body>
 </html>
