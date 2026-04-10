@@ -1,1138 +1,481 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KOVAIA — Votre succès, notre investissement</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-
-<style>
-  :root {
-    --bg: #F7F6F2;
-    --white: #FFFFFF;
-    --surface: #EFEDE7;
-    --sage: #5C7A5F;
-    --sage-mid: #7FA382;
-    --sage-light: #B8D1BB;
-    --sage-pale: #EBF2EC;
-    --dark: #181F18;
-    --mid: #3D4D3E;
-    --muted: #8E9B8F;
-    --border: #DDE5DE;
-    --shadow: 0 2px 20px rgba(60,80,62,0.07);
-    --shadow-lg: 0 8px 48px rgba(60,80,62,0.12);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--dark);
-    font-family: 'Figtree', sans-serif;
-    font-weight: 400;
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 60px;
-    height: 72px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(247,246,242,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: var(--dark);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: inherit; }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-  }
-
-  .nav-links a {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--dark); }
-
-  .nav-cta {
-    background: var(--sage) !important;
-    color: var(--white) !important;
-    padding: 10px 22px !important;
-    border-radius: 6px;
-    font-size: 0.83rem !important;
-    font-weight: 600 !important;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--mid) !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 72px 60px 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg-shape {
-    position: absolute;
-    top: -100px; right: -200px;
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--sage-pale) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-bg-shape2 {
-    position: absolute;
-    bottom: -150px; left: -100px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--surface) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--sage-pale);
-    color: var(--sage);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.1s;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--sage);
-  }
-
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(42px, 5.5vw, 74px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 28px;
-    color: var(--dark);
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.25s;
-  }
-
-  .hero-title .accent { color: var(--sage); }
-
-  .hero-subtitle {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 480px;
-    margin-bottom: 44px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.4s;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.55s;
-  }
-
-  .btn-primary {
-    background: var(--sage);
-    color: var(--white);
-    padding: 15px 32px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    display: inline-block;
-  }
-
-  .btn-primary:hover { background: var(--mid); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(60,80,62,0.2); }
-
-  .btn-ghost {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--mid);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-  }
-
-  .btn-ghost:hover { gap: 10px; }
-
-  .hero-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.5s;
-  }
-
-  .hero-card-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .hero-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-stat:last-of-type { border-bottom: none; }
-  .hero-stat-name { font-size: 0.88rem; color: var(--muted); }
-
-  .hero-stat-val {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--dark);
-  }
-
-  .hero-stat-val.green { color: var(--sage); }
-
-  .hero-card-footer {
-    margin-top: 28px;
-    padding: 18px;
-    background: var(--sage-pale);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-card-footer-icon {
-    width: 36px; height: 36px;
-    background: var(--sage);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .hero-card-footer-text { font-size: 0.82rem; color: var(--mid); line-height: 1.45; }
-  .hero-card-footer-text strong { font-weight: 600; color: var(--dark); }
-
-  /* SECTIONS */
-  section { padding: 100px 60px; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 16px;
-  }
-
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 20px; height: 2px;
-    background: var(--sage);
-    border-radius: 2px;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--dark);
-    margin-bottom: 16px;
-  }
-
-  .section-title .accent { color: var(--sage); }
-  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 520px; }
-
-  /* VALUE */
-  .value-section { background: var(--white); }
-
-  .value-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: end;
-    margin-bottom: 48px;
-  }
-
-  .comparison {
-    background: var(--bg);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-
-  .comparison-header { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); }
-
-  .comparison-col-label {
-    padding: 14px 28px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .comparison-col-label.sage {
-    color: var(--sage);
-    background: var(--sage-pale);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .comparison-body { display: grid; grid-template-columns: 1fr 1fr; }
-
-  .comp-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 13px 28px;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.87rem;
-    color: var(--muted);
-  }
-
-  .comp-row:last-child { border-bottom: none; }
-  .comp-row.positive { color: var(--mid); background: rgba(235,242,236,0.5); }
-  .comp-icon { flex-shrink: 0; }
-
-  .value-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-
-  .value-card {
-    background: var(--bg);
-    border-radius: 14px;
-    padding: 30px 26px;
-    border: 1px solid var(--border);
-    transition: all 0.25s ease;
-  }
-
-  .value-card:hover {
-    background: var(--white);
-    box-shadow: var(--shadow);
-    transform: translateY(-2px);
-    border-color: var(--sage-light);
-  }
-
-  .value-card-icon {
-    width: 44px; height: 44px;
-    background: var(--sage-pale);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 18px;
-  }
-
-  .value-card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.98rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--dark);
-  }
-
-  .value-card-text { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
-
-  /* PROCESS */
-  .process-section { background: var(--bg); }
-
-  .process-list {
-    margin-top: 56px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--white);
-  }
-
-  .process-item {
-    display: grid;
-    grid-template-columns: 70px 1fr auto;
-    align-items: center;
-    gap: 28px;
-    padding: 32px 40px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.2s;
-  }
-
-  .process-item:last-child { border-bottom: none; }
-  .process-item:hover { background: var(--sage-pale); }
-
-  .process-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--sage-light);
-    line-height: 1;
-  }
-
-  .process-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 5px;
-  }
-
-  .process-text { font-size: 0.87rem; color: var(--muted); line-height: 1.7; max-width: 560px; }
-
-  .process-tag {
-    background: var(--sage-pale);
-    color: var(--sage);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 6px 14px;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  /* TESTIMONIALS */
-  .testimonials-section { background: var(--white); }
-
-  .testi-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 48px;
-  }
-
-  .google-badge {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 22px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--bg);
-  }
-
-  .google-logo { font-size: 1.05rem; font-weight: 800; }
-  .g-blue { color: #4285F4; }
-  .g-red { color: #EA4335; }
-  .g-yellow { color: #FBBC05; }
-  .g-green { color: #34A853; }
-
-  .google-score {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--dark);
-    line-height: 1;
-  }
-
-  .google-stars { display: flex; gap: 2px; margin: 3px 0; }
-  .star { color: #FBBC05; font-size: 0.85rem; }
-  .google-count { font-size: 0.7rem; color: var(--muted); }
-
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-  .testi-card {
-    background: var(--bg);
-    border-radius: 16px;
-    padding: 30px;
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    transition: all 0.25s ease;
-  }
-
-  .testi-card:hover {
-    background: var(--white);
-    box-shadow: var(--shadow);
-    border-color: var(--sage-light);
-  }
-
-  .testi-stars { color: #FBBC05; font-size: 0.9rem; letter-spacing: 2px; }
-
-  .testi-text {
-    font-size: 0.92rem;
-    color: var(--mid);
-    line-height: 1.75;
-    font-style: italic;
-    flex: 1;
-  }
-
-  .testi-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-
-  .testi-avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: var(--sage-pale);
-    border: 2px solid var(--sage-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--sage);
-    flex-shrink: 0;
-  }
-
-  .testi-name { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
-  .testi-meta { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
-
-  /* PORTFOLIO */
-  .portfolio-section { background: var(--bg); }
-
-  .case-study {
-    margin-top: 56px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--white);
-  }
-
-  .case-header { display: grid; grid-template-columns: 280px 1fr; }
-
-  .case-meta {
-    background: var(--sage);
-    padding: 48px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .case-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.18);
-    color: rgba(255,255,255,0.85);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 100px;
-    align-self: flex-start;
-  }
-
-  .case-client-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.7rem;
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.1;
-  }
-
-  .case-client-sub { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 6px; }
-
-  .case-kpis { display: flex; flex-direction: column; gap: 20px; }
-
-  .kpi-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .kpi-label { font-size: 0.74rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
-
-  .case-summary {
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .case-summary-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--dark);
-  }
-
-  .case-summary-title .accent { color: var(--sage); }
-  .case-summary-text { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
-
-  .case-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-top: 1px solid var(--border);
-  }
-
-  .case-block {
-    padding: 34px;
-    border-right: 1px solid var(--border);
-  }
-
-  .case-block:last-child { border-right: none; }
-
-  .case-block-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .case-block-label::before {
-    content: '';
-    width: 14px; height: 2px;
-    background: var(--sage);
-    border-radius: 2px;
-  }
-
-  .case-block-text { font-size: 0.87rem; color: var(--muted); line-height: 1.8; }
-  .case-block ul { list-style: none; }
-
-  .case-block ul li {
-    font-size: 0.87rem;
-    color: var(--muted);
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 10px;
-    line-height: 1.5;
-  }
-
-  .case-block ul li::before { content: '→'; color: var(--sage); font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
-
-  .case-quote {
-    padding: 36px 48px;
-    border-top: 1px solid var(--border);
-    background: var(--sage-pale);
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .quote-mark {
-    font-family: 'Syne', sans-serif;
-    font-size: 4rem;
-    font-weight: 800;
-    color: var(--sage);
-    opacity: 0.35;
-    line-height: 0.8;
-    flex-shrink: 0;
-  }
-
-  .case-quote-text { font-size: 1.02rem; font-style: italic; color: var(--mid); line-height: 1.7; }
-  .case-quote-sig { margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
-  .case-quote-sig strong { color: var(--dark); font-weight: 600; }
-
-  /* APPLICATION */
-  .apply-section { background: var(--white); }
-
-  .apply-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 80px;
-    margin-top: 56px;
-    align-items: start;
-  }
-
-  .apply-info-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 20px;
-  }
-
-  .criteria-list { list-style: none; }
-
-  .criteria-list li {
-    display: flex;
-    gap: 14px;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.6;
-    align-items: flex-start;
-  }
-
-  .criteria-check {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--sage-pale);
-    border: 1.5px solid var(--sage-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65rem;
-    color: var(--sage);
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .apply-form {
-    background: var(--bg);
-    border-radius: 16px;
-    padding: 36px;
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .form-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--dark);
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-
-  .form-group label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--mid);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    color: var(--dark);
-    padding: 11px 14px;
-    font-family: 'Figtree', sans-serif;
-    font-size: 0.87rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    -webkit-appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--sage); }
-
-  .form-group textarea { resize: vertical; min-height: 85px; }
-
-  .form-submit {
-    background: var(--sage);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    padding: 14px;
-    font-family: 'Figtree', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    width: 100%;
-  }
-
-  .form-submit:hover { background: var(--mid); transform: translateY(-1px); }
-
-  .form-note { font-size: 0.74rem; color: var(--muted); text-align: center; }
-
-  .form-success { display: none; padding: 32px; text-align: center; }
-  .form-success.visible { display: block; }
-
-  .form-success-icon {
-    width: 52px; height: 52px;
-    background: var(--sage-pale);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    margin: 0 auto 14px;
-  }
-
-  .form-success p { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-  .form-success span { font-size: 0.84rem; color: var(--muted); }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    padding: 44px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--white); }
-  .footer-logo span { color: inherit; }
-  .footer-copy { font-size: 0.77rem; color: rgba(255,255,255,0.3); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
-
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links a:not(.nav-cta) { display: none; }
-    section { padding: 72px 20px; }
-    .hero { padding: 72px 20px 48px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-bg-shape, .hero-bg-shape2 { display: none; }
-    .value-top { grid-template-columns: 1fr; gap: 32px; }
-    .comparison-header, .comparison-body { grid-template-columns: 1fr; }
-    .value-cards { grid-template-columns: 1fr 1fr; }
-    .process-item { grid-template-columns: 56px 1fr; }
-    .process-tag { display: none; }
-    .testi-top { flex-direction: column; gap: 20px; align-items: flex-start; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .case-header { grid-template-columns: 1fr; }
-    .case-body { grid-template-columns: 1fr; }
-    .case-block { border-right: none; border-bottom: 1px solid var(--border); }
-    .apply-grid { grid-template-columns: 1fr; gap: 40px; }
-    .form-row { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOVAIA — Agence IA pour agences immobilières</title>
+  <meta name="description" content="KOVAIA aide les agences immobilières à générer plus de mandats et de clients grâce à des systèmes digitaux automatisés : Instagram DM, SEO, FB Ads, emailing et refonte de site." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --off-white: #F7F6F2;
+      --sage: #5C7A5F;
+      --sage-dark: #3D5440;
+      --sage-light: #8AA88D;
+      --sage-pale: #EAF0EA;
+      --black: #1A1A18;
+      --gray: #6B6B65;
+      --gray-light: #DDDDD7;
+      --accent: #C8A96E;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Figtree', sans-serif; background: var(--off-white); color: var(--black); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(247,246,242,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent; transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--gray-light); }
+    .nav-logo { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--sage-dark); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'Figtree', sans-serif; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--sage-dark); }
+    .nav-cta { background: var(--sage) !important; color: white !important; padding: 10px 22px; border-radius: 4px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--sage-dark) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .nav-hamburger span { width: 24px; height: 2px; background: var(--black); transition: 0.3s; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: radial-gradient(circle at 70% 20%, rgba(92,122,95,0.06) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(200,169,110,0.05) 0%, transparent 40%); pointer-events: none; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(92,122,95,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(92,122,95,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--sage-pale); color: var(--sage-dark); padding: 6px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; width: fit-content; animation: fadeUp 0.6s ease both; }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--sage); border-radius: 50%; }
+    .hero-title { font-family: 'Raleway', sans-serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-title .accent { color: var(--sage); }
+    .hero-title em { font-style: normal; position: relative; display: inline-block; }
+    .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 4px; background: var(--accent); border-radius: 2px; transform: scaleX(0); transform-origin: left; animation: lineGrow 0.6s 0.8s ease forwards; }
+    .hero-sub { font-size: 1.08rem; line-height: 1.75; color: var(--gray); max-width: 480px; margin-bottom: 40px; animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+    .btn-primary { background: var(--sage); color: white; padding: 15px 32px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--black); padding: 15px 32px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--gray-light); transition: border-color 0.2s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--sage); color: var(--sage); }
+    .hero-stats { display: flex; gap: 40px; margin-top: 56px; animation: fadeUp 0.6s 0.4s ease both; }
+    .hero-stat-num { font-family: 'Raleway', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--sage-dark); }
+    .hero-stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 2px; }
+    .stat-div { width: 1px; background: var(--gray-light); }
+    .hero-right { display: flex; align-items: center; justify-content: center; padding: 80px 80px 80px 40px; position: relative; z-index: 1; animation: fadeRight 0.8s 0.2s ease both; }
+    .hero-visual { width: 100%; max-width: 480px; background: white; border-radius: 16px; border: 1px solid var(--gray-light); overflow: hidden; box-shadow: 0 32px 80px rgba(26,26,24,0.1); }
+    .vis-header { background: var(--black); padding: 14px 20px; display: flex; align-items: center; gap: 8px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .r { background: #FF5F57; } .y { background: #FEBC2E; } .g { background: #28C840; }
+    .vis-title { color: rgba(255,255,255,0.35); font-size: 0.75rem; margin-left: 8px; }
+    .vis-body { padding: 24px; }
+    .vis-metric { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--gray-light); }
+    .vis-metric:last-of-type { border-bottom: none; }
+    .vm-label { font-size: 0.83rem; color: var(--gray); font-weight: 500; }
+    .vm-val { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.05rem; }
+    .badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 100px; }
+    .bu { background: rgba(92,122,95,0.12); color: var(--sage-dark); }
+    .bar-wrap { margin-top: 20px; }
+    .bar-row { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray); margin-bottom: 6px; }
+    .bar-row span:last-child { font-weight: 700; color: var(--black); }
+    .bar-t { background: var(--sage-pale); border-radius: 100px; height: 7px; overflow: hidden; margin-bottom: 14px; }
+    .bar-f { height: 100%; border-radius: 100px; background: var(--sage); animation: barGrow 1.4s ease both; }
+    .bar-f.acc { background: var(--accent); animation-delay: 0.3s; }
+
+    /* TRUSTED */
+    .trusted { padding: 36px 80px; border-top: 1px solid var(--gray-light); border-bottom: 1px solid var(--gray-light); display: flex; align-items: center; gap: 48px; }
+    .trusted-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; font-weight: 600; }
+    .trusted-logos { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+    .trusted-logo { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1rem; color: var(--gray-light); letter-spacing: 0.05em; transition: color 0.2s; cursor: default; }
+    .trusted-logo:hover { color: var(--sage-light); }
+
+    /* SECTIONS */
+    .section { padding: 100px 80px; }
+    .section-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 16px; }
+    .section-title { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .section-sub { font-size: 1.05rem; color: var(--gray); line-height: 1.7; max-width: 520px; }
+
+    /* SERVICES GRID */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .scard { background: white; border: 1px solid var(--gray-light); border-radius: 12px; padding: 32px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+    .scard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .scard:hover { border-color: var(--sage-light); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(92,122,95,0.1); }
+    .scard:hover::before { transform: scaleX(1); }
+    .scard-icon { width: 48px; height: 48px; background: var(--sage-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .scard-icon svg { width: 24px; height: 24px; stroke: var(--sage-dark); fill: none; stroke-width: 1.5; }
+    .scard-name { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
+    .scard-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; margin-bottom: 20px; }
+    .scard-link { font-size: 0.85rem; font-weight: 600; color: var(--sage); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .scard-link:hover { gap: 10px; }
+    .scard.dark { background: var(--sage-dark); border-color: var(--sage-dark); }
+    .scard.dark .scard-name { color: white; }
+    .scard.dark .scard-desc { color: rgba(255,255,255,0.55); }
+    .scard.dark .scard-link { color: var(--sage-light); }
+    .scard.dark .scard-icon { background: rgba(255,255,255,0.1); }
+    .scard.dark .scard-icon svg { stroke: white; }
+
+    /* HOW IT WORKS */
+    .how { padding: 100px 80px; background: var(--black); }
+    .how .section-tag { color: var(--sage-light); }
+    .how .section-title { color: white; }
+    .how .section-sub { color: rgba(255,255,255,0.45); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 64px; }
+    .step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; }
+    .step:first-child { border-radius: 12px 0 0 12px; }
+    .step:last-child { border-radius: 0 12px 12px 0; }
+    .step-num { font-family: 'Raleway', sans-serif; font-size: 3.5rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; margin-bottom: 16px; }
+    .step-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1rem; color: white; margin-bottom: 12px; }
+    .step-desc { font-size: 0.86rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* RESULTS */
+    .results { padding: 100px 80px; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 64px; }
+    .r-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .r-card { background: var(--sage-pale); border-radius: 12px; padding: 28px 24px; }
+    .r-card.dark { background: var(--black); }
+    .r-num { font-family: 'Raleway', sans-serif; font-size: 2.4rem; font-weight: 900; color: var(--sage-dark); line-height: 1; margin-bottom: 8px; }
+    .r-card.dark .r-num { color: var(--sage-light); }
+    .r-label { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+    .r-card.dark .r-label { color: rgba(255,255,255,0.35); }
+    .testi { background: white; border: 1px solid var(--gray-light); border-radius: 16px; padding: 40px; }
+    .testi-quote { font-size: 1.15rem; line-height: 1.75; color: var(--black); font-style: italic; margin-bottom: 28px; }
+    .testi-quote::before { content: '"'; color: var(--sage); font-size: 2.5rem; line-height: 0.5; vertical-align: -0.6rem; margin-right: 4px; }
+    .testi-author { display: flex; align-items: center; gap: 16px; }
+    .t-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--sage-dark); }
+    .t-name { font-weight: 600; font-size: 0.9rem; }
+    .t-role { font-size: 0.8rem; color: var(--gray); }
+
+    /* AUDIT CTA */
+    .audit-cta { padding: 80px; background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%); text-align: center; position: relative; overflow: hidden; }
+    .audit-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 60%), radial-gradient(circle at 70% 50%, rgba(200,169,110,0.1) 0%, transparent 60%); }
+    .audit-cta h2 { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: white; margin-bottom: 16px; position: relative; }
+    .audit-cta p { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 36px; position: relative; }
+    .btn-white { background: white; color: var(--sage-dark); padding: 16px 36px; border-radius: 5px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: transform 0.15s, box-shadow 0.15s; position: relative; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 60px 80px 40px; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .footer-brand .nav-logo { color: white; display: block; margin-bottom: 16px; font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.3); line-height: 1.65; }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--sage-light); }
+    .footer-bottom { padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.18); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.18); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.45); }
+
+    /* MOBILE */
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--off-white); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Raleway', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--black); text-decoration: none; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 1.5rem; cursor: pointer; color: var(--gray); background: none; border: none; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes lineGrow { to { transform: scaleX(1); } }
+    @keyframes barGrow { from { width: 0 !important; } }
+
+    @media (max-width: 1024px) {
+      nav { padding: 18px 32px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 32px 40px; }
+      .hero-right { display: none; }
+      .section, .results, .how { padding: 64px 32px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step:nth-child(2) { border-radius: 0 12px 0 0; }
+      .step:nth-child(3) { border-radius: 0 0 0 12px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .trusted, .audit-cta { padding: 40px 32px; }
+      footer { padding: 48px 32px 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+    }
+    @media (max-width: 640px) {
+      .services-grid, .steps { grid-template-columns: 1fr; }
+      .step { border-radius: 8px !important; }
+      .r-numbers { grid-template-columns: 1fr 1fr; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .stat-div { display: none; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">KOVA<span>IA</span></a>
-  <div class="nav-links">
-    <a href="#valeur">Notre approche</a>
-    <a href="#process">Process</a>
-    <a href="#portfolio">Cas client</a>
-    <a href="#candidater" class="nav-cta">Candidater →</a>
-  </div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">KOV<span>AI</span>A</a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="audit.html">Audit gratuit</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Accueil</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="audit.html" onclick="toggleMenu()">Audit gratuit</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-shape"></div>
-  <div class="hero-bg-shape2"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Partenaire de lancement digital</div>
-      <h1 class="hero-title">Votre succès.<br><span class="accent">Notre mise.</span></h1>
-      <p class="hero-subtitle">On construit votre produit digital de A à Z — offre, tunnel de vente, stratégie. Zéro facture. On est rémunérés uniquement quand vous gagnez.</p>
-      <div class="hero-ctas">
-        <a href="#candidater" class="btn-primary">Déposer ma candidature</a>
-        <a href="#process" class="btn-ghost">Voir comment ça marche →</a>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-left">
+    <span class="hero-tag">Spécialiste agences immobilières</span>
+    <h1 class="hero-title">
+      Votre agence mérite<br>
+      une présence <span class="accent">digitale</span><br>
+      qui <em>génère des mandats</em>
+    </h1>
+    <p class="hero-sub">KOVAIA construit des systèmes d'acquisition automatisés — Instagram DM, SEO, emailing, publicité Meta — pour que vos agents passent leur temps à signer, pas à prospecter.</p>
+    <div class="hero-actions">
+      <a href="audit.html" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Auditer mon site gratuitement
+      </a>
+      <a href="contact.html" class="btn-secondary">Prendre RDV →</a>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-label">Notre modèle en clair</div>
-      <div class="hero-stat"><span class="hero-stat-name">Avance de votre part</span><span class="hero-stat-val green">0 €</span></div>
-      <div class="hero-stat"><span class="hero-stat-name">Rémunération</span><span class="hero-stat-val">Rev share</span></div>
-      <div class="hero-stat"><span class="hero-stat-name">Livraison</span><span class="hero-stat-val">Clé en main</span></div>
-      <div class="hero-stat"><span class="hero-stat-name">Délai moyen</span><span class="hero-stat-val">4 – 6 sem.</span></div>
-      <div class="hero-card-footer">
-        <div class="hero-card-footer-icon">→</div>
-        <div class="hero-card-footer-text"><strong>On ne gagne rien si vous ne vendez pas.</strong> Notre intérêt est aligné avec le vôtre.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="value-section" id="valeur">
-  <div class="section-inner">
-    <div class="value-top reveal">
+    <div class="hero-stats">
       <div>
-        <div class="section-label">Notre plus-value</div>
-        <h2 class="section-title">Pourquoi KOVAIA<br>est <span class="accent">différent</span></h2>
+        <div class="hero-stat-num">+340%</div>
+        <div class="hero-stat-label">de leads qualifiés en 90j</div>
       </div>
-      <p class="section-sub">La plupart des agences vous facturent pour travailler — résultat garanti ou non. Nous, on mise sur vous. Si vous ne gagnez pas, on ne gagne pas.</p>
-    </div>
-
-    <div class="comparison reveal">
-      <div class="comparison-header">
-        <div class="comparison-col-label">Agence classique</div>
-        <div class="comparison-col-label sage">✓ &nbsp;KOVAIA</div>
-      </div>
-      <div class="comparison-body">
-        <div>
-          <div class="comp-row"><span class="comp-icon">✕</span> Vous payez d'avance, sans garantie</div>
-          <div class="comp-row"><span class="comp-icon">✕</span> Prestataire payé même si ça échoue</div>
-          <div class="comp-row"><span class="comp-icon">✕</span> Livraisons fragmentées, vision perdue</div>
-          <div class="comp-row"><span class="comp-icon">✕</span> Zéro implication après livraison</div>
-        </div>
-        <div>
-          <div class="comp-row positive"><span class="comp-icon">✓</span> Aucune avance — on partage le risque</div>
-          <div class="comp-row positive"><span class="comp-icon">✓</span> Motivés uniquement par votre performance</div>
-          <div class="comp-row positive"><span class="comp-icon">✓</span> Offre, tunnel, stratégie : pensé ensemble</div>
-          <div class="comp-row positive"><span class="comp-icon">✓</span> Partenaires sur la durée</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="value-cards reveal">
-      <div class="value-card"><div class="value-card-icon">🎯</div><div class="value-card-title">Stratégie d'offre</div><p class="value-card-text">Positionnement, prix, promesse. On structure votre produit pour qu'il soit désirable et vendable.</p></div>
-      <div class="value-card"><div class="value-card-icon">📦</div><div class="value-card-title">Création du produit</div><p class="value-card-text">Formation, programme ou membership. On construit la structure et l'expérience apprenante.</p></div>
-      <div class="value-card"><div class="value-card-icon">⚡</div><div class="value-card-title">Tunnel de vente</div><p class="value-card-text">Page de vente, séquence email, checkout. Tout pensé pour convertir votre audience.</p></div>
-      <div class="value-card"><div class="value-card-icon">📈</div><div class="value-card-title">Lancement & suivi</div><p class="value-card-text">On orchestre le lancement et optimise en continu pour maximiser les revenus partagés.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="process-section" id="process">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Le processus</div>
-      <h2 class="section-title">De l'idée aux<br><span class="accent">premières ventes</span></h2>
-    </div>
-    <div class="process-list reveal">
-      <div class="process-item">
-        <div class="process-num">01</div>
-        <div><div class="process-title">Candidature & sélection</div><p class="process-text">Vous remplissez notre formulaire. On étudie votre audience, votre idée et votre crédibilité. On ne prend pas tout le monde — seulement les projets dans lesquels on croit vraiment.</p></div>
-        <span class="process-tag">48h de réponse</span>
-      </div>
-      <div class="process-item">
-        <div class="process-num">02</div>
-        <div><div class="process-title">Workshop stratégique</div><p class="process-text">On définit ensemble votre offre, votre cible, votre prix et votre positionnement. C'est la fondation sur laquelle tout repose.</p></div>
-        <span class="process-tag">Session de travail</span>
-      </div>
-      <div class="process-item">
-        <div class="process-num">03</div>
-        <div><div class="process-title">Production & tunnel</div><p class="process-text">On construit le produit, la page de vente, les emails, le checkout. Vous apportez votre expertise et votre image — on s'occupe du reste.</p></div>
-        <span class="process-tag">Clé en main</span>
-      </div>
-      <div class="process-item">
-        <div class="process-num">04</div>
-        <div><div class="process-title">Lancement & partage des revenus</div><p class="process-text">On lance ensemble. Les revenus sont partagés selon l'accord établi en amont. Plus vous vendez, plus on gagne tous les deux.</p></div>
-        <span class="process-tag">Rev share</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials-section" id="temoignages">
-  <div class="section-inner">
-    <div class="testi-top reveal">
+      <div class="stat-div"></div>
       <div>
-        <div class="section-label">Ils nous font confiance</div>
-        <h2 class="section-title">Ce qu'ils disent<br>de <span class="accent">l'expérience</span></h2>
+        <div class="hero-stat-num">72h</div>
+        <div class="hero-stat-label">pour lancer votre système</div>
       </div>
-      <div class="google-badge">
-        <div class="google-logo"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      <div class="stat-div"></div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">spécialisé immobilier</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="vis-header">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span class="vis-title">dashboard — agence dupont immobilier</span>
+      </div>
+      <div class="vis-body">
+        <div class="vis-metric">
+          <span class="vm-label">Nouveaux contacts / mois</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="vm-val">248</span><span class="badge bu">+127%</span>
+          </div>
+        </div>
+        <div class="vis-metric">
+          <span class="vm-label">DM Instagram traités</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="vm-val">1 840</span><span class="badge bu">automatisé</span>
+          </div>
+        </div>
+        <div class="vis-metric">
+          <span class="vm-label">Taux ouverture email</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="vm-val">41.2%</span><span class="badge bu">vs 22% marché</span>
+          </div>
+        </div>
+        <div class="vis-metric">
+          <span class="vm-label">Position SEO "agence [ville]"</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="vm-val">#2</span><span class="badge bu">↑ de #11</span>
+          </div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-row"><span>Mandats signés ce mois</span><span>18 / 20</span></div>
+          <div class="bar-t"><div class="bar-f" style="width:90%"></div></div>
+          <div class="bar-row"><span>Budget Ads utilisé</span><span>€1 420 / €1 500</span></div>
+          <div class="bar-t"><div class="bar-f acc" style="width:95%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<div class="trusted">
+  <span class="trusted-label">Secteurs accompagnés</span>
+  <div class="trusted-logos">
+    <span class="trusted-logo">Transaction</span>
+    <span class="trusted-logo">Location & Gestion</span>
+    <span class="trusted-logo">Neuf & VEFA</span>
+    <span class="trusted-logo">Mandataires</span>
+    <span class="trusted-logo">Promoteurs</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section">
+  <p class="section-tag">Ce qu'on fait</p>
+  <h2 class="section-title">Un écosystème digital complet<br>taillé pour l'immobilier</h2>
+  <p class="section-sub">Chaque canal est connecté. Chaque action nourrit la suivante. Résultat : un flux continu de prospects sans effort manuel.</p>
+  <div class="services-grid">
+    <div class="scard">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+      <h3 class="scard-name">Instagram DM Automation</h3>
+      <p class="scard-desc">ManyChat transforme chaque commentaire ou story view en conversation qualifiée. Vos agents reçoivent des RDV, pas des messages à gérer.</p>
+      <a href="services.html#instagram" class="scard-link">En savoir plus →</a>
+    </div>
+    <div class="scard">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3 class="scard-name">Facebook & Meta Ads</h3>
+      <p class="scard-desc">Campagnes ciblées sur acquéreurs et vendeurs locaux. Chaque euro investi est tracké et optimisé pour générer des mandats exclusifs.</p>
+      <a href="services.html#ads" class="scard-link">En savoir plus →</a>
+    </div>
+    <div class="scard">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3 class="scard-name">SEO Local & National</h3>
+      <p class="scard-desc">Positionnez votre agence en 1ère page sur "agence immobilière [ville]" et les requêtes à forte intention d'achat ou de vente.</p>
+      <a href="services.html#seo" class="scard-link">En savoir plus →</a>
+    </div>
+    <div class="scard">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <h3 class="scard-name">Email Marketing</h3>
+      <p class="scard-desc">Séquences automatisées pour acheteurs, vendeurs et anciens clients. Restez top-of-mind à chaque étape de leur parcours.</p>
+      <a href="services.html#email" class="scard-link">En savoir plus →</a>
+    </div>
+    <div class="scard">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3 class="scard-name">Refonte de site internet</h3>
+      <p class="scard-desc">Un site rapide, moderne et optimisé pour convertir les visiteurs en demandes d'estimation ou en prises de contact qualifiées.</p>
+      <a href="services.html#site" class="scard-link">En savoir plus →</a>
+    </div>
+    <div class="scard dark">
+      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3 class="scard-name">Stratégie complète 360°</h3>
+      <p class="scard-desc">Tous les canaux connectés dans un seul système. Une agence. Un interlocuteur. Des résultats mesurables chaque mois.</p>
+      <a href="contact.html" class="scard-link">Discuter de mon projet →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-tag">Comment ça marche</p>
+  <h2 class="section-title">De zéro à un flux<br>de mandats en 4 étapes</h2>
+  <p class="section-sub">Pas de jargon. Pas de promesses floues. Un processus clair de la prise en main à la livraison.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Audit & Diagnostic</h3>
+      <p class="step-desc">Analyse complète de votre présence actuelle : site, SEO, réseaux, budget pub. On identifie les fuites et les opportunités.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Stratégie personnalisée</h3>
+      <p class="step-desc">Plan sur 90 jours adapté à votre marché local, votre budget et vos objectifs de mandats.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Déploiement 72h</h3>
+      <p class="step-desc">ManyChat, Ads, emails — tout est configuré et testé avant lancement en moins de 72 heures.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Optimisation continue</h3>
+      <p class="step-desc">Suivi hebdomadaire des métriques. Chaque itération améliore le ROI. Vous avez des rapports clairs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results">
+  <p class="section-tag">Résultats</p>
+  <h2 class="section-title">Des chiffres,<br>pas des promesses</h2>
+  <div class="results-grid">
+    <div class="r-numbers">
+      <div class="r-card"><div class="r-num">+340%</div><div class="r-label">de leads qualifiés en 3 mois</div></div>
+      <div class="r-card dark"><div class="r-num">4.8×</div><div class="r-label">ROI moyen sur les campagnes Meta</div></div>
+      <div class="r-card dark"><div class="r-num">72h</div><div class="r-label">délai de déploiement complet</div></div>
+      <div class="r-card"><div class="r-num">41%</div><div class="r-label">taux d'ouverture moyen des emails</div></div>
+    </div>
+    <div class="testi">
+      <p class="testi-quote">Avant KOVAIA, on dépendait des recommandations. Aujourd'hui notre Instagram génère des demandes d'estimation toutes les semaines en automatique. Le système ManyChat c'est une vraie révolution pour nous.</p>
+      <div class="testi-author">
+        <div class="t-avatar">SB</div>
         <div>
-          <div class="google-score">4.9</div>
-          <div class="google-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <div class="google-count">Avis Google vérifiés</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"KOVAIA a transformé mon expertise en un vrai produit vendable. En moins de 2 mois, j'ai fait mes premières ventes sans débourser un centime au départ."</p>
-        <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kevin M.</div><div class="testi-meta">Loueur de voiture • Formation lancée</div></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Ce qui m'a convaincu c'est le modèle : ils ne gagnent que si je gagne. Ça change tout dans la relation. Impliqués à 100% du début à la fin."</p>
-        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sophia L.</div><div class="testi-meta">Coach business • 12k abonnés</div></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"J'avais l'idée depuis longtemps mais je ne savais pas comment la vendre. KOVAIA a tout mis en place — tunnel, emails, page de vente. Clé en main."</p>
-        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Romain T.</div><div class="testi-meta">Investisseur immo • 8k abonnés TikTok</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="portfolio-section" id="portfolio">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Cas client</div>
-      <h2 class="section-title">Un exemple <span class="accent">concret</span></h2>
-    </div>
-    <div class="case-study reveal">
-      <div class="case-header">
-        <div class="case-meta">
-          <span class="case-tag">Cas #01</span>
-          <div><div class="case-client-name">Kevin M.</div><div class="case-client-sub">Loueur de voiture — Île-de-France</div></div>
-          <div class="case-kpis">
-            <div><div class="kpi-value">8 200 €</div><div class="kpi-label">Revenus au 1er lancement</div></div>
-            <div><div class="kpi-value">6 sem.</div><div class="kpi-label">De l'idée au premier euro</div></div>
-            <div><div class="kpi-value">0 €</div><div class="kpi-label">Investissement initial</div></div>
-          </div>
-        </div>
-        <div class="case-summary">
-          <div class="case-summary-title">De loueur de voiture à <span class="accent">formateur reconnu</span> dans son secteur.</div>
-          <p class="case-summary-text">Kevin avait 7 ans d'expérience dans la location de véhicules et une communauté Instagram engagée. Il savait que son expertise avait de la valeur, mais n'avait ni le temps ni les compétences pour la transformer en produit digital. KOVAIA a pris en charge l'intégralité de la production et du lancement.</p>
-        </div>
-      </div>
-      <div class="case-body">
-        <div class="case-block"><div class="case-block-label">Le défi</div><p class="case-block-text">Une expertise solide, 9 400 abonnés engagés — mais aucune offre, aucun tunnel, aucune infra de vente. Kevin ne voulait pas investir sans garantie.</p></div>
-        <div class="case-block"><div class="case-block-label">Ce qu'on a construit</div><ul><li>Formation "Devenir loueur de voiture" (6 modules)</li><li>Page de vente optimisée conversion</li><li>Séquence email de lancement (7 emails)</li><li>Checkout + espace membre automatisé</li><li>Stratégie contenu pré-lancement</li></ul></div>
-        <div class="case-block"><div class="case-block-label">Le résultat</div><p class="case-block-text">41 ventes à 199€ en 72h lors du lancement. Tunnel toujours actif 4 mois plus tard. Kevin prépare sa V2 avec KOVAIA.</p></div>
-      </div>
-      <div class="case-quote">
-        <div class="quote-mark">"</div>
-        <div>
-          <p class="case-quote-text">Je n'aurais jamais eu le temps ni les compétences pour faire ça seul. KOVAIA a tout pris en charge — je leur ai fait confiance et ça a marché au-delà de mes attentes.</p>
-          <div class="case-quote-sig"><strong>Kevin M.</strong> — Loueur de voiture, fondateur de sa formation digitale</div>
+          <div class="t-name">Sophie B.</div>
+          <div class="t-role">Directrice — Agence SB Immobilier, Lyon</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="apply-section" id="candidater">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Candidature</div>
-      <h2 class="section-title">Prêt à lancer<br><span class="accent">votre produit</span> ?</h2>
-    </div>
-    <div class="apply-grid">
-      <div class="reveal">
-        <div class="apply-info-title">Ce qu'on recherche</div>
-        <ul class="criteria-list">
-          <li><div class="criteria-check">✓</div><span>Une audience réelle, même petite — engagée et alignée avec votre sujet.</span></li>
-          <li><div class="criteria-check">✓</div><span>Une expertise ou parcours dont les autres veulent s'inspirer.</span></li>
-          <li><div class="criteria-check">✓</div><span>La capacité à apparaître devant votre audience — vidéo, stories, live.</span></li>
-          <li><div class="criteria-check">✓</div><span>L'envie de travailler en vrai partenariat, pas en client passif.</span></li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="form-success" id="formSuccess">
-          <div class="form-success-icon">✓</div>
-          <p>Candidature reçue.</p>
-          <span>On revient vers vous dans les 48h.</span>
-        </div>
-        <form class="apply-form" id="applyForm" action="https://formspree.io/f/xdapewaz" method="POST">
-          <div class="form-title">Déposez votre candidature</div>
-          <div class="form-row">
-            <div class="form-group"><label>Prénom & Nom</label><input type="text" name="nom" required placeholder="Jean Dupont"></div>
-            <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="jean@exemple.com"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label>Réseau principal</label><select name="reseau"><option value="">Choisir...</option><option>Instagram</option><option>YouTube</option><option>TikTok</option><option>LinkedIn</option><option>Podcast</option><option>Autre</option></select></div>
-            <div class="form-group"><label>Taille de communauté</label><select name="communaute"><option value="">Choisir...</option><option>Moins de 5 000</option><option>5 000 – 30 000</option><option>30 000 – 100 000</option><option>100 000+</option></select></div>
-          </div>
-          <div class="form-group"><label>Votre idée de produit</label><textarea name="idee" rows="3" placeholder="Décrivez en quelques lignes l'expertise que vous souhaitez transmettre..."></textarea></div>
-          <p class="form-note">Aucun engagement. Réponse sous 48h.</p>
-          <button type="submit" class="form-submit">Envoyer ma candidature →</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<!-- AUDIT CTA -->
+<section class="audit-cta">
+  <h2>Analysez votre site gratuitement<br>en 30 secondes</h2>
+  <p>Notre outil IA détecte vos problèmes SEO, vos fuites de conversion et vos opportunités de croissance.</p>
+  <a href="audit.html" class="btn-white">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Lancer mon audit gratuit
+  </a>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">KOVA<span>IA</span></div>
-  <div class="footer-copy">© 2025 KOVAIA — Tous droits réservés</div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">KOV<span style="color:var(--accent)">AI</span>A</a>
+      <p>Agence IA spécialisée dans l'acquisition digitale pour agences immobilières. Résultats mesurables, systèmes automatisés.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#instagram">Instagram DM Auto</a></li>
+        <li><a href="services.html#ads">Facebook Ads</a></li>
+        <li><a href="services.html#seo">SEO Local</a></li>
+        <li><a href="services.html#email">Email Marketing</a></li>
+        <li><a href="services.html#site">Refonte site</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Outils</h4>
+      <ul>
+        <li><a href="audit.html">Audit SEO gratuit</a></li>
+        <li><a href="contact.html">Diagnostic offert</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="contact.html">Prendre RDV</a></li>
+        <li><a href="https://kovaia.fr" target="_blank">kovaia.fr</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 KOVAIA. Tous droits réservés.</span>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  const form = document.getElementById('applyForm');
-  const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(r => { if (r.ok) { form.style.display = 'none'; success.classList.add('visible'); } })
-    .catch(() => alert('Erreur. Réessayez.'));
-  });
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 </script>
 </body>
 </html>
