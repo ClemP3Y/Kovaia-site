@@ -472,7 +472,7 @@ Réponds UNIQUEMENT en JSON valide (pas de markdown, pas de backticks), avec cet
 Génère un audit crédible, avec des observations spécifiques au secteur immobilier français (mandats, estimations, biens en exclusivité, zones géographiques, etc.). Les scores doivent être réalistes (la plupart des agences immo ont des sites sous-optimisés). Minimum 3 issues par section.`;
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
