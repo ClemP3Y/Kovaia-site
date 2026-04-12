@@ -3,475 +3,331 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KOVAIA — Agence IA pour agences immobilières</title>
-  <meta name="description" content="KOVAIA aide les agences immobilières à générer plus de mandats et de clients grâce à des systèmes digitaux automatisés : Instagram DM, SEO, FB Ads, emailing et refonte de site." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>Kovaia — Votre équipe acquisition externalisée</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --off-white: #F7F6F2;
-      --sage: #5C7A5F;
-      --sage-dark: #3D5440;
-      --sage-light: #8AA88D;
-      --sage-pale: #EAF0EA;
-      --black: #1A1A18;
-      --gray: #6B6B65;
-      --gray-light: #DDDDD7;
-      --accent: #C8A96E;
+      --green: #1D9E75; --green-light: #E1F5EE; --green-mid: #5DCAA5;
+      --green-dark: #0F6E56; --amber: #EF9F27; --blue-light: #E6F1FB;
+      --blue: #185FA5; --amber-light: #FAEEDA; --amber-dark: #854F0B;
+      --text: #1a1a1a; --text-sec: #666; --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.2); --bg: #ffffff; --bg-sec: #f7f7f5;
+      --radius-md: 8px; --radius-lg: 12px;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Figtree', sans-serif; background: var(--off-white); color: var(--black); overflow-x: hidden; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 20px 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(247,246,242,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent; transition: border-color 0.3s;
-    }
-    nav.scrolled { border-color: var(--gray-light); }
-    .nav-logo { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--sage-dark); text-decoration: none; }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-family: 'Figtree', sans-serif; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; color: var(--gray); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--sage-dark); }
-    .nav-cta { background: var(--sage) !important; color: white !important; padding: 10px 22px; border-radius: 4px; font-weight: 600 !important; transition: background 0.2s !important; }
-    .nav-cta:hover { background: var(--sage-dark) !important; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .nav-hamburger span { width: 24px; height: 2px; background: var(--black); transition: 0.3s; }
-
-    /* HERO */
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: radial-gradient(circle at 70% 20%, rgba(92,122,95,0.06) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(200,169,110,0.05) 0%, transparent 40%); pointer-events: none; }
-    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(92,122,95,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(92,122,95,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
-    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--sage-pale); color: var(--sage-dark); padding: 6px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; width: fit-content; animation: fadeUp 0.6s ease both; }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--sage); border-radius: 50%; }
-    .hero-title { font-family: 'Raleway', sans-serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; animation: fadeUp 0.6s 0.1s ease both; }
-    .hero-title .accent { color: var(--sage); }
-    .hero-title em { font-style: normal; position: relative; display: inline-block; }
-    .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 4px; background: var(--accent); border-radius: 2px; transform: scaleX(0); transform-origin: left; animation: lineGrow 0.6s 0.8s ease forwards; }
-    .hero-sub { font-size: 1.08rem; line-height: 1.75; color: var(--gray); max-width: 480px; margin-bottom: 40px; animation: fadeUp 0.6s 0.2s ease both; }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-    .btn-primary { background: var(--sage); color: white; padding: 15px 32px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); }
-    .btn-secondary { background: transparent; color: var(--black); padding: 15px 32px; border-radius: 5px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--gray-light); transition: border-color 0.2s, color 0.2s; }
-    .btn-secondary:hover { border-color: var(--sage); color: var(--sage); }
-    .hero-stats { display: flex; gap: 40px; margin-top: 56px; animation: fadeUp 0.6s 0.4s ease both; }
-    .hero-stat-num { font-family: 'Raleway', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--sage-dark); }
-    .hero-stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 2px; }
-    .stat-div { width: 1px; background: var(--gray-light); }
-    .hero-right { display: flex; align-items: center; justify-content: center; padding: 80px 80px 80px 40px; position: relative; z-index: 1; animation: fadeRight 0.8s 0.2s ease both; }
-    .hero-visual { width: 100%; max-width: 480px; background: white; border-radius: 16px; border: 1px solid var(--gray-light); overflow: hidden; box-shadow: 0 32px 80px rgba(26,26,24,0.1); }
-    .vis-header { background: var(--black); padding: 14px 20px; display: flex; align-items: center; gap: 8px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .r { background: #FF5F57; } .y { background: #FEBC2E; } .g { background: #28C840; }
-    .vis-title { color: rgba(255,255,255,0.35); font-size: 0.75rem; margin-left: 8px; }
-    .vis-body { padding: 24px; }
-    .vis-metric { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--gray-light); }
-    .vis-metric:last-of-type { border-bottom: none; }
-    .vm-label { font-size: 0.83rem; color: var(--gray); font-weight: 500; }
-    .vm-val { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.05rem; }
-    .badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 100px; }
-    .bu { background: rgba(92,122,95,0.12); color: var(--sage-dark); }
-    .bar-wrap { margin-top: 20px; }
-    .bar-row { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray); margin-bottom: 6px; }
-    .bar-row span:last-child { font-weight: 700; color: var(--black); }
-    .bar-t { background: var(--sage-pale); border-radius: 100px; height: 7px; overflow: hidden; margin-bottom: 14px; }
-    .bar-f { height: 100%; border-radius: 100px; background: var(--sage); animation: barGrow 1.4s ease both; }
-    .bar-f.acc { background: var(--accent); animation-delay: 0.3s; }
-
-    /* TRUSTED */
-    .trusted { padding: 36px 80px; border-top: 1px solid var(--gray-light); border-bottom: 1px solid var(--gray-light); display: flex; align-items: center; gap: 48px; }
-    .trusted-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; font-weight: 600; }
-    .trusted-logos { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
-    .trusted-logo { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1rem; color: var(--gray-light); letter-spacing: 0.05em; transition: color 0.2s; cursor: default; }
-    .trusted-logo:hover { color: var(--sage-light); }
-
-    /* SECTIONS */
-    .section { padding: 100px 80px; }
-    .section-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 16px; }
-    .section-title { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
-    .section-sub { font-size: 1.05rem; color: var(--gray); line-height: 1.7; max-width: 520px; }
-
-    /* SERVICES GRID */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-    .scard { background: white; border: 1px solid var(--gray-light); border-radius: 12px; padding: 32px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
-    .scard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-    .scard:hover { border-color: var(--sage-light); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(92,122,95,0.1); }
-    .scard:hover::before { transform: scaleX(1); }
-    .scard-icon { width: 48px; height: 48px; background: var(--sage-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-    .scard-icon svg { width: 24px; height: 24px; stroke: var(--sage-dark); fill: none; stroke-width: 1.5; }
-    .scard-name { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
-    .scard-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; margin-bottom: 20px; }
-    .scard-link { font-size: 0.85rem; font-weight: 600; color: var(--sage); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
-    .scard-link:hover { gap: 10px; }
-    .scard.dark { background: var(--sage-dark); border-color: var(--sage-dark); }
-    .scard.dark .scard-name { color: white; }
-    .scard.dark .scard-desc { color: rgba(255,255,255,0.55); }
-    .scard.dark .scard-link { color: var(--sage-light); }
-    .scard.dark .scard-icon { background: rgba(255,255,255,0.1); }
-    .scard.dark .scard-icon svg { stroke: white; }
-
-    /* HOW IT WORKS */
-    .how { padding: 100px 80px; background: var(--black); }
-    .how .section-tag { color: var(--sage-light); }
-    .how .section-title { color: white; }
-    .how .section-sub { color: rgba(255,255,255,0.45); }
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 64px; }
-    .step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 36px 28px; }
-    .step:first-child { border-radius: 12px 0 0 12px; }
-    .step:last-child { border-radius: 0 12px 12px 0; }
-    .step-num { font-family: 'Raleway', sans-serif; font-size: 3.5rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; margin-bottom: 16px; }
-    .step-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1rem; color: white; margin-bottom: 12px; }
-    .step-desc { font-size: 0.86rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
-
-    /* RESULTS */
-    .results { padding: 100px 80px; }
-    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 64px; }
-    .r-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .r-card { background: var(--sage-pale); border-radius: 12px; padding: 28px 24px; }
-    .r-card.dark { background: var(--black); }
-    .r-num { font-family: 'Raleway', sans-serif; font-size: 2.4rem; font-weight: 900; color: var(--sage-dark); line-height: 1; margin-bottom: 8px; }
-    .r-card.dark .r-num { color: var(--sage-light); }
-    .r-label { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
-    .r-card.dark .r-label { color: rgba(255,255,255,0.35); }
-    .testi { background: white; border: 1px solid var(--gray-light); border-radius: 16px; padding: 40px; }
-    .testi-quote { font-size: 1.15rem; line-height: 1.75; color: var(--black); font-style: italic; margin-bottom: 28px; }
-    .testi-quote::before { content: '"'; color: var(--sage); font-size: 2.5rem; line-height: 0.5; vertical-align: -0.6rem; margin-right: 4px; }
-    .testi-author { display: flex; align-items: center; gap: 16px; }
-    .t-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--sage-dark); }
-    .t-name { font-weight: 600; font-size: 0.9rem; }
-    .t-role { font-size: 0.8rem; color: var(--gray); }
-
-    /* AUDIT CTA */
-    .audit-cta { padding: 80px; background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%); text-align: center; position: relative; overflow: hidden; }
-    .audit-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 60%), radial-gradient(circle at 70% 50%, rgba(200,169,110,0.1) 0%, transparent 60%); }
-    .audit-cta h2 { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: white; margin-bottom: 16px; position: relative; }
-    .audit-cta p { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 36px; position: relative; }
-    .btn-white { background: white; color: var(--sage-dark); padding: 16px 36px; border-radius: 5px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: transform 0.15s, box-shadow 0.15s; position: relative; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
-
-    /* FOOTER */
-    footer { background: var(--black); padding: 60px 80px 40px; }
-    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .footer-brand .nav-logo { color: white; display: block; margin-bottom: 16px; font-size: 1.2rem; }
-    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.3); line-height: 1.65; }
-    .footer-col h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--sage-light); }
-    .footer-bottom { padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.18); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.18); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.45); }
-
-    /* MOBILE */
-    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--off-white); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-family: 'Raleway', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--black); text-decoration: none; }
-    .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 1.5rem; cursor: pointer; color: var(--gray); background: none; border: none; }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes lineGrow { to { transform: scaleX(1); } }
-    @keyframes barGrow { from { width: 0 !important; } }
-
-    @media (max-width: 1024px) {
-      nav { padding: 18px 32px; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 60px 32px 40px; }
-      .hero-right { display: none; }
-      .section, .results, .how { padding: 64px 32px; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .steps { grid-template-columns: 1fr 1fr; }
-      .step:nth-child(2) { border-radius: 0 12px 0 0; }
-      .step:nth-child(3) { border-radius: 0 0 0 12px; }
-      .results-grid { grid-template-columns: 1fr; }
-      .trusted, .audit-cta { padding: 40px 32px; }
-      footer { padding: 48px 32px 32px; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .footer-bottom { flex-direction: column; gap: 12px; }
-    }
-    @media (max-width: 640px) {
-      .services-grid, .steps { grid-template-columns: 1fr; }
-      .step { border-radius: 8px !important; }
-      .r-numbers { grid-template-columns: 1fr 1fr; }
-      .hero-stats { flex-direction: column; gap: 20px; }
-      .stat-div { display: none; }
-      .footer-top { grid-template-columns: 1fr; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.5; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .logo { font-size: 20px; font-weight: 500; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-btn { background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-md); padding: 10px 22px; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.15s; text-decoration: none; }
+    .nav-btn:hover { opacity: 0.8; }
+    .hero { padding: 80px 32px 68px; text-align: center; border-bottom: 0.5px solid var(--border); }
+    .tag { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-dark); background: var(--green-light); border-radius: 999px; padding: 4px 16px; margin-bottom: 28px; }
+    .hero h1 { font-size: 48px; font-weight: 500; line-height: 1.12; color: var(--text); max-width: 640px; margin: 0 auto 20px; letter-spacing: -0.8px; }
+    .hero h1 em { font-style: normal; color: var(--green); }
+    .hero p { font-size: 17px; color: var(--text-sec); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-cta { background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-md); padding: 16px 36px; font-size: 16px; font-weight: 500; cursor: pointer; transition: opacity 0.15s; text-decoration: none; display: inline-block; }
+    .hero-cta:hover { opacity: 0.8; }
+    .hero-sub { margin-top: 14px; font-size: 13px; color: var(--text-sec); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid var(--border); }
+    .stat { padding: 32px 24px; text-align: center; border-right: 0.5px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-size: 36px; font-weight: 500; color: var(--text); display: block; }
+    .stat-l { font-size: 13px; color: var(--text-sec); margin-top: 8px; display: block; line-height: 1.5; }
+    .stat-src { font-size: 11px; color: var(--text-sec); opacity: 0.55; margin-top: 6px; display: block; }
+    .testimonials { padding: 48px 32px; border-bottom: 0.5px solid var(--border); }
+    .section-label { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-sec); text-align: center; margin-bottom: 32px; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1000px; margin: 0 auto; }
+    .testi-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 22px; }
+    .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .star { width: 14px; height: 14px; background: var(--amber); clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+    .testi-text { font-size: 13px; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
+    .av-a { background: var(--green-light); color: var(--green-dark); }
+    .av-b { background: var(--blue-light); color: var(--blue); }
+    .av-c { background: var(--amber-light); color: var(--amber-dark); }
+    .author-name { font-size: 13px; font-weight: 500; color: var(--text); display: block; }
+    .author-role { font-size: 12px; color: var(--text-sec); display: block; margin-top: 2px; }
+    .section-full { padding: 64px 32px; border-bottom: 0.5px solid var(--border); }
+    .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .section-full h2 { font-size: 30px; font-weight: 500; color: var(--text); max-width: 560px; margin-bottom: 10px; line-height: 1.25; letter-spacing: -0.4px; }
+    .section-sub { font-size: 16px; color: var(--text-sec); max-width: 480px; margin-bottom: 40px; line-height: 1.7; }
+    .offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .offer { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; transition: border-color 0.15s; }
+    .offer:hover { border-color: var(--border-hover); }
+    .offer-tag { display: inline-block; font-size: 11px; font-weight: 500; color: var(--green-dark); background: var(--green-light); border-radius: 999px; padding: 3px 12px; margin-bottom: 14px; }
+    .offer h3 { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .offer p { font-size: 14px; color: var(--text-sec); line-height: 1.6; }
+    .offer-extra { margin-top: 14px; padding-top: 14px; border-top: 0.5px solid var(--border); font-size: 13px; color: var(--green-dark); line-height: 1.55; }
+    .steps { display: flex; flex-direction: column; max-width: 560px; }
+    .step { display: flex; gap: 20px; padding-bottom: 32px; position: relative; }
+    .step:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 0.5px; background: var(--border); }
+    .step-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-sec); border: 0.5px solid var(--border-hover); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--text-sec); flex-shrink: 0; }
+    .step-dot.done { background: var(--green-light); border-color: var(--green-mid); color: var(--green-dark); }
+    .step h4 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; padding-top: 5px; }
+    .step p { font-size: 14px; color: var(--text-sec); line-height: 1.6; }
+    .contact-section { padding: 64px 32px; border-bottom: 0.5px solid var(--border); }
+    .audit-box { background: var(--bg-sec); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; max-width: 580px; margin-bottom: 40px; }
+    .audit-box h3 { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .audit-box > p { font-size: 14px; color: var(--text-sec); line-height: 1.7; }
+    .audit-items { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .audit-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-sec); }
+    .audit-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-top: 7px; flex-shrink: 0; }
+    .form-wrap { max-width: 540px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; color: var(--text-sec); margin-bottom: 6px; }
+    .field input, .field textarea, .field select { width: 100%; font-size: 15px; padding: 10px 14px; border: 0.5px solid var(--border-hover); border-radius: var(--radius-md); background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; font-family: inherit; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--green); }
+    .field textarea { height: 100px; resize: none; }
+    .submit-btn { width: 100%; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-md); padding: 15px; font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: opacity 0.15s; font-family: inherit; }
+    .submit-btn:hover { opacity: 0.8; }
+    .submit-btn:disabled { opacity: 0.4; cursor: default; }
+    .success-msg { display: none; background: var(--green-light); border: 0.5px solid var(--green-mid); border-radius: var(--radius-lg); padding: 22px; text-align: center; color: var(--green-dark); font-size: 15px; margin-top: 16px; line-height: 1.6; }
+    .error-msg { display: none; background: #FEE2E2; border: 0.5px solid #FCA5A5; border-radius: var(--radius-lg); padding: 16px; text-align: center; color: #991B1B; font-size: 14px; margin-top: 16px; }
+    footer { padding: 32px; text-align: center; border-top: 0.5px solid var(--border); }
+    .footer-logo { font-size: 20px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--green); }
+    footer p { font-size: 13px; color: var(--text-sec); }
+    @media (max-width: 720px) {
+      nav { padding: 14px 20px; }
+      .hero { padding: 56px 20px 48px; }
+      .hero h1 { font-size: 32px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .testimonials { padding: 40px 20px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .section-full, .contact-section { padding: 48px 20px; }
+      .offers { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
 
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">KOV<span>AI</span>A</a>
-  <ul class="nav-links">
-    <li><a href="services.html">Services</a></li>
-    <li><a href="avis.html">Avis clients</a></li>
-    
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="contact.html" class="nav-cta">Prendre RDV</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav>
+  <a href="#" class="logo">Ko<span>v</span>aia</a>
+  <a href="#contact" class="nav-btn">Audit gratuit</a>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()">✕</button>
-  <a href="index.html" onclick="toggleMenu()">Accueil</a>
-  <a href="services.html" onclick="toggleMenu()">Services</a>
-  <a href="avis.html" onclick="toggleMenu()">Avis clients</a>
-  
-  <a href="contact.html" onclick="toggleMenu()">Contact</a>
-</div>
-
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-left">
-    <span class="hero-tag">Spécialiste agences immobilières</span>
-    <h1 class="hero-title">
-      Votre agence mérite<br>
-      une présence <span class="accent">digitale</span><br>
-      qui <em>génère des mandats</em>
-    </h1>
-    <p class="hero-sub">KOVAIA construit des systèmes d'acquisition automatisés — Instagram DM, SEO, emailing, publicité Meta — pour que vos agents passent leur temps à signer, pas à prospecter.</p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn-primary">Prendre RDV →</a>
-      <a href="services.html" class="btn-secondary">Voir nos services</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num">+340%</div>
-        <div class="hero-stat-label">de leads qualifiés en 90j</div>
-      </div>
-      <div class="stat-div"></div>
-      <div>
-        <div class="hero-stat-num">72h</div>
-        <div class="hero-stat-label">pour lancer votre système</div>
-      </div>
-      <div class="stat-div"></div>
-      <div>
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">spécialisé immobilier</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="vis-header">
-        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-        <span class="vis-title">dashboard — agence dupont immobilier</span>
-      </div>
-      <div class="vis-body">
-        <div class="vis-metric">
-          <span class="vm-label">Nouveaux contacts / mois</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="vm-val">248</span><span class="badge bu">+127%</span>
-          </div>
-        </div>
-        <div class="vis-metric">
-          <span class="vm-label">DM Instagram traités</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="vm-val">1 840</span><span class="badge bu">automatisé</span>
-          </div>
-        </div>
-        <div class="vis-metric">
-          <span class="vm-label">Taux ouverture email</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="vm-val">41.2%</span><span class="badge bu">vs 22% marché</span>
-          </div>
-        </div>
-        <div class="vis-metric">
-          <span class="vm-label">Position SEO "agence [ville]"</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="vm-val">#2</span><span class="badge bu">↑ de #11</span>
-          </div>
-        </div>
-        <div class="bar-wrap">
-          <div class="bar-row"><span>Mandats signés ce mois</span><span>18 / 20</span></div>
-          <div class="bar-t"><div class="bar-f" style="width:90%"></div></div>
-          <div class="bar-row"><span>Budget Ads utilisé</span><span>€1 420 / €1 500</span></div>
-          <div class="bar-t"><div class="bar-f acc" style="width:95%"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="tag">Votre équipe acquisition externalisée</div>
+  <h1>Votre prochain mandat<br>est déjà <em>propriétaire.</em><br>On vous dit qui.</h1>
+  <p>Kovaia trouve les propriétaires parisiens avant qu'ils mettent leur bien en vente — et automatise tout ce qui vous prend du temps en prospection.</p>
+  <a href="#contact" class="hero-cta">Recevoir mon audit gratuit</a>
+  <p class="hero-sub">Un call de 30 min. Aucun engagement.</p>
 </section>
 
-<!-- TRUSTED BY -->
-<div class="trusted">
-  <span class="trusted-label">Secteurs accompagnés</span>
-  <div class="trusted-logos">
-    <span class="trusted-logo">Transaction</span>
-    <span class="trusted-logo">Location & Gestion</span>
-    <span class="trusted-logo">Neuf & VEFA</span>
-    <span class="trusted-logo">Mandataires</span>
-    <span class="trusted-logo">Promoteurs</span>
+<div class="stats">
+  <div class="stat">
+    <span class="stat-n">82%</span>
+    <span class="stat-l">du CA d'une agence vient de sa capacité à décrocher des mandats</span>
+    <span class="stat-src">Source : FNAIM 2025</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">35 000</span>
+    <span class="stat-l">agences en France se battent pour les mêmes propriétaires</span>
+    <span class="stat-src">Source : FNAIM 2025</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">2–3h</span>
+    <span class="stat-l">par jour en prospection pour maintenir un flux régulier de mandats</span>
+    <span class="stat-src">Source : études sectorielles 2025</span>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="section">
-  <p class="section-tag">Ce qu'on fait</p>
-  <h2 class="section-title">Un écosystème digital complet<br>taillé pour l'immobilier</h2>
-  <p class="section-sub">Chaque canal est connecté. Chaque action nourrit la suivante. Résultat : un flux continu de prospects sans effort manuel.</p>
-  <div class="services-grid">
-    <div class="scard">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
-      <h3 class="scard-name">Instagram DM Automation</h3>
-      <p class="scard-desc">ManyChat transforme chaque commentaire ou story view en conversation qualifiée. Vos agents reçoivent des RDV, pas des messages à gérer.</p>
-      <a href="services.html#instagram" class="scard-link">En savoir plus →</a>
-    </div>
-    <div class="scard">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-      <h3 class="scard-name">Facebook & Meta Ads</h3>
-      <p class="scard-desc">Campagnes ciblées sur acquéreurs et vendeurs locaux. Chaque euro investi est tracké et optimisé pour générer des mandats exclusifs.</p>
-      <a href="services.html#ads" class="scard-link">En savoir plus →</a>
-    </div>
-    <div class="scard">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-      <h3 class="scard-name">SEO Local & National</h3>
-      <p class="scard-desc">Positionnez votre agence en 1ère page sur "agence immobilière [ville]" et les requêtes à forte intention d'achat ou de vente.</p>
-      <a href="services.html#seo" class="scard-link">En savoir plus →</a>
-    </div>
-    <div class="scard">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-      <h3 class="scard-name">Email Marketing</h3>
-      <p class="scard-desc">Séquences automatisées pour acheteurs, vendeurs et anciens clients. Restez top-of-mind à chaque étape de leur parcours.</p>
-      <a href="services.html#email" class="scard-link">En savoir plus →</a>
-    </div>
-    <div class="scard">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3 class="scard-name">Refonte de site internet</h3>
-      <p class="scard-desc">Un site rapide, moderne et optimisé pour convertir les visiteurs en demandes d'estimation ou en prises de contact qualifiées.</p>
-      <a href="services.html#site" class="scard-link">En savoir plus →</a>
-    </div>
-    <div class="scard dark">
-      <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3 class="scard-name">Stratégie complète 360°</h3>
-      <p class="scard-desc">Tous les canaux connectés dans un seul système. Une agence. Un interlocuteur. Des résultats mesurables chaque mois.</p>
-      <a href="contact.html" class="scard-link">Discuter de mon projet →</a>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how">
-  <p class="section-tag">Comment ça marche</p>
-  <h2 class="section-title">De zéro à un flux<br>de mandats en 4 étapes</h2>
-  <p class="section-sub">Pas de jargon. Pas de promesses floues. Un processus clair de la prise en main à la livraison.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3 class="step-title">Audit & Diagnostic</h3>
-      <p class="step-desc">Analyse complète de votre présence actuelle : site, SEO, réseaux, budget pub. On identifie les fuites et les opportunités.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3 class="step-title">Stratégie personnalisée</h3>
-      <p class="step-desc">Plan sur 90 jours adapté à votre marché local, votre budget et vos objectifs de mandats.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3 class="step-title">Déploiement 72h</h3>
-      <p class="step-desc">ManyChat, Ads, emails — tout est configuré et testé avant lancement en moins de 72 heures.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h3 class="step-title">Optimisation continue</h3>
-      <p class="step-desc">Suivi hebdomadaire des métriques. Chaque itération améliore le ROI. Vous avez des rapports clairs.</p>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS -->
-<section class="results">
-  <p class="section-tag">Résultats</p>
-  <h2 class="section-title">Des chiffres,<br>pas des promesses</h2>
-  <div class="results-grid">
-    <div class="r-numbers">
-      <div class="r-card"><div class="r-num">+340%</div><div class="r-label">de leads qualifiés en 3 mois</div></div>
-      <div class="r-card dark"><div class="r-num">4.8×</div><div class="r-label">ROI moyen sur les campagnes Meta</div></div>
-      <div class="r-card dark"><div class="r-num">72h</div><div class="r-label">délai de déploiement complet</div></div>
-      <div class="r-card"><div class="r-num">41%</div><div class="r-label">taux d'ouverture moyen des emails</div></div>
-    </div>
-    <div class="testi">
-      <p class="testi-quote">Avant KOVAIA, on dépendait des recommandations. Aujourd'hui notre Instagram génère des demandes d'estimation toutes les semaines en automatique. Le système ManyChat c'est une vraie révolution pour nous.</p>
+<section class="testimonials">
+  <p class="section-label">Ce que disent nos clients</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testi-text">"On reçoit une liste chaque semaine, les contacts sont vrais et joignables. J'ai rentré 2 mandats en moins d'un mois sur des propriétaires qu'on n'aurait jamais trouvés autrement."</p>
       <div class="testi-author">
-        <div class="t-avatar">SB</div>
-        <div>
-          <div class="t-name">Sophie B.</div>
-          <div class="t-role">Directrice — Agence SB Immobilier, Lyon</div>
-        </div>
+        <div class="avatar av-a">TM</div>
+        <div><span class="author-name">Thomas M.</span><span class="author-role">Directeur d'agence, 8e arr.</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testi-text">"Ce qui m'a convaincu c'est l'audit. En 30 minutes ils ont identifié exactement ce qui bloquait dans ma prospection. Le plan était concret, pas du blabla."</p>
+      <div class="testi-author">
+        <div class="avatar av-b">SL</div>
+        <div><span class="author-name">Sophie L.</span><span class="author-role">Agent indépendante, Neuilly-sur-Seine</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="testi-text">"Ils gèrent les emails à notre place, on reçoit juste les réponses intéressées. Mon équipe ne fait plus de prospection froide — elle se concentre sur les rendez-vous."</p>
+      <div class="testi-author">
+        <div class="avatar av-c">KD</div>
+        <div><span class="author-name">Karim D.</span><span class="author-role">Co-fondateur, agence 16e arr.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="audit-cta">
-  <h2>Prêt à automatiser<br>votre acquisition de mandats ?</h2>
-  <p>Échangeons 30 minutes sur votre situation et les systèmes à mettre en place.</p>
-  <a href="contact.html" class="btn-white">Prendre RDV gratuitement →</a>
+<section class="section-full">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="eyebrow">Ce qu'on fait</div>
+    <h2>Quatre façons de remplir votre agenda de propriétaires</h2>
+    <p class="section-sub">Pas un outil de plus à apprendre. On s'en occupe, vous closez.</p>
+    <div class="offers">
+      <div class="offer">
+        <span class="offer-tag">Offre 1</span>
+        <h3>Contacts propriétaires directs</h3>
+        <p>Chaque semaine, une liste de propriétaires avec leurs coordonnées directes. Des contacts introuvables sur SeLoger ou LeBonCoin.</p>
+        <div class="offer-extra">Option full service — on envoie les emails de prospection à votre place. Vous recevez les réponses, rien d'autre.</div>
+      </div>
+      <div class="offer">
+        <span class="offer-tag">Offre 2</span>
+        <h3>Relance de votre fichier client</h3>
+        <p>Vos anciens contacts, vendeurs potentiels, prospects froids — on les relance automatiquement par email. Vous ne perdez plus aucune opportunité.</p>
+      </div>
+      <div class="offer">
+        <span class="offer-tag">Offre 3</span>
+        <h3>Les clients viennent à vous</h3>
+        <p>Publicités ciblées sur Meta, Google et TikTok, page de présentation sur-mesure, prise de rendez-vous automatique. Votre agence visible, 24h/24.</p>
+      </div>
+      <div class="offer">
+        <span class="offer-tag">Offre 4</span>
+        <h3>Votre image sur les réseaux</h3>
+        <p>Stratégie, tournage, montage vidéo. On vous construit une présence locale qui inspire confiance — sans que vous ayez à y penser.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<section class="section-full">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="eyebrow">Comment ça marche</div>
+    <h2>Opérationnel dès la première semaine</h2>
+    <p class="section-sub">On part de votre situation réelle, pas d'un template générique.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div><h4>Audit de votre acquisition</h4><p>30 minutes pour comprendre comment vous prospectez aujourd'hui, ce qui coince, et ce qui peut changer immédiatement.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div><h4>On vous propose un plan concret</h4><p>Pas de slide de 40 pages. Un plan simple, chiffré, adapté à votre zone et à votre équipe.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div><h4>On active, vous closez</h4><p>Forfait mensuel sans engagement longue durée. Les premiers résultats arrivent sous 7 jours.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-dot done">✓</div>
+        <div><h4>Vous récupérez votre temps</h4><p>La prospection tourne sans vous. Vous gérez les rendez-vous et les mandats.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="eyebrow">Audit gratuit</div>
+    <h2>On analyse votre acquisition en 30 minutes</h2>
+    <p class="section-sub">Pas un appel de vente. Un vrai diagnostic : comment vous trouvez vos mandats aujourd'hui, ce qui bloque, et ce qu'on peut faire.</p>
+    <div class="audit-box">
+      <h3>Ce qu'on passe en revue ensemble</h3>
+      <p>En 30 minutes chrono, on identifie vos points de friction et on vous dit exactement sur quels leviers agir en premier.</p>
+      <div class="audit-items">
+        <div class="audit-item"><div class="audit-dot"></div>Vos sources actuelles de contacts propriétaires</div>
+        <div class="audit-item"><div class="audit-dot"></div>Ce que vous faites avec votre fichier existant</div>
+        <div class="audit-item"><div class="audit-dot"></div>Votre visibilité en ligne et sur les réseaux</div>
+        <div class="audit-item"><div class="audit-dot"></div>Les 1 ou 2 actions à lancer en priorité</div>
+      </div>
+    </div>
+    <div class="form-wrap">
+      <div class="field">
+        <label>Nom de l'agence</label>
+        <input type="text" id="agency" placeholder="Agence Martin Immobilier" />
+      </div>
+      <div class="field">
+        <label>Votre prénom</label>
+        <input type="text" id="fname" placeholder="Sophie" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="sophie@agence.fr" />
+      </div>
+      <div class="field">
+        <label>Votre secteur principal</label>
+        <input type="text" id="zone" placeholder="ex: 75008, Neuilly, 16e..." />
+      </div>
+      <div class="field">
+        <label>Taille de l'équipe</label>
+        <select id="size">
+          <option>1 personne (indépendant)</option>
+          <option>2 à 5 personnes</option>
+          <option>6 à 15 personnes</option>
+          <option>Plus de 15 personnes</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Votre principal problème en prospection (optionnel)</label>
+        <textarea id="msg" placeholder="Pas assez de contacts, pas le temps de relancer, aucune visibilité en ligne..."></textarea>
+      </div>
+      <button class="submit-btn" id="submit-btn">Réserver mon audit gratuit</button>
+      <div class="success-msg" id="ok">
+        Reçu. On vous recontacte sous 24h pour caler le créneau.<br>
+        <span style="font-size: 12px; opacity: 0.8; margin-top: 6px; display: block;">Vérifiez vos spams si vous ne recevez pas d'email de notre part.</span>
+      </div>
+      <div class="error-msg" id="err">
+        Une erreur s'est produite. Réessayez ou contactez-nous directement.
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="index.html" class="nav-logo">KOV<span style="color:var(--accent)">AI</span>A</a>
-      <p>Agence IA spécialisée dans l'acquisition digitale pour agences immobilières. Résultats mesurables, systèmes automatisés.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="services.html#instagram">Instagram DM Auto</a></li>
-        <li><a href="services.html#ads">Facebook Ads</a></li>
-        <li><a href="services.html#seo">SEO Local</a></li>
-        <li><a href="services.html#email">Email Marketing</a></li>
-        <li><a href="services.html#site">Refonte site</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Outils</h4>
-      <ul>
-        
-        <li><a href="contact.html">Diagnostic offert</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="contact.html">Prendre RDV</a></li>
-        <li><a href="https://kovaia.fr" target="_blank">kovaia.fr</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2025 KOVAIA. Tous droits réservés.</span>
-    <div class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">Confidentialité</a>
-    </div>
-  </div>
+  <div class="footer-logo">Ko<span>v</span>aia</div>
+  <p>Acquisition client pour agences immobilières</p>
 </footer>
 
 <script>
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  document.querySelectorAll('a[href="#contact"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  document.getElementById('submit-btn').addEventListener('click', function() {
+    var agency = document.getElementById('agency').value.trim();
+    var email  = document.getElementById('email').value.trim();
+    if (!agency || !email) {
+      alert('Merci de renseigner le nom de votre agence et votre email.');
+      return;
+    }
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+    var data = {
+      agency:   agency,
+      fname:    document.getElementById('fname').value.trim(),
+      email:    email,
+      zone:     document.getElementById('zone').value.trim(),
+      size:     document.getElementById('size').value,
+      message:  document.getElementById('msg').value.trim(),
+      _subject: "Nouvelle demande d'audit gratuit — Kovaia"
+    };
+    fetch('https://formspree.io/f/xdapewaz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(res) {
+      if (res.ok) {
+        document.getElementById('ok').style.display = 'block';
+        document.getElementById('err').style.display = 'none';
+        btn.style.display = 'none';
+      } else { throw new Error(); }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Réserver mon audit gratuit';
+      document.getElementById('err').style.display = 'block';
+    });
+  });
 </script>
 </body>
 </html>
